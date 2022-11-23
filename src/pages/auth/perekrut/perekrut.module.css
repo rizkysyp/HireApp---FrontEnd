@@ -1,0 +1,27 @@
+.img {
+  width: 100%;
+}
+#row2 {
+  text-align: left;
+}
+#btn {
+  width: 100%;
+  background-color: #fbb017;
+  color: white;
+}
+#lupaSandi {
+  color: #1f2a36;
+}
+#regis {
+  color: #fbb017;
+}
+.imgPeworld {
+  text-align: left;
+}
+.h1 {
+  text-align: left;
+  color: white;
+  padding: 20px;
+  margin-top: 200px;
+  margin-bottom: 300px;
+}
