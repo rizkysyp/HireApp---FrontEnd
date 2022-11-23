@@ -16,7 +16,7 @@ import { Pagination, Navigation } from "swiper";
 export default function LandingPage() {
   return (
     <div>
-      <NavbarLandingAfterLogin />
+      <NavbarLandingBeforeLogin />
       <div className="container-sm mb-5">
         <div className="row">
           <div className="col-5 mt-5">
@@ -277,7 +277,7 @@ export default function LandingPage() {
       </Swiper>
       </div>     
       <div className="container-fluid" style={{marginTop:"200px", marginBottom: "200px"}}>
-          <div className="container" style={{backgroundColor:"#5E50A1", borderRadius:"70px 10px 70px 10px"}}>
+          <div className="container" style={{backgroundColor:"#5E50A1", borderRadius:"40px 10px 40px 10px"}}>
             <div className="row">
               <div className="col-3">
                 <h1 className="text-white my-5 myfont4">Lorem ipsum dolor sit amet</h1>
