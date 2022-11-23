@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import NavbarLandingBeforeLogin from "../../components/NavbarLandingBefore/NavbarLandingBefore";
+import NavbarLandingAfterLogin from "../../components/NavbarLandingAfter/NavbarLandingAfter";
 import ButtonMulai from "../../components/Button/ButtonMulai";
 import "./LandingPage.css"
 import Assets from "../../assets/img";
@@ -16,7 +17,7 @@ export default function LandingPage() {
   return (
     <div>
       <NavbarLandingBeforeLogin />
-      <div className="container mb-5">
+      <div className="container-sm mb-5">
         <div className="row">
           <div className="col-5 mt-5">
             <h1 className="text-start" style={{ fontSize: "50px" }}>
@@ -28,9 +29,10 @@ export default function LandingPage() {
             </p>
             <ButtonMulai />
           </div>
-          <div className="col-3 offset-2">
+          <div className="col-3 offset-3">
             <img
               src={Assets.landingImage2}
+              className=""
               alt=""
               style={{ width: "490px", height: "390px" }}
             />
