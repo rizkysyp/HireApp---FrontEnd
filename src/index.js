@@ -5,7 +5,6 @@ import App from "./App";
 import "./custom.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import "swiper/css/bundle";
-import "./pages/LandingPage/LandingPage.css"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

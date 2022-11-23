@@ -12,19 +12,19 @@ const Footer = () =>{
                 </div>
                 <div className="row pt-3 pb-5">
                     <div className="col-4">
-                        <h6 className='text-start text-white' style={{marginLeft:"40px"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</h6>
+                        <h6 className='text-start text-white myfont3' style={{marginLeft:"40px"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</h6>
                     </div>
                 </div>
-                <div style={{backgroundColor:"white",height:"2px",width:"1235px",marginLeft:"35px"}}></div>
+                <div style={{backgroundColor:"white",height:"2px",width:"1235px",marginLeft:"32px"}}></div>
                 <div className="row mt-4">
                     <div className="col-3">
-                        <p className='text-white'>2020 Pewworld. All right reserved</p>
+                        <p className='text-white myfont3'>2020 Pewworld. All right reserved</p>
                     </div>
                     <div className="col-1 offset-7">
-                        <p className='text-white'>Telepon</p>
+                        <p className='text-white myfont3'>Telepon</p>
                     </div>
                     <div className="col-1">
-                        <p className='text-white'>Email</p>
+                        <p className='text-white myfont3'>Email</p>
                     </div>
                 </div>
             </div>

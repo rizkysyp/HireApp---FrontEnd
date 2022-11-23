@@ -82,3 +82,41 @@
     object-fit: cover;
   }
   
+  @font-face {
+    font-family: "Open Sans Bold";
+    src: url(../../font/OpenSans-Bold.ttf);
+  }
+  @font-face {
+    font-family: "Open Sans Medium";
+    src: url(../../font/OpenSans-Medium.ttf);
+  }
+  @font-face {
+    font-family: "Open Sans Regular";
+    src: url(../../font/OpenSans-Regular.ttf);
+  }
+
+  @font-face {
+    font-family: "Open Sans Semi Bold";
+    src: url(../../font/OpenSans-SemiBold.ttf);
+  }
+
+  .myfont{
+    font-family: "Open Sans Bold";
+  }
+
+  .myfont2{
+    font-family: "Open Sans Medium";
+  }
+
+  .myfont3{
+    font-family: "Open Sans Regular";
+  }
+
+  .myfont4{
+    font-family: "Open Sans Semi Bold";
+  }
+
+  .color-font{
+    color: #9EA0A5
+    ;
+  }

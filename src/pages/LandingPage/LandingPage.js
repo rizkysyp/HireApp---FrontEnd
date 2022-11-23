@@ -16,14 +16,14 @@ import { Pagination, Navigation } from "swiper";
 export default function LandingPage() {
   return (
     <div>
-      <NavbarLandingBeforeLogin />
+      <NavbarLandingAfterLogin />
       <div className="container-sm mb-5">
         <div className="row">
           <div className="col-5 mt-5">
-            <h1 className="text-start" style={{ fontSize: "50px" }}>
+            <h1 className="text-start myfont4" style={{ fontSize: "50px" }}>
               Talenta terbaik negri untuk perubahan revolusi 4.0
             </h1>
-            <p className="text-start">
+            <p className="text-start myfont3">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
               euismod ipsum et dui rhoncus auctor.
             </p>
@@ -49,22 +49,22 @@ export default function LandingPage() {
             />
           </div>
           <div className="col-6 offset-2 mt-4">
-            <h1 className="text-start mb-4" style={{ fontSize: "50px" }}>
+            <h1 className="text-start mb-4 myfont4" style={{ fontSize: "50px" }}>
               Kenapa harus mencari tallent di peworld
             </h1>
-            <p className="text-start">
+            <p className="text-start myfont3">
               <img src={Assets.tick1} alt="" className="me-4" />
               Lorem ipsum dolor sit amet.
             </p>
-            <p className="text-start">
+            <p className="text-start  myfont3">
               <img src={Assets.tick1} alt="" className="me-4" />
               Lorem ipsum dolor sit amet.
             </p>
-            <p className="text-start">
+            <p className="text-start  myfont3">
               <img src={Assets.tick1} alt="" className="me-4" />
               Lorem ipsum dolor sit amet.
             </p>
-            <p className="text-start">
+            <p className="text-start  myfont3">
               <img src={Assets.tick1} alt="" className="me-4" />
               Lorem ipsum dolor sit amet.
             </p>
@@ -73,23 +73,23 @@ export default function LandingPage() {
       </div>
       <div className="container" style={{ marginTop: "180px" }}>
         <div className="row">
-          <div className="col-5 mt-5">
+          <div className="col-5 mt-5 myfont4">
             <h1 className="text-start" style={{ fontSize: "50px" }}>
               Skill Tallent
             </h1>
-            <p className="text-start">
+            <p className="text-start myfont3">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
               euismod ipsum et dui rhoncus auctor.
             </p>
             <div className="row">
               <div className="col-4">
-                <p className="text-start">
+                <p className="text-start myfont3">
                   <img src={Assets.tick2} alt="" className="me-4" />
                   Java
                 </p>
               </div>
-              <div className="col-3 offset-2">
-                <p className="text-start">
+              <div className="col-3 offset-2" myfont3>
+                <p className="text-start myfont3">
                   <img src={Assets.tick2} alt="" className="me-4" />
                   Golang
                 </p>
@@ -97,13 +97,13 @@ export default function LandingPage() {
             </div>
             <div className="row">
               <div className="col-4">
-                <p className="text-start">
+                <p className="text-start myfont3">
                   <img src={Assets.tick2} alt="" className="me-4" />
                   Kotlin
                 </p>
               </div>
               <div className="col-3 offset-2">
-                <p className="text-start">
+                <p className="text-start myfont3">
                   <img src={Assets.tick2} alt="" className="me-4" />
                   C++
                 </p>
@@ -111,13 +111,13 @@ export default function LandingPage() {
             </div>
             <div className="row">
               <div className="col-4">
-                <p className="text-start">
+                <p className="text-start myfont3">
                   <img src={Assets.tick2} alt="" className="me-4" />
                   PHP
                 </p>
               </div>
               <div className="col-3 offset-2">
-                <p className="text-start">
+                <p className="text-start myfont3">
                   <img src={Assets.tick2} alt="" className="me-4" />
                   Ruby
                 </p>
@@ -125,13 +125,13 @@ export default function LandingPage() {
             </div>
             <div className="row">
               <div className="col-4">
-                <p className="text-start">
+                <p className="text-start myfont3">
                   <img src={Assets.tick2} alt="" className="me-4" />
                   JavaScript
                 </p>
               </div>
               <div className="col-6 offset-2">
-                <p className="text-start">
+                <p className="text-start myfont3">
                   <img src={Assets.tick2} alt="" className="me-4" />
                   10+ Bahasa lainnya
                 </p>
@@ -147,8 +147,8 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
-      <div className="container-fluid pt-5" style={{ backgroundColor: "#F5F5F5" , marginTop: "200px"}}>
-        <h1 style={{ marginTop: "100px" }} className="mb-5">
+      <div className="container-fluid pt-5 pb-5" style={{ backgroundColor: "#F5F5F5" , marginTop: "200px"}}>
+        <h1 style={{ marginTop: "100px" }} className="mb-5 myfon4">
           Their opinion about peworld
         </h1>
         <Swiper
@@ -156,9 +156,6 @@ export default function LandingPage() {
         spaceBetween={30}
         slidesPerGroup={3}
         loop={true}
-        pagination={{
-          clickable: true,
-        }}
         navigation={true}
         modules={[Pagination, Navigation]}
         className="mySwiper"
@@ -171,9 +168,9 @@ export default function LandingPage() {
                 <img src={Assets.card1} alt="" />
               </div>
               <div className="name">
-                <h4>Harry Styles</h4>
-                  <h6>Web Developer</h6>
-                  <h6>
+                <h4 className="myfont4">Harry Styles</h4>
+                  <h6 className="myfont3 color-font">Web Developer</h6>
+                  <h6 className="myfont3">
                   Lorem ipsum dolor sit amet, consectetur adipiscing
                   elit. In euismod ipsum et dui rhoncus auctor.
                   </h6>
@@ -190,9 +187,9 @@ export default function LandingPage() {
                 <img src={Assets.card2} alt="" />
               </div>
               <div className="name">
-                <h4>Niall Horan</h4>
-                  <h6>Web Developer</h6>
-                  <h6>
+                <h4 className="myfont4">Niall Horan</h4>
+                  <h6 className="myfont3 color-font">Web Developer</h6>
+                  <h6 className="myfont3">
                   Lorem ipsum dolor sit amet, consectetur adipiscing
                   elit. In euismod ipsum et dui rhoncus auctor.
                   </h6>
@@ -209,9 +206,9 @@ export default function LandingPage() {
                 <img src={Assets.card3} alt="" />
               </div>
               <div className="name">
-                <h4>Louis Tomlinson</h4>
-                  <h6>Web Developer</h6>
-                  <h6>
+                <h4 className="myfont4">Louis Tomlinson</h4>
+                  <h6 className="myfont3 color-font">Web Developer</h6>
+                  <h6 className="myfont3">
                   Lorem ipsum dolor sit amet, consectetur adipiscing
                   elit. In euismod ipsum et dui rhoncus auctor.
                   </h6>
@@ -228,9 +225,9 @@ export default function LandingPage() {
                 <img src={Assets.card1} alt="" />
               </div>
               <div className="name">
-                <h4>Niall Horan</h4>
-                  <h6>Web Developer</h6>
-                  <h6>
+                <h4 className="myfont4">Harry Styles</h4>
+                  <h6 className="myfont3 color-font">Web Developer</h6>
+                  <h6 className="myfont3">
                   Lorem ipsum dolor sit amet, consectetur adipiscing
                   elit. In euismod ipsum et dui rhoncus auctor.
                   </h6>
@@ -247,9 +244,9 @@ export default function LandingPage() {
                 <img src={Assets.card2} alt="" />
               </div>
               <div className="name">
-                <h4>Niall Horan</h4>
-                  <h6>Web Developer</h6>
-                  <h6>
+                <h4 className="myfont4">Niall Horan</h4>
+                  <h6 className="myfont3 color-font">Web Developer</h6>
+                  <h6 className="myfont3">
                   Lorem ipsum dolor sit amet, consectetur adipiscing
                   elit. In euismod ipsum et dui rhoncus auctor.
                   </h6>
@@ -266,9 +263,9 @@ export default function LandingPage() {
                 <img src={Assets.card3} alt="" />
               </div>
               <div className="name">
-                <h4>Niall Horan</h4>
-                  <h6>Web Developer</h6>
-                  <h6>
+                <h4 className="myfont4">Louis Tomlinson</h4>
+                  <h6 className="myfont3 color-font">Web Developer</h6>
+                  <h6 className="myfont3">
                   Lorem ipsum dolor sit amet, consectetur adipiscing
                   elit. In euismod ipsum et dui rhoncus auctor.
                   </h6>
@@ -283,7 +280,7 @@ export default function LandingPage() {
           <div className="container" style={{backgroundColor:"#5E50A1", borderRadius:"70px 10px 70px 10px"}}>
             <div className="row">
               <div className="col-3">
-                <h1 className="text-white my-5">Lorem ipsum dolor sit amet</h1>
+                <h1 className="text-white my-5 myfont4">Lorem ipsum dolor sit amet</h1>
               </div>
               <div className="col-3 offset-6">
                 <ButtonMulaiWhite/>
