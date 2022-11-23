@@ -1,6 +1,7 @@
 import React from "react";
 import NavbarLandingBeforeLogin from "../../components/NavbarLandingBefore/NavbarLandingBefore";
 import ButtonMulai from "../../components/Button/ButtonMulai";
+import ButtonMulaiWhite from "../../components/Button/ButtonMulaiWhite";
 import landingImage3 from "../../images/landingImage3.png"
 import landingImage2 from "../../images/landingImage2.png"
 import landingImage4 from "../../images/landingImage4.png"
@@ -9,7 +10,11 @@ import tick2 from "../../images/tick2.png"
 import card1 from "../../images/card1.png"
 import card2 from "../../images/card2.png"
 import card3 from "../../images/card3.png"
-import Card from 'react-bootstrap/Card';
+import Footer from "../../components/Footer/Footer";
+import "./LandingPage.css"
+import { useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation } from "swiper";
 
 export default function LandingPage(){
     return(
@@ -84,8 +89,10 @@ export default function LandingPage(){
                 </div>
             </div>
             </div>
-            <div className="container-fluid" style={{backgroundColor:"#F5F5F5"}}>
+            <div className="container-fluid" style={{backgroundColor:"#F5F5F5", marginTop:"170px"}}>
+                <div className="container pt-5 pb-5">
                 <h1 style={{marginTop:"100px"}} className="mb-5">Their opinion about peworld</h1>
+                </div>
                 <div className="container">
                     <section>
                     <div className="content">
@@ -137,6 +144,19 @@ export default function LandingPage(){
                     </section>
                 </div>
             </div>
+            <div className="container" style={{marginTop:"170px",marginBottom:"130px"}}>
+                <div className="container" style={{backgroundColor:"#5E50A1", borderRadius:"70px 10px 70px 10px"}}>
+                    <div className="row">
+                        <div className="col-3">
+                            <h1 style={{color:"white"}} className="my-5">Lorem ipsum dolor sit amet</h1>
+                        </div>
+                        <div className="col-1 offset-4">
+                            <ButtonMulaiWhite className="my-5"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           <Footer/>
         </div>
     )
 }
