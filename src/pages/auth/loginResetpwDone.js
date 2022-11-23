@@ -1,7 +1,6 @@
 import React from "react";
 import Assets from "./../../assets/img";
 import style from "./pekerja/pekerja.module.css";
-import { Route, Link, Routes } from "react-router-dom";
 
 export default function loginResetpwDone() {
   return (
