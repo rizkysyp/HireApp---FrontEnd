@@ -12,6 +12,9 @@ import logo from "./landingPage/logo.png";
 import logo2 from "./landingPage/logo2.png";
 import tick1 from "./landingPage/tick1.png";
 import tick2 from "./landingPage/tick2.png";
+import bg from "./editProfile/contohBg.png";
+import edit from "./editProfile/edit.png";
+import map from "./editProfile/map.png";
 
 const Assets = {
   Bg,
@@ -27,7 +30,10 @@ const Assets = {
   logo,
   tick1,
   tick2,
-  logo2
+  logo2,
+  bg,
+  edit,
+  map,
 };
 
 export default Assets;

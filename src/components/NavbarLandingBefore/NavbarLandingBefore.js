@@ -2,6 +2,7 @@ import React from "react";
 import ButtonMasuk from "../Button/ButtonMasuk";
 import ButtonDaftar from "../Button/ButtonDaftar";
 import Assets from "../../assets/img";
+import { Link } from "react-router-dom";
 
 function NavbarLandingBeforeLogin() {
   return (
@@ -15,11 +16,15 @@ function NavbarLandingBeforeLogin() {
               style={{ width: "127px", height: "35px" }}
             />
           </div>
-          <div className="col-sm-2 col-lg-1 offset-lg-9 offset-sm-8 ">
+          <div className="col-sm-2 col-lg-1 offset-lg-9 offset-sm-7 ">
+            <Link to="/loginPekerja">
             <ButtonMasuk />
+            </Link>
           </div>
           <div className="col-sm-1  ">
+            <Link to="/registerPekerja">
             <ButtonDaftar />
+            </Link>
           </div>
         </div>
       </div>

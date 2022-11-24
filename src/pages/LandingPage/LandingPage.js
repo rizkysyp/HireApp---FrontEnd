@@ -1,22 +1,18 @@
 import React from "react";
 import NavbarLandingBeforeLogin from "../../components/NavbarLandingBefore/NavbarLandingBefore";
-import NavbarLandingAfterLogin from "../../components/NavbarLandingAfter/NavbarLandingAfter";
 import ButtonMulai from "../../components/Button/ButtonMulai";
 import "./LandingPage.css"
 import Assets from "../../assets/img";
 import Footer from "../../components/Footer/Footer";
 import ButtonMulaiWhite from "../../components/Button/ButtonMulaiWhite"
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Pagination, Navigation } from "swiper";
+import NavbarLandingAfterLogin from "../../components/NavbarLandingAfter/NavbarLandingAfter";
+import CardSwiper from "../../components/CardSwiper/CardSwiper";
 
 
 export default function LandingPage() {
   return (
     <div>
-      <NavbarLandingBeforeLogin />
+      <NavbarLandingBeforeLogin/>
       <div className="container-sm mb-5">
         <div className="row">
           <div className="col-lg-5 col-sm-12 mt-5">
@@ -147,136 +143,13 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
-      <div className="container-fluid pt-5 pb-5" style={{ backgroundColor: "#F5F5F5" , marginTop: "200px"}}>
+      <div className="container-fluid pt-5 pb-5 content-card" style={{ backgroundColor: "#F5F5F5" , marginTop: "200px"}}>
         <h1 style={{ marginTop: "100px" }} className="mb-5 myfon4">
           Their opinion about peworld
         </h1>
-        <Swiper
-        slidesPerView={3}
-        spaceBetween={30}
-        slidesPerGroup={3}
-        loop={true}
-        navigation={true}
-        modules={[Pagination, Navigation]}
-        className="mySwiper"
-      >
-        <SwiperSlide>
-          <section>
-          <div className="card">
-            <div className="card-content">
-              <div className="image">
-                <img src={Assets.card1} alt="" />
-              </div>
-              <div className="name">
-                <h4 className="myfont4">Harry Styles</h4>
-                  <h6 className="myfont3 color-font">Web Developer</h6>
-                  <h6 className="myfont3">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit. In euismod ipsum et dui rhoncus auctor.
-                  </h6>
-              </div>
-            </div>
-          </div>
-          </section>
-        </SwiperSlide>
-        <SwiperSlide>
-          <section>
-          <div className="card">
-            <div className="card-content">
-              <div className="image">
-                <img src={Assets.card2} alt="" />
-              </div>
-              <div className="name">
-                <h4 className="myfont4">Niall Horan</h4>
-                  <h6 className="myfont3 color-font">Web Developer</h6>
-                  <h6 className="myfont3">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit. In euismod ipsum et dui rhoncus auctor.
-                  </h6>
-              </div>
-            </div>
-          </div>
-          </section>
-        </SwiperSlide>
-        <SwiperSlide>
-          <section>
-          <div className="card">
-            <div className="card-content">
-              <div className="image">
-                <img src={Assets.card3} alt="" />
-              </div>
-              <div className="name">
-                <h4 className="myfont4">Louis Tomlinson</h4>
-                  <h6 className="myfont3 color-font">Web Developer</h6>
-                  <h6 className="myfont3">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit. In euismod ipsum et dui rhoncus auctor.
-                  </h6>
-              </div>
-            </div>
-          </div>
-          </section>
-        </SwiperSlide>
-        <SwiperSlide>
-          <section>
-          <div className="card">
-            <div className="card-content">
-              <div className="image">
-                <img src={Assets.card1} alt="" />
-              </div>
-              <div className="name">
-                <h4 className="myfont4">Harry Styles</h4>
-                  <h6 className="myfont3 color-font">Web Developer</h6>
-                  <h6 className="myfont3">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit. In euismod ipsum et dui rhoncus auctor.
-                  </h6>
-              </div>
-            </div>
-          </div>
-          </section>
-        </SwiperSlide>
-        <SwiperSlide>
-          <section>
-          <div className="card">
-            <div className="card-content">
-              <div className="image">
-                <img src={Assets.card2} alt="" />
-              </div>
-              <div className="name">
-                <h4 className="myfont4">Niall Horan</h4>
-                  <h6 className="myfont3 color-font">Web Developer</h6>
-                  <h6 className="myfont3">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit. In euismod ipsum et dui rhoncus auctor.
-                  </h6>
-              </div>
-            </div>
-          </div>
-          </section>
-        </SwiperSlide>
-        <SwiperSlide>
-          <section>
-          <div className="card">
-            <div className="card-content">
-              <div className="image">
-                <img src={Assets.card3} alt="" />
-              </div>
-              <div className="name">
-                <h4 className="myfont4">Louis Tomlinson</h4>
-                  <h6 className="myfont3 color-font">Web Developer</h6>
-                  <h6 className="myfont3">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit. In euismod ipsum et dui rhoncus auctor.
-                  </h6>
-              </div>
-            </div>
-          </div>
-          </section>
-        </SwiperSlide>
-      </Swiper>
+        <CardSwiper/>
       </div>     
-      <div className="container-fluid" style={{marginTop:"200px", marginBottom: "200px"}} >
+      <div className="container-fluid" style={{marginTop:"200px", marginBottom: "200px"}}>
           <div className="container" style={{backgroundColor:"#5E50A1", borderRadius:"40px 10px 40px 10px"}}>
             <div className="row">
               <div className="col-lg-3 col-sm-12">
