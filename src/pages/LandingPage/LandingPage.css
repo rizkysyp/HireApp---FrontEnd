@@ -10,13 +10,6 @@
     background-color: #5E50A1;
     color: white;
   }
-  section .card .image{
-    height: 140px;
-    width: 140px;
-    border-radius: 50%;
-    padding: 3px;
-    background: #FBB017;
-  }
   
   section .card .image img{
     height: 100%;
@@ -58,7 +51,7 @@
   
   .swiper-slide {
     text-align: center;
-    font-size: 18px;
+    font-size: 10px;
   
     /* Center slide text vertically */
     display: -webkit-box;
@@ -119,4 +112,40 @@
   .color-font{
     color: #9EA0A5
     ;
+  }
+
+  @media (min-width: 576px) {
+    .line{
+      width: 460px;
+    }
+    .card{
+      width: 200px;
+    }
+    .image{
+      width: 10px;
+    }
+    section .card .image{
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      padding: 3px;
+      background: #FBB017;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .line{
+      width: 1235px;
+    }
+    .card{
+      width: 300px;
+      height: 200px;
+    }
+    section .card .image{
+      height: 140px;
+      width: 140px;
+      border-radius: 50%;
+      padding: 3px;
+      background: #FBB017;
+    }
   }

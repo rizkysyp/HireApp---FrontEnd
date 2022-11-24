@@ -15,10 +15,10 @@ function NavbarLandingAfterLogin() {
               style={{ width: "127px", height: "35px" }}
             />
           </div>
-          <div className="col-sm-1 offset-2">
+          <div className="col-sm-2 col-lg-1 offset-sm-3 offset-lg-1">
             <ButtonHome />
           </div>
-          <div className="col-sm-2 offset-6">
+          <div className="col-lg-1 col-sm-1 offset-sm-5 offset-lg-8">
             <ButtonProfile />
           </div>
         </div>

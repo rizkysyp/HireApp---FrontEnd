@@ -15,7 +15,7 @@ function NavbarLandingBeforeLogin() {
               style={{ width: "127px", height: "35px" }}
             />
           </div>
-          <div className="col-sm-2 offset-8 ">
+          <div className="col-sm-2 col-lg-1 offset-lg-9 offset-sm-8 ">
             <ButtonMasuk />
           </div>
           <div className="col-sm-1  ">

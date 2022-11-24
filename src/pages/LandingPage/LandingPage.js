@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import NavbarLandingBeforeLogin from "../../components/NavbarLandingBefore/NavbarLandingBefore";
 import NavbarLandingAfterLogin from "../../components/NavbarLandingAfter/NavbarLandingAfter";
 import ButtonMulai from "../../components/Button/ButtonMulai";
@@ -19,7 +19,7 @@ export default function LandingPage() {
       <NavbarLandingBeforeLogin />
       <div className="container-sm mb-5">
         <div className="row">
-          <div className="col-5 mt-5">
+          <div className="col-lg-5 col-sm-12 mt-5">
             <h1 className="text-start myfont4" style={{ fontSize: "50px" }}>
               Talenta terbaik negri untuk perubahan revolusi 4.0
             </h1>
@@ -29,7 +29,7 @@ export default function LandingPage() {
             </p>
             <ButtonMulai />
           </div>
-          <div className="col-3 offset-3">
+          <div className="col-lg-3 col-sm-3 offset-lg-3 mt-sm-5">
             <img
               src={Assets.landingImage2}
               className=""
@@ -41,14 +41,14 @@ export default function LandingPage() {
       </div>
       <div className="container" style={{ marginTop: "180px" }}>
         <div className="row my-5">
-          <div className="col-3">
+          <div className="col-lg-3">
             <img
               src={Assets.landingImage3}
               alt=""
               style={{ width: "490px", height: "410px" }}
             />
           </div>
-          <div className="col-6 offset-2 mt-4">
+          <div className="col-lg-6 offset-lg-2 mt-4">
             <h1 className="text-start mb-4 myfont4" style={{ fontSize: "50px" }}>
               Kenapa harus mencari tallent di peworld
             </h1>
@@ -73,7 +73,7 @@ export default function LandingPage() {
       </div>
       <div className="container" style={{ marginTop: "180px" }}>
         <div className="row">
-          <div className="col-5 mt-5 myfont4">
+          <div className="col-lg-5 mt-lg-5 myfont4">
             <h1 className="text-start" style={{ fontSize: "50px" }}>
               Skill Tallent
             </h1>
@@ -138,7 +138,7 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
-          <div className="col-3 offset-2">
+          <div className="col-lg-3 offset-lg-2 mt-sm-5">
             <img
               src={Assets.landingImage4}
               alt=""
@@ -162,7 +162,7 @@ export default function LandingPage() {
       >
         <SwiperSlide>
           <section>
-          <div className="card" style={{ width: "300px" }}>
+          <div className="card">
             <div className="card-content">
               <div className="image">
                 <img src={Assets.card1} alt="" />
@@ -181,7 +181,7 @@ export default function LandingPage() {
         </SwiperSlide>
         <SwiperSlide>
           <section>
-          <div className="card" style={{ width: "300px" }}>
+          <div className="card">
             <div className="card-content">
               <div className="image">
                 <img src={Assets.card2} alt="" />
@@ -200,7 +200,7 @@ export default function LandingPage() {
         </SwiperSlide>
         <SwiperSlide>
           <section>
-          <div className="card" style={{ width: "300px" }}>
+          <div className="card">
             <div className="card-content">
               <div className="image">
                 <img src={Assets.card3} alt="" />
@@ -219,7 +219,7 @@ export default function LandingPage() {
         </SwiperSlide>
         <SwiperSlide>
           <section>
-          <div className="card" style={{ width: "300px" }}>
+          <div className="card">
             <div className="card-content">
               <div className="image">
                 <img src={Assets.card1} alt="" />
@@ -238,7 +238,7 @@ export default function LandingPage() {
         </SwiperSlide>
         <SwiperSlide>
           <section>
-          <div className="card" style={{ width: "300px" }}>
+          <div className="card">
             <div className="card-content">
               <div className="image">
                 <img src={Assets.card2} alt="" />
@@ -257,7 +257,7 @@ export default function LandingPage() {
         </SwiperSlide>
         <SwiperSlide>
           <section>
-          <div className="card" style={{ width: "300px" }}>
+          <div className="card">
             <div className="card-content">
               <div className="image">
                 <img src={Assets.card3} alt="" />
@@ -276,13 +276,13 @@ export default function LandingPage() {
         </SwiperSlide>
       </Swiper>
       </div>     
-      <div className="container-fluid" style={{marginTop:"200px", marginBottom: "200px"}}>
+      <div className="container-fluid" style={{marginTop:"200px", marginBottom: "200px"}} >
           <div className="container" style={{backgroundColor:"#5E50A1", borderRadius:"40px 10px 40px 10px"}}>
             <div className="row">
-              <div className="col-3">
+              <div className="col-lg-3 col-sm-12">
                 <h1 className="text-white my-5 myfont4">Lorem ipsum dolor sit amet</h1>
               </div>
-              <div className="col-3 offset-6">
+              <div className="col-lg-3 col-sm-7 offset-lg-6 mb-sm-5">
                 <ButtonMulaiWhite/>
               </div>
             </div>
