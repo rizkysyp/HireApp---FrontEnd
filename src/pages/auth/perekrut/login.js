@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import Assets from "../../../assets/img";
 import style from "./perekrut.module.css";
-import { Route, Link, Routes } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import RegisterPerekrut from "./register";
+import ResetPw from "./../../auth/resetpw";
+import { Route, Link, Routes, useNavigate } from "react-router-dom";
+import { loginPerekrut } from "../../../Redux/action/loginPerekrut";
 
-export default function login() {
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const postData = (e) => {
+    e.preventDefault();
+    console.log(email);
+    console.log(password);
+    let data = {
+      email,
+      password,
+    };
+    dispatch(loginPerekrut(data, navigate));
+  };
   return (
     <div className="container p-4">
       <div className="row">
@@ -32,15 +52,16 @@ export default function login() {
             ipsum et dui rhoncus auctor.
           </p>
           <div className="container kotak_login mt-5 d-flex justify-content-center">
-            <form className="col">
+            <form onSubmit={postData} className="col">
               <div className="form-group">
                 <label>Email</label>
                 <input
                   type="email"
                   className="form-control"
-                  id="inputEmail1"
-                  aria-describedby="emailHelp"
                   placeholder="Masukkan alamat email"
+                  value={email}
+                  name="email"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="form-group pt-3">
@@ -48,19 +69,23 @@ export default function login() {
                 <input
                   type="password"
                   className="form-control"
-                  id="inputPassword1"
                   placeholder="Masukkan kata sandi"
+                  value={password}
+                  name="password"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
 
               <Link
-                to="/forgetPw"
+                to="/resetPw"
                 className="my-3 d-flex justify-content-end resetpw"
                 id={style.lupaSandi}
               >
                 Lupa kata sandi?
               </Link>
-              <Routes></Routes>
+              <Routes>
+                <Route path="/resetPw" element={<ResetPw />} />
+              </Routes>
               <button type="submit" id={style.btn} className="btn ">
                 Masuk
               </button>
@@ -69,11 +94,14 @@ export default function login() {
           <div className="container mt-5 d-flex justify-content-center">
             <p className="card-text">
               Anda belum punya akun?
-              <Link to="/registerCust" id={style.regis}>
+              <Link to="/registerPerekrut" id={style.regis}>
                 Daftar disini{" "}
               </Link>
               <Routes>
-                <Route></Route>
+                <Route
+                  path="/registerPerekrut"
+                  element={<RegisterPerekrut />}
+                />
               </Routes>
             </p>
           </div>

@@ -1,9 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import Assets from "../../../assets/img";
 import style from "./perekrut.module.css";
-import { Route, Link, Routes } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Route, Link, Routes, useNavigate } from "react-router-dom";
+import { register } from "../../../Redux/action/registerPerekrut";
 
-export default function register() {
+export default function Register() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [perusahaan, setPerusahaan] = useState("");
+  const [jabatan, setJabatan] = useState("");
+  const [phonenumber, setPhonenumber] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmpassword] = useState("");
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const matchInput = (input, allInputs) => {
+    return input === allInputs.password ? undefined : "Passwords do not match";
+  };
+  const postData = (e) => {
+    e.preventDefault();
+    console.log(name);
+    console.log(email);
+    console.log(perusahaan);
+    console.log(jabatan);
+    console.log(phonenumber);
+    console.log(password);
+    console.log(confirmPassword);
+
+    let data = {
+      name,
+      email,
+      perusahaan,
+      jabatan,
+      phonenumber,
+      password,
+      confirmPassword,
+    };
+    dispatch(register(data, navigate));
+  };
+
   return (
     <div className="container p-4">
       <div className="row">
@@ -32,14 +69,16 @@ export default function register() {
             ipsum et dui rhoncus auctor.
           </p>
           <div className="container kotak_login mt-5 d-flex justify-content-center">
-            <form className="col">
+            <form onSubmit={postData} className="col">
               <div className="form-group">
                 <label>Nama</label>
                 <input
                   type="text"
                   className="form-control"
-                  aria-describedby="namaHelp"
                   placeholder="Masukkan nama panjang"
+                  value={name}
+                  name="name"
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <div className="form-group pt-3">
@@ -50,6 +89,9 @@ export default function register() {
                   id="inputEmail1"
                   aria-describedby="emailHelp"
                   placeholder="Masukkan alamat email"
+                  value={email}
+                  name="email"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="form-group pt-3">
@@ -58,6 +100,9 @@ export default function register() {
                   type="text"
                   className="form-control"
                   placeholder="Masukkan nama perusahaan"
+                  value={perusahaan}
+                  name="perusahaan"
+                  onChange={(e) => setPerusahaan(e.target.value)}
                 />
               </div>
               <div className="form-group pt-3">
@@ -66,6 +111,9 @@ export default function register() {
                   type="text"
                   className="form-control"
                   placeholder="Posisi di perusahaan anda"
+                  value={jabatan}
+                  name="jabatan"
+                  onChange={(e) => setJabatan(e.target.value)}
                 />
               </div>
               <div className="form-group pt-3">
@@ -74,6 +122,9 @@ export default function register() {
                   type="number"
                   className="form-control"
                   placeholder="Masukkan no handphone"
+                  value={phonenumber}
+                  name="phonenumber"
+                  onChange={(e) => setPhonenumber(e.target.value)}
                 />
               </div>
               <div className="form-group pt-3">
@@ -81,7 +132,9 @@ export default function register() {
                 <input
                   type="password"
                   className="form-control"
-                  id="inputPassword1"
+                  value={password}
+                  name="password"
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="Masukkan kata sandi"
                 />
               </div>
@@ -91,6 +144,10 @@ export default function register() {
                   type="password"
                   className="form-control"
                   placeholder="Masukkan konfirmasi kata sandi"
+                  value={confirmPassword}
+                  validate={[matchInput]}
+                  name="confirmPassword"
+                  onChange={(e) => setConfirmpassword(e.target.value)}
                 />
               </div>
 

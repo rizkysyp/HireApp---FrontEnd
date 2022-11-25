@@ -11,6 +11,8 @@ import landingImage4 from "./landingPage/landingImage4.png";
 import logo from "./landingPage/logo.png";
 import tick1 from "./landingPage/tick1.png";
 import tick2 from "./landingPage/tick2.png";
+import bell from "./navigasi/bell.png";
+import mail from "./navigasi/mail.png";
 
 const Assets = {
   Bg,
@@ -26,6 +28,8 @@ const Assets = {
   logo,
   tick1,
   tick2,
+  bell,
+  mail,
 };
 
 export default Assets;
