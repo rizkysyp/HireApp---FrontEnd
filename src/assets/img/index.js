@@ -15,6 +15,9 @@ import tick2 from "./landingPage/tick2.png";
 import bg from "./editProfile/contohBg.png";
 import edit from "./editProfile/edit.png";
 import map from "./editProfile/map.png";
+import cloud from "./editProfile/cloud.png";
+import bell from "./navigasi/bell.png";
+import mail from "./navigasi/mail.png";
 
 const Assets = {
   Bg,
@@ -34,6 +37,9 @@ const Assets = {
   bg,
   edit,
   map,
+  cloud,
+  bell,
+  mail,
 };
 
 export default Assets;

@@ -4,30 +4,38 @@ import CardProfile from "../../components/CardProfile/CardProfile";
 import "./editProfilePekerja.css";
 import { Form } from "react-bootstrap";
 import Footer from "../../components/Footer/Footer";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import { purple } from "@mui/material/colors";
+import NavbarHome from "../../components/NavbarHome/navbarHome";
+import ModalPortofolio from "../../components/Modal/ModalPortofolio";
+
 export default function editProfile() {
   return (
     <div>
+      <NavbarHome />
       <div className="row">
         <div className="col-lg-12">
           <img src={Assets.bg} alt="" className="image-bg" />
         </div>
       </div>
 
-      <div className="row">
+      <div className="row" style={{ marginTop: "-250px" }}>
         <div className="col-3">
           <CardProfile />
         </div>
         <div className="col-6 offset-1 mt-3">
-          <div className="container text-start shadow rounded-2 mt-1">
+          <div className="container text-start shadow rounded-2 mt-1 bg-white">
             <div className="row">
               <div className="col-lg-12">
                 <h3 className="myfont4 mt-4">Data diri</h3>
               </div>
               <hr />
             </div>
-            <div className="row">
-              <div className="col-lg-12">
-                <Form>
+            <Form>
+              <div className="row">
+                <div className="col-lg-12">
                   <Form.Group
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
@@ -41,10 +49,8 @@ export default function editProfile() {
                       className="myfont3"
                     />
                   </Form.Group>
-                </Form>
-              </div>
-              <div className="col-lg-12">
-                <Form>
+                </div>
+                <div className="col-lg-12">
                   <Form.Group
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
@@ -58,10 +64,8 @@ export default function editProfile() {
                       className="myfont3"
                     />
                   </Form.Group>
-                </Form>
-              </div>
-              <div className="col-lg-12">
-                <Form>
+                </div>
+                <div className="col-lg-12">
                   <Form.Group
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
@@ -75,10 +79,8 @@ export default function editProfile() {
                       className="myfont3"
                     />
                   </Form.Group>
-                </Form>
-              </div>
-              <div className="col-lg-12">
-                <Form>
+                </div>
+                <div className="col-lg-12">
                   <Form.Group
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
@@ -92,10 +94,8 @@ export default function editProfile() {
                       className="myfont3"
                     />
                   </Form.Group>
-                </Form>
-              </div>
-              <div className="col-lg-12">
-                <Form>
+                </div>
+                <div className="col-lg-12">
                   <Form.Group
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
@@ -109,9 +109,9 @@ export default function editProfile() {
                       className="myfont3"
                     />
                   </Form.Group>
-                </Form>
+                </div>
               </div>
-            </div>
+            </Form>
           </div>
         </div>
       </div>
@@ -125,9 +125,9 @@ export default function editProfile() {
               </div>
               <hr />
             </div>
-            <div className="row">
-              <div className="col-lg-12">
-                <Form>
+            <Form>
+              <div className="row">
+                <div className="col-lg-10">
                   <Form.Group
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
@@ -138,9 +138,17 @@ export default function editProfile() {
                       className="myfont3"
                     />
                   </Form.Group>
-                </Form>
+                </div>
+                <div className="col-lg-2">
+                  <button
+                    className="btn"
+                    style={{ backgroundColor: "#FBB017", color: "white" }}
+                  >
+                    Simpan
+                  </button>
+                </div>
               </div>
-            </div>
+            </Form>
           </div>
         </div>
       </div>
@@ -154,9 +162,9 @@ export default function editProfile() {
               </div>
               <hr />
             </div>
-            <div className="row">
-              <div className="col-lg-12">
-                <Form>
+            <Form>
+              <div className="row">
+                <div className="col-lg-12">
                   <Form.Group
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
@@ -170,11 +178,9 @@ export default function editProfile() {
                       className="myfont3"
                     />
                   </Form.Group>
-                </Form>
-              </div>
-              <div className="row">
-                <div className="col-lg-6">
-                  <Form>
+                </div>
+                <div className="row">
+                  <div className="col-lg-6">
                     <Form.Group
                       className="mb-3"
                       controlId="exampleForm.ControlInput1"
@@ -188,10 +194,8 @@ export default function editProfile() {
                         className="myfont3"
                       />
                     </Form.Group>
-                  </Form>
-                </div>
-                <div className="col-lg-6">
-                  <Form>
+                  </div>
+                  <div className="col-lg-6">
                     <Form.Group
                       className="mb-3"
                       controlId="exampleForm.ControlInput1"
@@ -205,11 +209,9 @@ export default function editProfile() {
                         className="myfont3"
                       />
                     </Form.Group>
-                  </Form>
+                  </div>
                 </div>
-              </div>
-              <div className="col-lg-12">
-                <Form>
+                <div className="col-lg-12">
                   <Form.Group
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
@@ -223,40 +225,43 @@ export default function editProfile() {
                       className="myfont3"
                     />
                   </Form.Group>
-                </Form>
-                <hr />
-                <div className="col-lg-12 align-items-center mb-5">
-                  <div
-                    className="btn"
-                    id="btn-yellw"
-                    style={{
-                      width: "680px",
-                      marginLeft: "26px",
-                    }}
-                  >
-                    <h6 className="myfont" style={{ marginTop: "8px" }}>
-                      Tambah pengalaman kerja
-                    </h6>
+                  <hr />
+                  <div className="col-lg-12 align-items-center mb-5">
+                    <div
+                      className="btn"
+                      id="btn-yellw"
+                      style={{
+                        width: "680px",
+                        marginLeft: "26px",
+                      }}
+                    >
+                      <h6 className="myfont" style={{ marginTop: "8px" }}>
+                        Tambah pengalaman kerja
+                      </h6>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Form>
           </div>
         </div>
       </div>
 
       <div className="row">
         <div className="col-6 offset-4 mt-3">
-          <div className="container text-start shadow rounded-2 mt-1">
+          <div
+            className="container text-start shadow rounded-2 mt-1"
+            style={{ marginBottom: "100px" }}
+          >
             <div className="row">
               <div className="col-lg-12">
                 <h3 className="myfont4 mt-4">Portofolio</h3>
               </div>
               <hr />
             </div>
-            <div className="row">
-              <div className="col-lg-12">
-                <Form>
+            <Form>
+              <div className="row">
+                <div className="col-lg-12">
                   <Form.Group
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
@@ -270,10 +275,8 @@ export default function editProfile() {
                       className="myfont3"
                     />
                   </Form.Group>
-                </Form>
-              </div>
-              <div className="col-lg-12">
-                <Form>
+                </div>
+                <div className="col-lg-12">
                   <Form.Group
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
@@ -287,10 +290,8 @@ export default function editProfile() {
                       className="myfont3"
                     />
                   </Form.Group>
-                </Form>
-              </div>
-              <div className="col-lg-3">
-                <Form>
+                </div>
+                <div className="col-lg-3">
                   <Form.Group
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
@@ -298,29 +299,78 @@ export default function editProfile() {
                     <Form.Label>
                       <h6 className="myfont3 color-font">Type portofolio</h6>
                     </Form.Label>
-                    <div className="btn"></div>
+                    <div className="row">
+                      <RadioGroup
+                        aria-labelledby="demo-radio-buttons-group-label"
+                        defaultValue="mobile"
+                        name="radio-buttons-group"
+                      >
+                        <div className="col-lg-12">
+                          <FormControlLabel
+                            value="mobile"
+                            control={
+                              <Radio
+                                sx={{
+                                  color: purple[800],
+                                  "&.Mui-checked": {
+                                    color: purple[800],
+                                  },
+                                }}
+                              />
+                            }
+                            label="Aplikasi Mobile"
+                          />
+                        </div>
+                        <div className="col-lg-12">
+                          <FormControlLabel
+                            value="web"
+                            control={
+                              <Radio
+                                sx={{
+                                  color: purple[800],
+                                  "&.Mui-checked": {
+                                    color: purple[800],
+                                  },
+                                }}
+                              />
+                            }
+                            label="Aplikasi web"
+                          />
+                        </div>
+                      </RadioGroup>
+                    </div>
                   </Form.Group>
-                </Form>
-              </div>
-              <div className="col-lg-12">
-                <h6 className="myfont3 color-font">Upload gambar</h6>
-              </div>
-              <hr className="mt-5" />
-              <div className="col-lg-12 align-items-center mb-5">
-                <div
-                  className="btn"
-                  id="btn-yellw"
-                  style={{
-                    width: "680px",
-                    marginLeft: "26px",
-                  }}
+                </div>
+                <Form.Group
+                  className="mb-3"
+                  controlId="exampleForm.ControlInput1"
                 >
-                  <h6 className="myfont" style={{ marginTop: "8px" }}>
-                    Tambah portofolio
-                  </h6>
+                  <Form.Label>
+                    <h6 className="myfont3 color-font">Upload gambar</h6>
+                  </Form.Label>
+                  <div className="row">
+                    <div className="col-lg-12">
+                      <ModalPortofolio />
+                    </div>
+                  </div>
+                </Form.Group>
+                <hr className="mt-5" />
+                <div className="col-lg-12 align-items-center mb-5 mt-5">
+                  <button
+                    className="btn "
+                    id="btn-yellw"
+                    style={{
+                      width: "680px",
+                      marginLeft: "26px",
+                    }}
+                  >
+                    <h6 className="myfont" style={{ marginTop: "8px" }}>
+                      Tambah portofolio
+                    </h6>
+                  </button>
                 </div>
               </div>
-            </div>
+            </Form>
           </div>
         </div>
       </div>

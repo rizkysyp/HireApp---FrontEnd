@@ -11,7 +11,7 @@ const ModalEdit = () => {
   return (
     <div>
       <div
-        className="btn-new"
+        className="btn-new image-edit"
         style={{ marginLeft: "77px" }}
         onClick={handleShow}
       >
@@ -28,10 +28,10 @@ const ModalEdit = () => {
               <Form.Label>Foto Profile</Form.Label>
               <Form.Control type="file" />
             </Form.Group>
-            <Form.Group className="mb-3">
+            {/* <Form.Group className="mb-3">
               <Form.Label>Background Profile</Form.Label>
               <Form.Control type="file" />
-            </Form.Group>
+            </Form.Group> */}
           </Form>
         </ModalBody>
         <Modal.Footer>
