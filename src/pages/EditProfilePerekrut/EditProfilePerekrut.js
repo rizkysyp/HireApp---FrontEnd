@@ -10,26 +10,26 @@ export default function EditPerekrut() {
   return (
     <div>
       <NavbarHome />
-      <div className="row">
+      <div className="row bg-light">
         <div className="col-lg-12">
           <img src={Assets.bg} alt="" className="image-bg" />
         </div>
       </div>
 
-      <div className="row" style={{ marginTop: "-250px" }}>
+      <div className="row bg-light" style={{ marginTop: "-250px" }}>
         <div className="col-3">
           <CardProfile />
         </div>
         <div className="col-6 offset-1 mt-3" style={{ marginBottom: "400px" }}>
           <div className="container text-start shadow rounded-2 mt-1 bg-white">
-            <div className="row">
+            <div className="row bg-light rounded-3">
               <div className="col-lg-12">
                 <h3 className="myfont4 mt-4">Data diri</h3>
               </div>
               <hr />
             </div>
             <Form>
-              <div className="row">
+              <div className="row bg-light">
                 <div className="col-lg-12">
                   <Form.Group
                     className="mb-3"

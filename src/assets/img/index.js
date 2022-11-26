@@ -18,6 +18,20 @@ import map from "./editProfile/map.png";
 import cloud from "./editProfile/cloud.png";
 import bell from "./navigasi/bell.png";
 import mail from "./navigasi/mail.png";
+import ubah from "./profile/ubah.png";
+import mail2 from "./profile/mail2.png";
+import ig from "./profile/ig.png";
+import phone from "./profile/phone.png";
+import linkedin from "./profile/linkedin.png";
+import portofolio1 from "./profilePekerja/portofolio1.png";
+import portofolio2 from "./profilePekerja/portofolio2.png";
+import portofolio3 from "./profilePekerja/portofolio3.png";
+import portofolio4 from "./profilePekerja/portofolio4.png";
+import portofolio5 from "./profilePekerja/portofolio5.png";
+import portofolio6 from "./profilePekerja/portofolio6.png";
+import tokped from "./profilePekerja/tokped.png";
+import github from "./profilePekerja/github.png";
+import vec from "./profilePekerja/Vector.png";
 
 const Assets = {
   Bg,
@@ -40,6 +54,20 @@ const Assets = {
   cloud,
   bell,
   mail,
+  ubah,
+  mail2,
+  ig,
+  phone,
+  linkedin,
+  portofolio1,
+  portofolio2,
+  portofolio3,
+  portofolio4,
+  portofolio5,
+  portofolio6,
+  tokped,
+  github,
+  vec,
 };
 
 export default Assets;

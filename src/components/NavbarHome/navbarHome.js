@@ -5,7 +5,7 @@ import Assets from "../../assets/img";
 function NavbarHome() {
   return (
     <div>
-      <nav className="navbar navbar-light bg-light d-flex justify-content-between">
+      <nav className="navbar navbar-white bg-white d-flex justify-content-between">
         <div className="d-flex justify-content-around">
           <Link className="navbar-brand" to="">
             <img

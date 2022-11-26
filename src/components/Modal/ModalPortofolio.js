@@ -20,7 +20,7 @@ const ModalPortofolio = () => {
           border: "dashed 1px",
         }}
       >
-        <div className="row">
+        <div className="row" onChangeCapture={handleShow}>
           <div className="col-lg-12 mb-5  ">
             <img src={Assets.cloud} alt="" />
           </div>
