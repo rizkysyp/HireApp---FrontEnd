@@ -1,9 +1,10 @@
 import React from "react";
-import ButtonMasuk from "../Button/ButtonMasuk";
-import ButtonDaftar from "../Button/ButtonDaftar";
 import Assets from "../../assets/img";
+import ButtonHome from "../Button/ButtonHome";
+import ButtonProfile from "../Button/ButtonProfile";
+import { Link } from "react-router-dom";
 
-function NavbarLandingBeforeLogin() {
+function NavbarLandingAfterLogin() {
   return (
     <nav className="container-fluid mt-5" style={{ marginBottom: "180px" }}>
       <div className="container">
@@ -15,15 +16,15 @@ function NavbarLandingBeforeLogin() {
               style={{ width: "127px", height: "35px" }}
             />
           </div>
-          <div className="col-1 offset-9">
-            <ButtonMasuk />
+          <div className="col-sm-2 col-lg-1 offset-sm-3 offset-lg-1">          
+            <ButtonHome />
           </div>
-          <div className="col-1">
-            <ButtonDaftar />
+          <div className="col-lg-1 col-sm-1 offset-sm-4 offset-lg-8">
+            <ButtonProfile />
           </div>
         </div>
       </div>
     </nav>
   );
 }
-export default NavbarLandingBeforeLogin;
+export default NavbarLandingAfterLogin;

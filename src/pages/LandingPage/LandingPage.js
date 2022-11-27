@@ -9,6 +9,7 @@ import tick2 from "../../images/tick2.png";
 import card1 from "../../images/card1.png";
 import card2 from "../../images/card2.png";
 import card3 from "../../images/card3.png";
+import Card from "react-bootstrap/Card";
 
 export default function LandingPage() {
   return (
