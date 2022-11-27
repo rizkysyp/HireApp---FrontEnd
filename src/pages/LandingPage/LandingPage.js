@@ -1,6 +1,7 @@
 import React from "react";
 import NavbarLandingBeforeLogin from "../../components/NavbarLandingBefore/NavbarLandingBefore";
 import ButtonMulai from "../../components/Button/ButtonMulai";
+
 import Assets from "../../assets/img";
 
 export default function LandingPage() {
@@ -42,19 +43,19 @@ export default function LandingPage() {
               Kenapa harus mencari tallent di peworld
             </h1>
             <p className="text-start">
-              <img src={Assets.tick} alt="" className="me-4" />
+              <img src={Assets.tick1} alt="" className="me-4" />
               Lorem ipsum dolor sit amet.
             </p>
             <p className="text-start">
-              <img src={Assets.tick} alt="" className="me-4" />
+              <img src={Assets.tick1} alt="" className="me-4" />
               Lorem ipsum dolor sit amet.
             </p>
             <p className="text-start">
-              <img src={Assets.tick} alt="" className="me-4" />
+              <img src={Assets.tick1} alt="" className="me-4" />
               Lorem ipsum dolor sit amet.
             </p>
             <p className="text-start">
-              <img src={Assets.tick} alt="" className="me-4" />
+              <img src={Assets.tick1} alt="" className="me-4" />
               Lorem ipsum dolor sit amet.
             </p>
           </div>
