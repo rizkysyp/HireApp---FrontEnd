@@ -1,7 +1,10 @@
-
 import "./App.css";
 //ridwhan
 import LandingPage from "./pages/LandingPage/LandingPage";
+import EditProfilePekerja from "./pages/EditProfile/editProfilePekerja";
+import EditProfilePerekrut from "./pages/EditProfilePerekrut/EditProfilePerekrut";
+import ProfilePerekrut from "./pages/ProfilePerekrut/ProfilePerekrut";
+import ProfilePekerja from "./pages/ProfilePekerja/ProfilePekerja";
 
 //easy
 import LoginPekerja from "./pages/auth/pekerja/login";
@@ -24,6 +27,13 @@ function App() {
             replace="true"
           />
           <Route path="/landingPage" element={<LandingPage />} />
+          <Route path="/editProfile" element={<EditProfilePekerja />} />
+          <Route
+            path="/editProfilePerekrut"
+            element={<EditProfilePerekrut />}
+          />
+          <Route path="/profilePerekrut" element={<ProfilePerekrut />} />
+          <Route path="/profilePekerja" element={<ProfilePekerja />} />
 
           <Route path="/loginPekerja" element={<LoginPekerja />} />
           <Route path="/registerPekerja" element={<RegisterPekerja />} />
