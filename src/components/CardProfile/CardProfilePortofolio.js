@@ -130,12 +130,12 @@ const CardProfilePortofolio = () => {
                   alt=""
                   style={{ marginRight: "10px" }}
                 />
-                @Louistommo
+                {data ? data[0].github : "data not found"}
               </h6>
               <h6 className="myfont3 color-font mt-2">
                 {" "}
                 <img src={Assets.vec} alt="" style={{ marginRight: "10px" }} />
-                @Louistommo91
+                {data ? data[0].vec : "data not found"}
               </h6>
             </div>
           </div>

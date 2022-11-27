@@ -6,7 +6,6 @@ import axios from "axios";
 
 function NavTabs() {
   const [data, setData] = useState(null);
-  const [startDate, setStartDate] = useState(new Date());
   let users = "https://jsonplaceholder.typicode.com/users/1";
   useEffect(() => {
     axios

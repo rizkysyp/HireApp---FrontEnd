@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
+import React from "react";
 import Assets from "../../assets/img";
 import Footer from "../../components/Footer/Footer";
 import NavbarHome from "../../components/NavbarHome/navbarHome";
@@ -8,7 +6,6 @@ import CardProfilePortofolio from "../../components/CardProfile/CardProfilePorto
 import NavTabs from "../../components/NavTabs/NavTabs";
 
 export default function ProfilePekerja() {
-  const [key, setKey] = useState("portofolio");
   return (
     <div>
       <NavbarHome />

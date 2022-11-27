@@ -75,7 +75,7 @@ export default function ProfilePerekrut() {
                 </h5>
               </div>
             </div>
-            <div className="row">
+            <div className="row mt-3 mb-3">
               <div className="col-12">
                 <Link to="/editProfilePerekrut">
                   <button
@@ -112,7 +112,7 @@ export default function ProfilePerekrut() {
               <div className="col-12">
                 <h5 className="myfont3 mt-3">
                   <img src={Assets.phone} alt="" className="mx-4" />
-                  0821-8190-1821
+                  {data ? data[0].phone : "data not found"}
                 </h5>
               </div>
             </div>
