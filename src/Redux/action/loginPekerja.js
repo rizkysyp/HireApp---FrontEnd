@@ -1,7 +1,10 @@
 import axios from "axios";
 export const loginPekerja = (data, navigate) => async (dispact) => {
   try {
-    const result = await axios.post(process.env.URL_LOGIN_PEKERJA, data);
+    const result = await axios.post(
+      " https://rich-gold-gorilla-wear.cyclic.app/users/login",
+      data
+    );
     const user = result.data.data;
     console.log(user);
     localStorage.setItem("Token", user.token);

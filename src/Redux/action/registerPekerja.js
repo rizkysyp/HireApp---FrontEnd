@@ -1,7 +1,10 @@
 import axios from "axios";
 export const register = (data, navigate) => async (dispact, req, res, next) => {
   try {
-    const result = await axios.post("http://localhost:3002/pekerja/", data);
+    const result = await axios.post(
+      "https://rich-gold-gorilla-wear.cyclic.app//register/pekerja",
+      data
+    );
     const user = result.data.data;
     console.log(user);
     localStorage.setItem("Token ", user.token);
