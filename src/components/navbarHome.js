@@ -4,7 +4,7 @@ import Assets from "../assets/img";
 
 export default function navbarHome() {
   return (
-    <div>
+    <div className="container">
       <nav className="navbar navbar-light bg-light d-flex justify-content-between">
         <div className="d-flex justify-content-around">
           <Link className="navbar-brand" to="">
@@ -26,7 +26,7 @@ export default function navbarHome() {
           </Link>
           <div className="px-2">
             <Link
-              class="d-flex align-items-center hidden-arrow"
+              className="d-flex align-items-center hidden-arrow"
               href="#"
               id="navbarDropdownMenuAvatar"
               role="button"
@@ -34,7 +34,7 @@ export default function navbarHome() {
             >
               <img
                 src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-                class="rounded-circle"
+                className="rounded-circle"
                 height="30"
                 loading="lazy"
                 alt=""
