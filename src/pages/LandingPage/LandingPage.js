@@ -10,12 +10,18 @@ import card1 from "../../images/card1.png";
 import card2 from "../../images/card2.png";
 import card3 from "../../images/card3.png";
 import Card from "react-bootstrap/Card";
+import "./LandingPage.css";
+import Assets from "../../assets/img";
+import Footer from "../../components/Footer/Footer";
+import ButtonMulaiWhite from "../../components/Button/ButtonMulaiWhite";
+import NavbarLandingAfterLogin from "../../components/NavbarLandingAfter/NavbarLandingAfter";
+import CardSwiper from "../../components/CardSwiper/CardSwiper";
 
 export default function LandingPage() {
   return (
     <div>
       <NavbarLandingBeforeLogin />
-      <div className="container mb-5">
+      <div className="container-sm mb-5">
         <div className="row">
           <div className="col-5 mt-5">
             <h1 className="text-start" style={{ fontSize: "50px" }}>
@@ -45,8 +51,11 @@ export default function LandingPage() {
               style={{ width: "490px", height: "410px" }}
             />
           </div>
-          <div className="col-6 offset-2 mt-4">
-            <h1 className="text-start mb-4" style={{ fontSize: "50px" }}>
+          <div className="col-lg-6 offset-lg-2 mt-4">
+            <h1
+              className="text-start mb-4 myfont4"
+              style={{ fontSize: "50px" }}
+            >
               Kenapa harus mencari tallent di peworld
             </h1>
             <p className="text-start">
@@ -208,6 +217,7 @@ export default function LandingPage() {
           </section>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
