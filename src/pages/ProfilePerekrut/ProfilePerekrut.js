@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import Assets from "../../assets/img";
 import Footer from "../../components/Footer/Footer";
@@ -7,6 +8,22 @@ import NavbarHome from "../../components/NavbarHome/navbarHome";
 import "./ProfilePerekrut.css";
 
 export default function ProfilePerekrut() {
+  const [data, setData] = useState(null);
+  let users =
+    "https://rich-gold-gorilla-wear.cyclic.app/register/detailperekrut/e22efd7b-f2ca-497b-a641-bf144d69a5f0";
+  useEffect(() => {
+    axios
+      .get(users)
+      .then((res) => {
+        console.log("get data success");
+        console.log(res.data);
+        res.data && setData(res.data.data);
+      })
+      .catch((err) => {
+        console.log("get data fail");
+        console.log(err);
+      });
+  }, []);
   return (
     <div>
       <NavbarHome />
@@ -31,31 +48,34 @@ export default function ProfilePerekrut() {
             </div>
             <div className="row">
               <div className="col-12 ">
-                <h5 className="myfont4 mt-1">PT. Martabat Jaya Abadi</h5>
+                <h5 className="myfont4 mt-1">
+                  {data ? data[0].name : "data not found"}
+                </h5>
               </div>
             </div>
             <div className="row">
               <div className="col-12 ">
-                <h5 className="myfont3 mt-3">Financial</h5>
+                <h5 className="myfont3 mt-3">
+                  {data ? data[0].bidang : "data not found"}
+                </h5>
               </div>
             </div>
             <div className="row">
               <div className="col-12">
                 <h5 className="myfont3 mt-3">
-                  <img src={Assets.map} alt="" /> Purwokerto, Jawa Tengah
+                  <img src={Assets.map} alt="" />{" "}
+                  {data ? data[0].domisili : "data not found"}
                 </h5>
               </div>
             </div>
             <div className="row ">
               <div className="col-9">
                 <h5 className="myfont3 mt-3 " style={{ marginLeft: "300px" }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Vestibulum erat orci, mollis nec gravida sed, ornare quis
-                  urna. Curabitur eu lacus fringilla, vestibulum risus at.
+                  {data ? data[0].deskripsi : "data not found"}
                 </h5>
               </div>
             </div>
-            <div className="row">
+            <div className="row mt-3 mb-3">
               <div className="col-12">
                 <Link to="/editProfilePerekrut">
                   <button
@@ -76,7 +96,7 @@ export default function ProfilePerekrut() {
               <div className="col-12">
                 <h5 className="myfont3 mt-3">
                   <img src={Assets.mail2} alt="" className="mx-4" />{" "}
-                  martabatjaya@gmail.com
+                  {data ? data[0].email : "data not found"}
                 </h5>
               </div>
             </div>
@@ -84,7 +104,7 @@ export default function ProfilePerekrut() {
               <div className="col-12">
                 <h5 className="myfont3 mt-3">
                   <img src={Assets.ig} alt="" className="mx-4" />{" "}
-                  martabat_jayamartabat_jaya
+                  {data ? data[0].ig : "data not found"}
                 </h5>
               </div>
             </div>
@@ -92,7 +112,7 @@ export default function ProfilePerekrut() {
               <div className="col-12">
                 <h5 className="myfont3 mt-3">
                   <img src={Assets.phone} alt="" className="mx-4" />
-                  0821-8190-1821
+                  {data ? data[0].phone : "data not found"}
                 </h5>
               </div>
             </div>
@@ -100,7 +120,7 @@ export default function ProfilePerekrut() {
               <div className="col-12">
                 <h5 className="myfont3 mt-3">
                   <img src={Assets.linkedin} alt="" className="mx-4" />
-                  Martabat Jaya Abadi
+                  {data ? data[0].linkedin : "data not found"}
                 </h5>
               </div>
             </div>
