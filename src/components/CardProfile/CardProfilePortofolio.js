@@ -6,8 +6,7 @@ import "./CardProfile.css";
 
 const CardProfilePortofolio = () => {
   const [data, setData] = useState(null);
-  let users =
-    "https://rich-gold-gorilla-wear.cyclic.app/register/detailpekerja/a5ef2593-bc6a-4e14-8a32-da1d6b7db1ce";
+  let users = `${process.env.REACT_APP_URL_ROUTE}/register/detailpekerja/661252ac-314a-4b9d-bf60-ffaf0dd75499`;
   useEffect(() => {
     axios
       .get(users)
@@ -50,7 +49,9 @@ const CardProfilePortofolio = () => {
                   </p>
                 </div>
               </div>
-              <p className="myfont3 color-font">Freelancer</p>
+              <p className="myfont3 color-font">
+                {data ? data[0].tempat_kerja : "data not found"}
+              </p>
               <p className="myfont3 color-font">
                 {data ? data[0].deskripsi : "data not found"}
               </p>
@@ -130,12 +131,12 @@ const CardProfilePortofolio = () => {
                   alt=""
                   style={{ marginRight: "10px" }}
                 />
-                {data ? data[0].github : "data not found"}
+                {data ? data[0].linkedin : "data not found"}
               </h6>
               <h6 className="myfont3 color-font mt-2">
                 {" "}
                 <img src={Assets.vec} alt="" style={{ marginRight: "10px" }} />
-                {data ? data[0].vec : "data not found"}
+                {data ? data[0].linkedin : "data not found"}
               </h6>
             </div>
           </div>

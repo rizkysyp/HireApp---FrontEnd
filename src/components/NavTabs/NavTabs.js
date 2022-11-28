@@ -6,14 +6,15 @@ import axios from "axios";
 
 function NavTabs() {
   const [data, setData] = useState(null);
-  let users = "https://jsonplaceholder.typicode.com/users/1";
+  let users =
+    "https://rich-gold-gorilla-wear.cyclic.app/experiences/661252ac-314a-4b9d-bf60-ffaf0dd75499";
   useEffect(() => {
     axios
       .get(users)
       .then((res) => {
         console.log("get data success");
-        console.log(res);
-        res.data && setData(res.data);
+        console.log(res.data);
+        res.data && setData(res.data.data);
       })
       .catch((err) => {
         console.log("get data fail");

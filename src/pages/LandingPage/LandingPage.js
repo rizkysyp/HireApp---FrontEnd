@@ -1,18 +1,17 @@
 import React from "react";
 import NavbarLandingBeforeLogin from "../../components/NavbarLandingBefore/NavbarLandingBefore";
 import ButtonMulai from "../../components/Button/ButtonMulai";
-import "./LandingPage.css"
+import "./LandingPage.css";
 import Assets from "../../assets/img";
 import Footer from "../../components/Footer/Footer";
-import ButtonMulaiWhite from "../../components/Button/ButtonMulaiWhite"
+import ButtonMulaiWhite from "../../components/Button/ButtonMulaiWhite";
 import NavbarLandingAfterLogin from "../../components/NavbarLandingAfter/NavbarLandingAfter";
 import CardSwiper from "../../components/CardSwiper/CardSwiper";
-
 
 export default function LandingPage() {
   return (
     <div>
-      <NavbarLandingBeforeLogin/>
+      <NavbarLandingBeforeLogin />
       <div className="container-sm mb-5">
         <div className="row">
           <div className="col-lg-5 col-sm-12 mt-5">
@@ -45,7 +44,10 @@ export default function LandingPage() {
             />
           </div>
           <div className="col-lg-6 offset-lg-2 mt-4">
-            <h1 className="text-start mb-4 myfont4" style={{ fontSize: "50px" }}>
+            <h1
+              className="text-start mb-4 myfont4"
+              style={{ fontSize: "50px" }}
+            >
               Kenapa harus mencari tallent di peworld
             </h1>
             <p className="text-start myfont3">
@@ -143,25 +145,39 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
-      <div className="container-fluid pt-5 pb-5 content-card" style={{ backgroundColor: "#F5F5F5" , marginTop: "200px"}}>
+      <div
+        className="container-fluid pt-5 pb-5 content-card"
+        style={{ backgroundColor: "#F5F5F5", marginTop: "200px" }}
+      >
         <h1 style={{ marginTop: "100px" }} className="mb-5 myfon4">
           Their opinion about peworld
         </h1>
-        <CardSwiper/>
-      </div>     
-      <div className="container-fluid" style={{marginTop:"200px", marginBottom: "200px"}}>
-          <div className="container" style={{backgroundColor:"#5E50A1", borderRadius:"40px 10px 40px 10px"}}>
-            <div className="row">
-              <div className="col-lg-3 col-sm-12">
-                <h1 className="text-white my-5 myfont4">Lorem ipsum dolor sit amet</h1>
-              </div>
-              <div className="col-lg-3 col-sm-7 offset-lg-6 mb-sm-5">
-                <ButtonMulaiWhite/>
-              </div>
+        <CardSwiper />
+      </div>
+      <div
+        className="container-fluid"
+        style={{ marginTop: "200px", marginBottom: "200px" }}
+      >
+        <div
+          className="container"
+          style={{
+            backgroundColor: "#5E50A1",
+            borderRadius: "40px 10px 40px 10px",
+          }}
+        >
+          <div className="row">
+            <div className="col-lg-3 col-sm-12">
+              <h1 className="text-white my-5 myfont4">
+                Lorem ipsum dolor sit amet
+              </h1>
+            </div>
+            <div className="col-lg-3 col-sm-7 offset-lg-6 mb-sm-5">
+              <ButtonMulaiWhite />
             </div>
           </div>
         </div>
-      <Footer/>
+      </div>
+      <Footer />
     </div>
   );
 }
