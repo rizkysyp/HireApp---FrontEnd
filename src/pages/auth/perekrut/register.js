@@ -12,7 +12,7 @@ export default function Register() {
   const [jabatan, setJabatan] = useState("");
   const [phonenumber, setPhonenumber] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmpassword] = useState("");
+  const [confirm, setConfirm] = useState("");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ export default function Register() {
     console.log(jabatan);
     console.log(phonenumber);
     console.log(password);
-    console.log(confirmPassword);
+    console.log(confirm);
 
     let data = {
       name,
@@ -36,7 +36,7 @@ export default function Register() {
       jabatan,
       phonenumber,
       password,
-      confirmPassword,
+      confirm,
     };
     dispatch(register(data, navigate));
   };
@@ -144,10 +144,10 @@ export default function Register() {
                   type="password"
                   className="form-control"
                   placeholder="Masukkan konfirmasi kata sandi"
-                  value={confirmPassword}
+                  value={confirm}
                   validate={[matchInput]}
-                  name="confirmPassword"
-                  onChange={(e) => setConfirmpassword(e.target.value)}
+                  name="confirm"
+                  onChange={(e) => setConfirm(e.target.value)}
                 />
               </div>
 
