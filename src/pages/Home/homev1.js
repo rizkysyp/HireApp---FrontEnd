@@ -3,7 +3,6 @@ import NavbarHome from "../../components/navbarHome";
 import style from "./home.module.css";
 import Footer from "../../components/Footer/Footer";
 import Assets from "../../assets/img";
-import { height } from "@mui/system";
 import { Card, Pagination } from "@mui/material";
 import Axios from "axios";
 
@@ -21,7 +20,7 @@ export default function Homev1() {
   //get data
   const [data, setData] = useState("");
   const getAllData = () => {
-    Axios.get("https://rich-gold-gorilla-wear.cyclic.app/register/home/")
+    Axios.get("https://jsonplaceholder.typicode.com/users")
       .then((response) => {
         console.log(response.data);
         setData(response.data);
@@ -128,14 +127,13 @@ export default function Homev1() {
             : "data not yet"}
 
           <hr />
-        </div>
-
-        <div className=" container pt-3">
-          <Pagination className="d-flex justify-content-center">
-            <Pagination.Prev />
-            {items}
-            <Pagination.Next />
-          </Pagination>
+          <div className=" container pt-3">
+            <Pagination className="d-flex justify-content-center">
+              <Pagination.Prev />
+              {items}
+              <Pagination.Next />
+            </Pagination>
+          </div>
         </div>
       </main>
       <footer>

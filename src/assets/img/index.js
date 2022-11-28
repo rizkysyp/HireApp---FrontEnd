@@ -13,6 +13,7 @@ import tick1 from "./landingPage/tick1.png";
 import tick2 from "./landingPage/tick2.png";
 import bell from "./navigasi/bell.png";
 import mail from "./navigasi/mail.png";
+import mappin from "./mappin.png";
 
 const Assets = {
   Bg,
@@ -30,6 +31,7 @@ const Assets = {
   tick2,
   bell,
   mail,
+  mappin,
 };
 
 export default Assets;
