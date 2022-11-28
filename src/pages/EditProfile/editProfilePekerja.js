@@ -2,6 +2,7 @@ import React from "react";
 import Assets from "../../assets/img";
 import CardProfile from "../../components/CardProfile/CardProfile";
 import "./editProfilePekerja.css";
+import style from "./editProfilePekerja.css";
 import { Form } from "react-bootstrap";
 import Footer from "../../components/Footer/Footer";
 import NavbarHome from "../../components/NavbarHome/navbarHome";
@@ -15,7 +16,7 @@ export default function editProfile() {
       <NavbarHome />
       <div className="row">
         <div className="col-lg-12">
-          <img src={Assets.bg} alt="" className="image-bg" />
+          <img src={Assets.bg} alt="" className={style.image - bg} />
         </div>
       </div>
 

@@ -20,10 +20,10 @@ export default function Homev1() {
   //get data
   const [data, setData] = useState("");
   const getAllData = () => {
-    Axios.get("https://jsonplaceholder.typicode.com/users")
+    Axios.get("https://rich-gold-gorilla-wear.cyclic.app/register/home/")
       .then((response) => {
-        console.log(response.data);
-        setData(response.data);
+        console.log(response.data.data);
+        setData(response.data.data);
       })
       .catch((error) => {
         console.log(error);
@@ -96,14 +96,14 @@ export default function Homev1() {
                     </div>
                     <div className="col-7" id={style.infoDiri}>
                       <h2>{data.name}</h2>
-                      <p style={{ color: "grey" }}>bidang</p>
+                      <p style={{ color: "grey" }}>{data.bidang}</p>
                       <div className="d-flex justify-content-start  ">
                         <img
                           src={Assets.mappin}
                           alt=""
                           className={style.mappin}
                         />
-                        <p style={{ color: "grey" }}>domisili</p>
+                        <p style={{ color: "grey" }}>{data.domisili}</p>
                       </div>
                       <div>
                         <Card>php</Card>
