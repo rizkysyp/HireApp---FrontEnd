@@ -19,6 +19,17 @@ export default function Homev1() {
 
   //get data
   const [data, setData] = useState("");
+  const [sortBy, setSortBy] = useState("name");
+  const [sort, setSort] = useState("asc");
+  const [selected, setSelected] = useState(null);
+  const [inputData, setInputData] = useState({
+    name: "",
+    bidang: "",
+    domisili: "",
+    role: "",
+    search: "",
+  });
+
   const getAllData = () => {
     Axios.get("https://rich-gold-gorilla-wear.cyclic.app/register/home/")
       .then((response) => {
@@ -30,9 +41,19 @@ export default function Homev1() {
       });
   };
   useEffect(() => {
+    console.log("checked", sortBy);
+    getAllData();
+  }, [sortBy, sort, inputData.search]);
+  useEffect(() => {
     getAllData();
   }, []);
-
+  const handleChange = (e) => {
+    setInputData({
+      ...inputData,
+      [e.target.name]: e.target.value,
+    });
+    console.log(data);
+  };
   return (
     <div>
       <header>
@@ -52,6 +73,9 @@ export default function Homev1() {
               id={style.search}
               type="search"
               placeholder="Search for any skill"
+              value={inputData.search}
+              name="search"
+              onChange={handleChange}
             />
 
             <div className="dropdown col-2" id={style.border}>
@@ -127,13 +151,13 @@ export default function Homev1() {
             : "data not yet"}
 
           <hr />
-          <div className=" container pt-3">
-            <Pagination className="d-flex justify-content-center">
-              <Pagination.Prev />
-              {items}
-              <Pagination.Next />
-            </Pagination>
-          </div>
+        </div>
+        <div className=" container pt-3">
+          <Pagination className="d-flex justify-content-center">
+            <Pagination.Prev />
+            {items}
+            <Pagination.Next />
+          </Pagination>
         </div>
       </main>
       <footer>
