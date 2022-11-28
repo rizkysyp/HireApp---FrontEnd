@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Assets from "../../assets/img";
@@ -9,8 +10,9 @@ import "./ProfilePerekrut.css";
 
 export default function ProfilePerekrut() {
   const [data, setData] = useState(null);
-  let users =
-    "https://rich-gold-gorilla-wear.cyclic.app/register/detailperekrut/e22efd7b-f2ca-497b-a641-bf144d69a5f0";
+  // const user = useSelector((state) => state.user.user);
+  // let users = `${process.env.REACT_APP_URL_ROUTE}/register/detailperekrut/${user.id}`;
+  let users = `${process.env.REACT_APP_URL_ROUTE}/register/detailperekrut/da5ce4f3-d6ce-4266-874d-1bd03a5d8a2e`;
   useEffect(() => {
     axios
       .get(users)
@@ -49,7 +51,7 @@ export default function ProfilePerekrut() {
             <div className="row">
               <div className="col-12 ">
                 <h5 className="myfont4 mt-1">
-                  {data ? data[0].name : "data not found"}
+                  {data ? data[0].company_name : "data not found"}
                 </h5>
               </div>
             </div>
@@ -96,7 +98,7 @@ export default function ProfilePerekrut() {
               <div className="col-12">
                 <h5 className="myfont3 mt-3">
                   <img src={Assets.mail2} alt="" className="mx-4" />{" "}
-                  {data ? data[0].email : "data not found"}
+                  {data ? data[0].email_perusahaan : "data not found"}
                 </h5>
               </div>
             </div>
@@ -112,7 +114,7 @@ export default function ProfilePerekrut() {
               <div className="col-12">
                 <h5 className="myfont3 mt-3">
                   <img src={Assets.phone} alt="" className="mx-4" />
-                  {data ? data[0].phone : "data not found"}
+                  {data ? data[0].phonenumber : "data not found"}
                 </h5>
               </div>
             </div>
