@@ -6,11 +6,25 @@ import axios from "axios";
 
 function NavTabs() {
   const [data, setData] = useState(null);
-  let users =
-    "https://rich-gold-gorilla-wear.cyclic.app/experiences/661252ac-314a-4b9d-bf60-ffaf0dd75499";
+  let users = `${process.env.REACT_APP_URL_ROUTE}/portofolio`;
   useEffect(() => {
     axios
       .get(users)
+      .then((res) => {
+        console.log("get data success");
+        console.log(res.data);
+        res.data && setData(res.data.data);
+      })
+      .catch((err) => {
+        console.log("get data fail");
+        console.log(err);
+      });
+  }, []);
+
+  let user = `${process.env.REACT_APP_URL_ROUTE}/experiences`;
+  useEffect(() => {
+    axios
+      .get(user)
       .then((res) => {
         console.log("get data success");
         console.log(res.data);
@@ -33,82 +47,40 @@ function NavTabs() {
         >
           <Tab eventKey="portofolio" title="Portofolio">
             <div className="row mt-2">
-              <div className="col-4">
-                <img src={Assets.portofolio1} alt="" />
-                <h6 className="myfont3 mt-2" style={{ marginLeft: "49px" }}>
-                  Remainder app
-                </h6>
-              </div>
-              <div className="col-4">
-                <img src={Assets.portofolio2} alt="" />
-                <h6 className="myfont3 mt-2" style={{ marginLeft: "49px" }}>
-                  Social media app
-                </h6>
-              </div>
-              <div className="col-4">
-                <img src={Assets.portofolio3} alt="" />
-                <h6 className="myfont3 mt-2" style={{ marginLeft: "12px" }}>
-                  Project management web
-                </h6>
-              </div>
-            </div>
-            <div className="row mt-2">
-              <div className="col-4">
-                <img src={Assets.portofolio4} alt="" />
-                <h6 className="myfont3 mt-2" style={{ marginLeft: "49px" }}>
-                  Remainder app
-                </h6>
-              </div>
-              <div className="col-4">
-                <img src={Assets.portofolio5} alt="" />
-                <h6 className="myfont3 mt-2" style={{ marginLeft: "49px" }}>
-                  Social media app
-                </h6>
-              </div>
-              <div className="col-4">
-                <img src={Assets.portofolio6} alt="" />
-                <h6 className="myfont3 mt-2" style={{ marginLeft: "12px" }}>
-                  Project management web
-                </h6>
-              </div>
+              {data ? (
+                data.map((item) => (
+                  <div className="col-4">
+                    <img src={item.image} alt="" />
+                    <h6 className="myfont3 mt-2" style={{ marginLeft: "49px" }}>
+                      {item.name}
+                    </h6>
+                  </div>
+                ))
+              ) : (
+                <h1>...Loading</h1>
+              )}
             </div>
           </Tab>
           <Tab eventKey="pengalamanKerja" title="Pengalaman kerja">
             <div className="row mt-4">
-              <div className="col-1">
-                <img src={Assets.tokped} alt="" />
-              </div>
-              <div className="col-9 offset-1">
-                <h5 className="myfont">Engineer</h5>
-                <h6 className="myfont3">Tokopedia</h6>
-                <h6 className="myfont3 color-font">
-                  July 2019 - January 2020 6 months
-                </h6>
-                <h6 className="myfont2 mb-4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Vestibulum erat orci, mollis nec gravida sed, ornare quis
-                  urna. Curabitur eu lacus fringilla, vestibulum risus at.
-                </h6>
-                <hr />
-              </div>
-            </div>
-            <div className="row mt-4">
-              <div className="col-1">
-                <img src={Assets.tokped} alt="" />
-              </div>
-              <div className="col-9 offset-1">
-                <h5 className="myfont">Web Developer</h5>
-                <h6 className="myfont3">Tokopedia</h6>
-                <h6 className="myfont3 color-font">
-                  July 2019 - January 2020 6 months
-                </h6>
-                <h6 className="myfont2 mb-4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Vestibulum erat orci, mollis nec gravida sed, ornare quis
-                  urna. Curabitur eu lacus fringilla, vestibulum risus at.
-                </h6>
-                <hr />
-              </div>
+              {data ? (
+                data.map((item) => (
+                  <div>
+                    <div className="col-1">
+                      <img src={Assets.tokped} alt="" />
+                    </div>
+                    <div className="col-9 offset-1">
+                      <h5 className="myfont">{item.role}</h5>
+                      <h6 className="myfont3">{item.company_name}</h6>
+                      <h6 className="myfont3 color-font">{item.join_date}</h6>
+                      <h6 className="myfont2 mb-4">{item.description}</h6>
+                      <hr />
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <h1>...Loading</h1>
+              )}
             </div>
           </Tab>
         </Tabs>

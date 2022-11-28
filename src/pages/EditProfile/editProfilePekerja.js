@@ -18,10 +18,41 @@ export default function editProfile() {
           <img src={Assets.bg} alt="" className="image-bg" />
         </div>
       </div>
-
       <div className="row bg-light" style={{ marginTop: "-250px" }}>
         <div className="col-3">
           <CardProfile />
+          <div className="row">
+            <div className="col-12">
+              <div
+                className="btn"
+                style={{
+                  backgroundColor: "#5E50A1",
+                  color: "white",
+                  width: "300px",
+                  marginLeft: "110px",
+                }}
+              >
+                <h6 className="myfont4" style={{ marginTop: "3px" }}>
+                  Simpan
+                </h6>
+              </div>
+            </div>
+            <div className="col-12 mt-2">
+              <div
+                className="btn"
+                style={{
+                  borderColor: "#5E50A1",
+                  color: "#5E50A1",
+                  width: "300px",
+                  marginLeft: "110px",
+                }}
+              >
+                <h6 className="myfont4" style={{ marginTop: "3px" }}>
+                  Batal
+                </h6>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="col-6 offset-1 mt-3">
           <div className="container text-start shadow rounded-2 mt-1 bg-white">

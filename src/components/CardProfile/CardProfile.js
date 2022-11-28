@@ -29,38 +29,6 @@ const CardProfile = () => {
           </div>
         </div>
       </section>
-      <div className="row">
-        <div className="col-12">
-          <div
-            className="btn"
-            style={{
-              backgroundColor: "#5E50A1",
-              color: "white",
-              width: "300px",
-              marginLeft: "100px",
-            }}
-          >
-            <h6 className="myfont4" style={{ marginTop: "3px" }}>
-              Simpan
-            </h6>
-          </div>
-        </div>
-        <div className="col-12 mt-2">
-          <div
-            className="btn"
-            style={{
-              borderColor: "#5E50A1",
-              color: "#5E50A1",
-              width: "300px",
-              marginLeft: "100px",
-            }}
-          >
-            <h6 className="myfont4" style={{ marginTop: "3px" }}>
-              Batal
-            </h6>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };

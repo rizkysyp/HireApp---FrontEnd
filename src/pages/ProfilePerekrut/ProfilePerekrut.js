@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useSelector } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Assets from "../../assets/img";
@@ -9,8 +10,9 @@ import "./ProfilePerekrut.css";
 
 export default function ProfilePerekrut() {
   const [data, setData] = useState(null);
-  const user = useSelector((state) => state.user.user);
-  let users = `${process.env.REACT_APP_URL_ROUTE}/register/detailperekrut/${user.id}`;
+  // const user = useSelector((state) => state.user.user);
+  // let users = `${process.env.REACT_APP_URL_ROUTE}/register/detailperekrut/${user.id}`;
+  let users = `${process.env.REACT_APP_URL_ROUTE}/register/detailperekrut/da5ce4f3-d6ce-4266-874d-1bd03a5d8a2e`;
   useEffect(() => {
     axios
       .get(users)
