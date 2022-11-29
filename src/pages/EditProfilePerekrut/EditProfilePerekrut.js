@@ -12,7 +12,7 @@ export default function EditPerekrut() {
       <NavbarHome />
       <div className="row bg-light">
         <div className="col-lg-12">
-          <img src={Assets.bg} alt="" className="image-bg" />
+          <img src={Assets.Bg} alt="" className="image-bg" />
         </div>
       </div>
 

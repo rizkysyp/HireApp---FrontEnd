@@ -21,17 +21,25 @@ export default function Homev1() {
   const [data, setData] = useState("");
   const [sortBy, setSortBy] = useState("name");
   const [sort, setSort] = useState("asc");
+
+  const [photo, setPhoto] = useState(null);
   const [selected, setSelected] = useState(null);
+  const [onclick, SetOnclick] = useState("");
   const [inputData, setInputData] = useState({
     name: "",
     bidang: "",
     domisili: "",
     role: "",
+    image: null,
     search: "",
+    page: "",
+    limit: "",
   });
 
   const getAllData = () => {
-    Axios.get("https://rich-gold-gorilla-wear.cyclic.app/register/home/")
+    Axios.get(
+      `https://rich-gold-gorilla-wear.cyclic.app/register/search?search=${inputData.search}&limit=30&page=${inputData.page}`
+    )
       .then((response) => {
         console.log(response.data.data);
         setData(response.data.data);
@@ -54,6 +62,10 @@ export default function Homev1() {
     });
     console.log(data);
   };
+  const handlePhoto = (e) => {
+    setPhoto(e.target.files[0]);
+    console.log(e.target.files[0]);
+  };
   return (
     <div>
       <header>
@@ -64,20 +76,20 @@ export default function Homev1() {
       </header>
       <main className={style.bg}>
         <div
-          className="container "
+          className="container"
           style={{ backgroundColor: "white", borderRadius: "10px" }}
         >
-          <form className="row d-flex justify-content-between p-2">
+          <form className="search row d-flex justify-content-between p-2">
             <input
-              className="form-control col"
+              autoComplete="off"
+              type="text"
               id={style.search}
-              type="search"
+              className="form-control col"
               placeholder="Search for any skill"
               value={inputData.search}
               name="search"
               onChange={handleChange}
-            />
-
+            ></input>
             <div className="dropdown col-2" id={style.border}>
               Kategory
             </div>
@@ -95,7 +107,10 @@ export default function Homev1() {
             </button>
           </form>
         </div>
-        <div className="card container mt-4">
+        <div
+          className="container mt-4 "
+          style={{ backgroundColor: "white", borderRadius: "10px" }}
+        >
           {data
             ? data.map((data) => {
                 return (
@@ -105,18 +120,16 @@ export default function Homev1() {
                   >
                     <div className="col-2 d-flex align-items-center d-flex justify-content-center">
                       <img
+                        type="file"
                         style={{
                           backgroundColor: "gainsboro",
                           borderRadius: "100%",
                           width: "100px",
                           height: "100px",
                         }}
-                        src={Assets.tick1}
-                        className="img me-3"
-                        alt="..."
-                      >
-                        {/* {data.image} */}
-                      </img>
+                        src={data.image}
+                        alt=""
+                      />
                     </div>
                     <div className="col-7" id={style.infoDiri}>
                       <h2>{data.name}</h2>
@@ -145,12 +158,11 @@ export default function Homev1() {
                         Lihat Profile
                       </button>
                     </div>
+                    <hr className="mt-4" />
                   </div>
                 );
               })
             : "data not yet"}
-
-          <hr />
         </div>
         <div className=" container pt-3">
           <Pagination className="d-flex justify-content-center">

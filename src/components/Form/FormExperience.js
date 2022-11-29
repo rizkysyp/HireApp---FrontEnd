@@ -1,6 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Form } from "react-bootstrap";
+
+const client = axios.create({
+  url: `https://rich-gold-gorilla-wear.cyclic.app/experiences/`,
+});
+
 const FormExperience = () => {
+  const [company_name, setCompany_name] = useState("");
+  const [role, setRole] = useState("");
+  const [join_date, setJoin_date] = useState("");
+  const [description, setDescription] = useState("");
+
+  const [posts, setPosts] = useState([]);
+
+  const postForm = async (title, body) => {
+    try {
+      let response = await client.post("", {
+        title: title,
+        body: body,
+      });
+      setPosts([response.data, ...posts]);
+      setCompany_name("");
+      setRole("");
+      setJoin_date("");
+      setDescription("");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       <div className="container text-start shadow rounded-2 mt-3">
@@ -10,7 +38,7 @@ const FormExperience = () => {
           </div>
           <hr />
         </div>
-        <Form>
+        <Form onSubmit={postForm}>
           <div className="row">
             <div className="col-lg-12">
               <Form.Group
@@ -24,6 +52,9 @@ const FormExperience = () => {
                   type="text"
                   placeholder="web developer"
                   className="myfont3"
+                  value={company_name}
+                  name="company_name"
+                  onChange={(e) => setCompany_name(e.target.value)}
                 />
               </Form.Group>
             </div>
@@ -40,6 +71,9 @@ const FormExperience = () => {
                     type="text"
                     placeholder="PT Harus bisa"
                     className="myfont3"
+                    value={role}
+                    name="company_name"
+                    onChange={(e) => setRole(e.target.value)}
                   />
                 </Form.Group>
               </div>
@@ -55,6 +89,9 @@ const FormExperience = () => {
                     type="text"
                     placeholder="Januari 2018"
                     className="myfont3"
+                    value={join_date}
+                    name="join_date"
+                    onChange={(e) => setJoin_date(e.target.value)}
                   />
                 </Form.Group>
               </div>
@@ -71,11 +108,16 @@ const FormExperience = () => {
                   as="textarea"
                   placeholder="Deskripsikan pekerjaan anda"
                   className="myfont3"
+                  value={description}
+                  name="description"
+                  onChange={(e) => setDescription(e.target.value)}
                 />
               </Form.Group>
               <hr />
+
               <div className="col-lg-12 align-items-center mb-5">
-                <div
+                <button
+                  type="submit"
                   className="btn"
                   id="btn-yellw"
                   style={{
@@ -83,10 +125,8 @@ const FormExperience = () => {
                     marginLeft: "26px",
                   }}
                 >
-                  <h6 className="myfont" style={{ marginTop: "8px" }}>
-                    Tambah pengalaman kerja
-                  </h6>
-                </div>
+                  Tambah pengalaman kerja
+                </button>
               </div>
             </div>
           </div>

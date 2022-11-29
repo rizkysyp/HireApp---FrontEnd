@@ -1,6 +1,32 @@
-import React from "react";
+import Axios from "axios";
+import React, { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
+import { useSelector } from "react-redux";
+
+const client = Axios.create({
+  url: `https://rich-gold-gorilla-wear.cyclic.app/skill/ `,
+});
+
 const FormSkill = () => {
+  const [skill, setSkill] = useState("");
+  const [posts, setPosts] = useState([]);
+  const token = useSelector((state) => state.data);
+
+  const postForm = (e) => {
+    e.preventDefault();
+    addPosts(skill);
+  };
+  const addPosts = async (skill) => {
+    try {
+      let response = await client.post("", {
+        skill: skill,
+      });
+      setPosts([response.data, ...posts]);
+      setSkill("");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       <div className="container text-start shadow rounded-2 mt-3">
@@ -10,7 +36,7 @@ const FormSkill = () => {
           </div>
           <hr />
         </div>
-        <Form>
+        <Form onSubmit={postForm}>
           <div className="row">
             <div className="col-lg-10">
               <Form.Group
@@ -21,11 +47,15 @@ const FormSkill = () => {
                   type="text"
                   placeholder="Java"
                   className="myfont3"
+                  value={skill}
+                  name="name"
+                  onChange={(e) => setSkill(e.target.value)}
                 />
               </Form.Group>
             </div>
             <div className="col-lg-2">
               <button
+                type="submit"
                 className="btn"
                 style={{ backgroundColor: "#FBB017", color: "white" }}
               >

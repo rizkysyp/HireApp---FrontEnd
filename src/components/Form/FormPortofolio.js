@@ -1,11 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import ModalPortofolio from "../Modal/ModalPortofolio";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { purple } from "@mui/material/colors";
+import axios from "axios";
+
+const client = axios.create({
+  url: `https://rich-gold-gorilla-wear.cyclic.app/portofolio/`,
+});
+
 const FormPortofolio = () => {
+  const [name, setName] = useState("");
+  const [url, setUrl] = useState("");
+  const [type, setType] = useState("");
+  const [photo, setPhoto] = useState(null);
+
+  const [posts, setPosts] = useState([]);
+
+  const postForm = async (title, body) => {
+    try {
+      let response = await client.post("", {
+        title: title,
+        body: body,
+      });
+      setPosts([response.data, ...posts]);
+      setName("");
+      setUrl("");
+      setType("");
+      setPhoto(null);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       <div
@@ -18,7 +46,7 @@ const FormPortofolio = () => {
           </div>
           <hr />
         </div>
-        <Form>
+        <Form onSubmit={postForm}>
           <div className="row">
             <div className="col-lg-12">
               <Form.Group
@@ -32,6 +60,9 @@ const FormPortofolio = () => {
                   type="name"
                   placeholder="Masukan nama aplikasi"
                   className="myfont3"
+                  value={name}
+                  name="name"
+                  onChange={(e) => setName(e.target.value)}
                 />
               </Form.Group>
             </div>
@@ -47,6 +78,9 @@ const FormPortofolio = () => {
                   type="text"
                   placeholder="Masukan link repository"
                   className="myfont3"
+                  value={url}
+                  name="url"
+                  onChange={(e) => setUrl(e.target.value)}
                 />
               </Form.Group>
             </div>

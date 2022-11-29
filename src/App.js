@@ -15,12 +15,15 @@ import ResetPw from "./pages/auth/resetpw";
 import ResetPw2 from "./pages/auth/resetpw2";
 import LoginResetpwDone from "./pages/auth/loginResetpwDone";
 import Homev1 from "./pages/Home/homev1";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate, Link } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <nav>
+          <Link to="/editProfile">a</Link>
+        </nav>
         <Routes>
           <Route
             path="/"

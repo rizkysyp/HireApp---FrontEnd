@@ -1,15 +1,7 @@
 import React from "react";
 import NavbarLandingBeforeLogin from "../../components/NavbarLandingBefore/NavbarLandingBefore";
 import ButtonMulai from "../../components/Button/ButtonMulai";
-import landingImage3 from "../../images/landingImage3.png";
-import landingImage2 from "../../images/landingImage2.png";
-import landingImage4 from "../../images/landingImage4.png";
-import tick from "../../images/tick1.png";
-import tick2 from "../../images/tick2.png";
-import card1 from "../../images/card1.png";
-import card2 from "../../images/card2.png";
-import card3 from "../../images/card3.png";
-import Card from "react-bootstrap/Card";
+
 import "./LandingPage.css";
 import Assets from "../../assets/img";
 import Footer from "../../components/Footer/Footer";
