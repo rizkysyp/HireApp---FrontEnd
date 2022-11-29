@@ -14,6 +14,16 @@ import tick2 from "./landingPage/tick2.png";
 import bell from "./navigasi/bell.png";
 import mail from "./navigasi/mail.png";
 import mappin from "./mappin.png";
+import ig from "./profile/ig.png";
+import github from "./profilePekerja/github.png";
+import linkedin from "./profile/linkedin.png";
+import vec from "./profilePekerja/Vector.png";
+import bg from "./editProfile/contohBg.png";
+import map from "./editProfile/map.png";
+import phone from "./profile/phone.png";
+import mail2 from "./profile/mail2.png";
+import logo2 from "./landingPage/logo2.png";
+import edit from "./editProfile/edit.png";
 
 const Assets = {
   Bg,
@@ -32,6 +42,16 @@ const Assets = {
   bell,
   mail,
   mappin,
+  ig,
+  github,
+  linkedin,
+  vec,
+  bg,
+  map,
+  phone,
+  mail2,
+  logo2,
+  edit,
 };
 
 export default Assets;

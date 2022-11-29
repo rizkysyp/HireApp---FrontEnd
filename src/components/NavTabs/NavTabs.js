@@ -2,26 +2,15 @@ import React, { useState, useEffect } from "react";
 import Assets from "../../assets/img";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+import { useSelector } from "react-redux";
 import axios from "axios";
+import Portofolio from "../Portofolio/Portofolio";
 
 function NavTabs() {
   const [data, setData] = useState(null);
-  let users = `${process.env.REACT_APP_URL_ROUTE}/portofolio`;
-  useEffect(() => {
-    axios
-      .get(users)
-      .then((res) => {
-        console.log("get data success");
-        console.log(res.data);
-        res.data && setData(res.data.data);
-      })
-      .catch((err) => {
-        console.log("get data fail");
-        console.log(err);
-      });
-  }, []);
 
-  let user = `${process.env.REACT_APP_URL_ROUTE}/experiences`;
+  const experiences = useSelector((state) => state.user.user);
+  let user = `${process.env.REACT_APP_URL_ROUTE}/experiences/${experiences.id}`;
   useEffect(() => {
     axios
       .get(user)
@@ -47,18 +36,7 @@ function NavTabs() {
         >
           <Tab eventKey="portofolio" title="Portofolio">
             <div className="row mt-2">
-              {data ? (
-                data.map((item) => (
-                  <div className="col-4">
-                    <img src={item.image} alt="" />
-                    <h6 className="myfont3 mt-2" style={{ marginLeft: "49px" }}>
-                      {item.name}
-                    </h6>
-                  </div>
-                ))
-              ) : (
-                <h1>...Loading</h1>
-              )}
+              <Portofolio />
             </div>
           </Tab>
           <Tab eventKey="pengalamanKerja" title="Pengalaman kerja">
