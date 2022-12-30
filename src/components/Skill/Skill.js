@@ -3,8 +3,8 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 const Skill = () => {
   const [data, setData] = useState(null);
-  const skill = useSelector((state) => state.user.user);
-  let user = `${process.env.REACT_APP_URL_ROUTE}/skill/${skill.id}`;
+  const id = localStorage.getItem("Id");
+  let user = `${process.env.REACT_APP_URL_ROUTE}/skill/${id}`;
   useEffect(() => {
     axios
       .get(user)

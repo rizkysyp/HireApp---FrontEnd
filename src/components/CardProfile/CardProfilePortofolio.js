@@ -8,8 +8,8 @@ import Skill from "../Skill/Skill";
 
 const CardProfilePortofolio = () => {
   const [data, setData] = useState(null);
-  const token = useSelector((state) => state.user.user);
-  let users = `${process.env.REACT_APP_URL_ROUTE}/register/detailpekerja/${token.id}`;
+  const id = localStorage.getItem("Id");
+  let users = `${process.env.REACT_APP_URL_ROUTE}/register/detailpekerja/${id}`;
   // let users = `${process.env.REACT_APP_URL_ROUTE}/register/detailpekerja/661252ac-314a-4b9d-bf60-ffaf0dd75499`;
   useEffect(() => {
     axios

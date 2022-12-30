@@ -8,9 +8,10 @@ import Portofolio from "../Portofolio/Portofolio";
 
 function NavTabs() {
   const [data, setData] = useState(null);
-
-  const experiences = useSelector((state) => state.user.user);
-  let user = `${process.env.REACT_APP_URL_ROUTE}/experiences/${experiences.id}`;
+  const [dataPortofolio, setDataPortofolio] = useState(null);
+  const id = localStorage.getItem("Id");
+  let user = `${process.env.REACT_APP_URL_ROUTE}/experiences/${id}`;
+  let portofolio = `${process.env.REACT_APP_URL_ROUTE}/portofolio/${id}`;
   useEffect(() => {
     axios
       .get(user)
@@ -18,6 +19,19 @@ function NavTabs() {
         console.log("get data success");
         console.log(res.data);
         res.data && setData(res.data.data);
+      })
+      .catch((err) => {
+        console.log("get data fail");
+        console.log(err);
+      });
+  }, []);
+  useEffect(() => {
+    axios
+      .get(portofolio)
+      .then((res) => {
+        console.log("get data success");
+        console.log(res.data);
+        res.data && setDataPortofolio(res.data.data);
       })
       .catch((err) => {
         console.log("get data fail");
@@ -36,7 +50,18 @@ function NavTabs() {
         >
           <Tab eventKey="portofolio" title="Portofolio">
             <div className="row mt-2">
-              <Portofolio />
+              {dataPortofolio ? (
+                dataPortofolio.map((item) => (
+                  <div className="col-4">
+                    <img src={item.image} alt="" style={{ width: "100px" }} />
+                    <h6 className="myfont3 mt-2" style={{ marginLeft: "10px" }}>
+                      {item.name}
+                    </h6>
+                  </div>
+                ))
+              ) : (
+                <h1>...Loading</h1>
+              )}
             </div>
           </Tab>
           <Tab eventKey="pengalamanKerja" title="Pengalaman kerja">

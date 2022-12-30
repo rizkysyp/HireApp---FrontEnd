@@ -21,8 +21,8 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Link to="/profilePekerja">Profile</Link>
-        <Link to="/homev1">Homev1</Link>
+        {/* <Link to="/profilePekerja">Profile</Link>
+        <Link to="/homev1">Homev1</Link> */}
         <Routes>
           <Route
             path="/"
