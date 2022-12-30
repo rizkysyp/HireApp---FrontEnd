@@ -15,8 +15,19 @@ import ResetPw from "./pages/auth/resetpw";
 import ResetPw2 from "./pages/auth/resetpw2";
 import LoginResetpwDone from "./pages/auth/loginResetpwDone";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function App() {
+  const PrivateRoute = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      return <Outlet />;
+    } else {
+      Swal.fire("Warning", "Please login first", "error");
+      return <Navigate to="/loginPekerja" />;
+    }
+  };
   return (
     <div className="App">
       <BrowserRouter>
@@ -27,14 +38,18 @@ function App() {
             replace="true"
           />
           <Route path="/landingPage" element={<LandingPage />} />
-          <Route path="/editProfile" element={<EditProfilePekerja />} />
-          <Route
-            path="/editProfilePerekrut"
-            element={<EditProfilePerekrut />}
-          />
-          <Route path="/profilePerekrut" element={<ProfilePerekrut />} />
-          <Route path="/profilePekerja" element={<ProfilePekerja />} />
-
+          <Route path="/editProfile" element={<PrivateRoute />}>
+            <Route index element={<EditProfilePekerja />} />
+          </Route>
+          <Route path="/editProfilePerekrut" element={<PrivateRoute />}>
+            <Route index element={<EditProfilePerekrut />} />
+          </Route>
+          <Route path="/profilePerekrut" element={<PrivateRoute />}>
+            <Route index element={<ProfilePerekrut />} />
+          </Route>
+          <Route path="/profilePekerja" element={<PrivateRoute />}>
+            <Route index element={<ProfilePekerja />} />
+          </Route>
           <Route path="/loginPekerja" element={<LoginPekerja />} />
           <Route path="/registerPekerja" element={<RegisterPekerja />} />
           <Route path="/registerPerekrut" element={<RegisterPerekrut />} />
