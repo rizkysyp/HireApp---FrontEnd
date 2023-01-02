@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Assets from "../../assets/img";
 import CardProfile from "../../components/CardProfile/CardProfile";
 import "./editProfilePerekrut.css";
 import { Form } from "react-bootstrap";
 import Footer from "../../components/Footer/Footer";
 import NavbarHome from "../../components/NavbarHome/navbarHome";
+import axios from "axios";
 
 export default function EditPerekrut() {
+  const [data, setData] = useState(null);
+  let users = `${process.env.REACT_APP_URL_ROUTE}/portofolio`;
+  useEffect(() => {
+    axios
+      .get(users)
+      .then((res) => {
+        console.log("get data success");
+        console.log(res.data);
+        res.data && setData(res.data.data);
+      })
+      .catch((err) => {
+        console.log("get data fail");
+        console.log(err);
+      });
+  }, []);
   return (
     <div>
       <NavbarHome />

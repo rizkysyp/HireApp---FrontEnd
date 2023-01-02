@@ -41,15 +41,19 @@ function App() {
           <Route path="/editProfile" element={<PrivateRoute />}>
             <Route index element={<EditProfilePekerja />} />
           </Route>
-          <Route path="/editProfilePerekrut" element={<PrivateRoute />}>
+          {/* <Route path="/editProfilePerekrut" element={<PrivateRoute />}>
             <Route index element={<EditProfilePerekrut />} />
-          </Route>
+          </Route> */}
           <Route path="/profilePerekrut" element={<PrivateRoute />}>
             <Route index element={<ProfilePerekrut />} />
           </Route>
           <Route path="/profilePekerja" element={<PrivateRoute />}>
             <Route index element={<ProfilePekerja />} />
           </Route>
+          <Route
+            path="/editProfilePerekrut"
+            element={<EditProfilePerekrut />}
+          />
           <Route path="/loginPekerja" element={<LoginPekerja />} />
           <Route path="/registerPekerja" element={<RegisterPekerja />} />
           <Route path="/registerPerekrut" element={<RegisterPerekrut />} />
