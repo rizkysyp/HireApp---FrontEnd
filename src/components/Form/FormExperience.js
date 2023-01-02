@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useSelector } from "react-redux";
 import { Form } from "react-bootstrap";
 
 const client = axios.create({
@@ -14,20 +15,54 @@ const FormExperience = () => {
 
   const [posts, setPosts] = useState([]);
 
-  const postForm = async (title, body) => {
-    try {
-      let response = await client.post("", {
-        title: title,
-        body: body,
-      });
-      setPosts([response.data, ...posts]);
-      setCompany_name("");
-      setRole("");
-      setJoin_date("");
-      setDescription("");
-    } catch (error) {
-      console.log(error);
-    }
+  // const postForm = async (title, body) => {
+  //   try {
+  //     let response = await client.post("", {
+  //       title: title,
+  //       body: body,
+  //     });
+  //     setPosts([response.data, ...posts]);
+  //     setCompany_name("");
+  //     setRole("");
+  //     setJoin_date("");
+  //     setDescription("");
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  const [inputData, setInputData] = useState({
+    company_name: "",
+    role: "",
+    join_date: "",
+    description: "",
+  });
+  const handleChange = (e) => {
+    setInputData({
+      ...inputData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const PostExperience = (e) => {
+    e.preventDefault();
+    const formExperience = new FormData();
+    formExperience.append("skill_name", inputData.skill_name);
+    console.log(formExperience);
+    const experiences = useSelector((state) => state.user.user);
+    useEffect(() => {
+      axios
+        .post(
+          `${process.env.REACT_APP_URL_ROUTE}/experiences${experiences.id}`,
+          formExperience
+        )
+        .then((res) => {
+          console.log("Input Data Success");
+          console.log(res.data.data);
+        })
+        .catch((err) => {
+          console.log("Input Data Fail");
+          console.log(err);
+        });
+    }, []);
   };
   return (
     <div>
@@ -38,7 +73,7 @@ const FormExperience = () => {
           </div>
           <hr />
         </div>
-        <Form onSubmit={postForm}>
+        <Form onSubmit={PostExperience}>
           <div className="row">
             <div className="col-lg-12">
               <Form.Group
@@ -52,9 +87,9 @@ const FormExperience = () => {
                   type="text"
                   placeholder="web developer"
                   className="myfont3"
-                  value={company_name}
-                  name="company_name"
-                  onChange={(e) => setCompany_name(e.target.value)}
+                  name="role"
+                  value={inputData.role}
+                  onChange={handleChange}
                 />
               </Form.Group>
             </div>
@@ -71,9 +106,9 @@ const FormExperience = () => {
                     type="text"
                     placeholder="PT Harus bisa"
                     className="myfont3"
-                    value={role}
                     name="company_name"
-                    onChange={(e) => setRole(e.target.value)}
+                    value={inputData.company_name}
+                    onChange={handleChange}
                   />
                 </Form.Group>
               </div>
@@ -89,9 +124,9 @@ const FormExperience = () => {
                     type="text"
                     placeholder="Januari 2018"
                     className="myfont3"
-                    value={join_date}
                     name="join_date"
-                    onChange={(e) => setJoin_date(e.target.value)}
+                    value={inputData.join_date}
+                    onChange={handleChange}
                   />
                 </Form.Group>
               </div>
@@ -108,24 +143,26 @@ const FormExperience = () => {
                   as="textarea"
                   placeholder="Deskripsikan pekerjaan anda"
                   className="myfont3"
-                  value={description}
                   name="description"
-                  onChange={(e) => setDescription(e.target.value)}
+                  value={inputData.description}
+                  onChange={handleChange}
                 />
               </Form.Group>
               <hr />
 
               <div className="col-lg-12 align-items-center mb-5">
                 <button
-                  type="submit"
                   className="btn"
                   id="btn-yellw"
+                  type="submit"
                   style={{
                     width: "680px",
                     marginLeft: "26px",
                   }}
                 >
-                  Tambah pengalaman kerja
+                  <h6 className="myfont" style={{ marginTop: "8px" }}>
+                    Tambah pengalaman kerja
+                  </h6>
                 </button>
               </div>
             </div>

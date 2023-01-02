@@ -77,7 +77,7 @@ export default function EditProfile() {
       </header>
       <div className="row">
         <div className="col-lg-12">
-          <img src={Assets.bg} alt="" className={style.imagebg} />
+          <img src={Assets.bg} alt="" className="image-bg" />
         </div>
       </div>
       <div className="row bg-light" style={{ marginTop: "-250px" }}>

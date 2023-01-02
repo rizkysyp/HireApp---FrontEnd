@@ -1,31 +1,44 @@
-import Axios from "axios";
 import React, { useState, useEffect } from "react";
-import { Form } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import axios from "axios";
+import { Form } from "react-bootstrap";
 
-const client = Axios.create({
+const client = axios.create({
   url: `https://rich-gold-gorilla-wear.cyclic.app/skill/ `,
 });
 
 const FormSkill = () => {
-  const [skill, setSkill] = useState("");
-  const [posts, setPosts] = useState([]);
-  const token = useSelector((state) => state.data);
-
-  const postForm = (e) => {
-    e.preventDefault();
-    addPosts(skill);
+  const [inputData, setInputData] = useState({
+    skill_name: "",
+  });
+  const handleChange = (e) => {
+    setInputData({
+      ...inputData,
+      [e.target.name]: e.target.value,
+    });
   };
-  const addPosts = async (skill) => {
-    try {
-      let response = await client.post("", {
-        skill: skill,
-      });
-      setPosts([response.data, ...posts]);
-      setSkill("");
-    } catch (error) {
-      console.log(error);
-    }
+
+  const PostSkill = (e) => {
+    e.preventDefault();
+    const formSkill = new FormData();
+    formSkill.append("skill_name", inputData.skill_name);
+    console.log(formSkill);
+    const skill = useSelector((state) => state.user.user);
+    useEffect(() => {
+      axios
+        .post(
+          `${process.env.REACT_APP_URL_ROUTE}/skill${skill.id_users}`,
+          formSkill
+        )
+        .then((res) => {
+          console.log("Input Data Success");
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log("Input Data Fail");
+          console.log(err);
+        });
+    }, []);
   };
   return (
     <div>
@@ -36,7 +49,7 @@ const FormSkill = () => {
           </div>
           <hr />
         </div>
-        <Form onSubmit={postForm}>
+        <form onSubmit={PostSkill}>
           <div className="row">
             <div className="col-lg-10">
               <Form.Group
@@ -45,11 +58,11 @@ const FormSkill = () => {
               >
                 <Form.Control
                   type="text"
-                  placeholder="Java"
+                  placeholder="Skill"
+                  name="skill_name"
+                  value={inputData.skill_name}
+                  onChange={handleChange}
                   className="myfont3"
-                  value={skill}
-                  name="name"
-                  onChange={(e) => setSkill(e.target.value)}
                 />
               </Form.Group>
             </div>
@@ -63,7 +76,7 @@ const FormSkill = () => {
               </button>
             </div>
           </div>
-        </Form>
+        </form>
       </div>
     </div>
   );
