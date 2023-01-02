@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import Assets from "../../../assets/img";
 import style from "./pekerja.module.css";
-import { Route, Link, Routes } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import ResetPw from "./../../auth/resetpw";
+import RegisterPekerja from "./register";
+import Navbar from "./../../../components/navbarHome";
+import { Route, Link, Routes, useNavigate } from "react-router-dom";
+import { loginPekerja } from "../../../Redux/action/loginPekerja";
 
-export default function login() {
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const postData = (e) => {
+    e.preventDefault();
+    console.log(email);
+    console.log(password);
+    let data = {
+      email,
+      password,
+    };
+    dispatch(loginPekerja(data, navigate));
+  };
   return (
     <div className="container p-4">
+      <div>
+        <Navbar />
+      </div>
       <div className="row">
         <div className="col-sm-6">
           <div style={{ backgroundImage: `url(${Assets.Bg})` }}>
@@ -32,15 +56,17 @@ export default function login() {
             ipsum et dui rhoncus auctor.
           </p>
           <div className="container kotak_login mt-5 d-flex justify-content-center">
-            <form className="col">
+            <form onSubmit={postData} className="col">
               <div className="form-group">
                 <label>Email</label>
                 <input
                   type="email"
                   className="form-control"
-                  id="inputEmail1"
                   aria-describedby="emailHelp"
                   placeholder="Masukkan alamat email"
+                  value={email}
+                  name="email"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="form-group mt-2">
@@ -48,19 +74,23 @@ export default function login() {
                 <input
                   type="password"
                   className="form-control"
-                  id="inputPassword1"
                   placeholder="Masukkan kata sandi"
+                  value={password}
+                  name="password"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
 
               <Link
-                to="/forgetPw"
+                to="/resetPw"
                 className="my-3 d-flex justify-content-end resetpw"
                 id={style.lupaSandi}
               >
                 Lupa kata sandi?
               </Link>
-              <Routes></Routes>
+              <Routes>
+                <Route path="/resetPw" element={<ResetPw />} />
+              </Routes>
               <button type="submit" id={style.btn} className="btn ">
                 Masuk
               </button>
@@ -69,11 +99,11 @@ export default function login() {
           <div className="container mt-5 d-flex justify-content-center">
             <p className="card-text">
               Anda belum punya akun?
-              <Link to="/registerCust" id={style.regis}>
+              <Link to="/registerPekerja" id={style.regis}>
                 Daftar disini{" "}
               </Link>
               <Routes>
-                <Route></Route>
+                <Route path="/registerPekerja" element={<RegisterPekerja />} />
               </Routes>
             </p>
           </div>

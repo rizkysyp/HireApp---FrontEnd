@@ -1,9 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import Assets from "../../../assets/img";
 import style from "./pekerja.module.css";
-import { Route, Link, Routes } from "react-router-dom";
+import { Route, Link, Routes, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { register } from "./../../../Redux/action/registerPekerja";
 
-export default function register() {
+export default function Register() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phonenumber, setPhonenumber] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
+
+  // const matchInput = (input, allInputs) => {
+  //   return input === allInputs.password ? undefined : "Passwords do not match";
+  // };
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const postData = (e) => {
+    e.preventDefault();
+    console.log(name);
+    console.log(email);
+    console.log(phonenumber);
+    console.log(password);
+    console.log(confirm);
+
+    let data = {
+      name,
+      email,
+      phonenumber,
+      password,
+      confirm,
+    };
+    dispatch(register(data, navigate));
+  };
   return (
     <div className="container p-4">
       <div className="row">
@@ -32,14 +63,16 @@ export default function register() {
             ipsum et dui rhoncus auctor.
           </p>
           <div className="container kotak_login mt-5 d-flex justify-content-center">
-            <form className="col">
+            <form onSubmit={postData} className="col">
               <div className="form-group">
                 <label>Nama</label>
                 <input
                   type="text"
                   className="form-control"
-                  aria-describedby="namaHelp"
                   placeholder="Masukkan nama panjang"
+                  value={name}
+                  name="name"
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <div className="form-group pt-3">
@@ -47,8 +80,9 @@ export default function register() {
                 <input
                   type="email"
                   className="form-control"
-                  id="inputEmail1"
-                  aria-describedby="emailHelp"
+                  value={email}
+                  name="email"
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Masukkan alamat email"
                 />
               </div>
@@ -58,6 +92,9 @@ export default function register() {
                   type="number"
                   className="form-control"
                   placeholder="Masukkan no handphone"
+                  value={phonenumber}
+                  name="phonenumber"
+                  onChange={(e) => setPhonenumber(e.target.value)}
                 />
               </div>
               <div className="form-group pt-3">
@@ -65,7 +102,9 @@ export default function register() {
                 <input
                   type="password"
                   className="form-control"
-                  id="inputPassword1"
+                  value={password}
+                  name="password"
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="Masukkan kata sandi"
                 />
               </div>
@@ -75,6 +114,9 @@ export default function register() {
                   type="password"
                   className="form-control"
                   placeholder="Masukkan konfirmasi kata sandi"
+                  value={confirm}
+                  name="confirmPassword"
+                  onChange={(e) => setConfirm(e.target.value)}
                 />
               </div>
 

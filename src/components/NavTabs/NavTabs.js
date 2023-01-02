@@ -2,14 +2,19 @@ import React, { useState, useEffect } from "react";
 import Assets from "../../assets/img";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+import { useSelector } from "react-redux";
 import axios from "axios";
+import Portofolio from "../Portofolio/Portofolio";
 
 function NavTabs() {
   const [data, setData] = useState(null);
-  let users = `${process.env.REACT_APP_URL_ROUTE}/portofolio`;
+  const [dataPortofolio, setDataPortofolio] = useState(null);
+  const id = localStorage.getItem("Id");
+  let user = `${process.env.REACT_APP_URL_ROUTE}/experiences/${id}`;
+  let portofolio = `${process.env.REACT_APP_URL_ROUTE}/portofolio/${id}`;
   useEffect(() => {
     axios
-      .get(users)
+      .get(user)
       .then((res) => {
         console.log("get data success");
         console.log(res.data);
@@ -20,15 +25,13 @@ function NavTabs() {
         console.log(err);
       });
   }, []);
-
-  let user = `${process.env.REACT_APP_URL_ROUTE}/experiences`;
   useEffect(() => {
     axios
-      .get(user)
+      .get(portofolio)
       .then((res) => {
         console.log("get data success");
         console.log(res.data);
-        res.data && setData(res.data.data);
+        res.data && setDataPortofolio(res.data.data);
       })
       .catch((err) => {
         console.log("get data fail");
@@ -47,11 +50,11 @@ function NavTabs() {
         >
           <Tab eventKey="portofolio" title="Portofolio">
             <div className="row mt-2">
-              {data ? (
-                data.map((item) => (
+              {dataPortofolio ? (
+                dataPortofolio.map((item) => (
                   <div className="col-4">
-                    <img src={item.image} alt="" />
-                    <h6 className="myfont3 mt-2" style={{ marginLeft: "49px" }}>
+                    <img src={item.image} alt="" style={{ width: "100px" }} />
+                    <h6 className="myfont3 mt-2" style={{ marginLeft: "10px" }}>
                       {item.name}
                     </h6>
                   </div>

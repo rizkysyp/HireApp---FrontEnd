@@ -1,6 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useSelector } from "react-redux";
 import { Form } from "react-bootstrap";
 const FormExperience = () => {
+  const [inputData, setInputData] = useState({
+    company_name: "",
+    role: "",
+    join_date: "",
+    description: "",
+  });
+  const handleChange = (e) => {
+    setInputData({
+      ...inputData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const PostExperience = (e) => {
+    e.preventDefault();
+    const formExperience = new FormData();
+    formExperience.append("skill_name", inputData.skill_name);
+    console.log(formExperience);
+    const experiences = useSelector((state) => state.user.user);
+    useEffect(() => {
+      axios
+        .post(
+          `${process.env.REACT_APP_URL_ROUTE}/experiences${experiences.id}`,
+          formExperience
+        )
+        .then((res) => {
+          console.log("Input Data Success");
+          console.log(res.data.data);
+        })
+        .catch((err) => {
+          console.log("Input Data Fail");
+          console.log(err);
+        });
+    }, []);
+  };
   return (
     <div>
       <div className="container text-start shadow rounded-2 mt-3">
@@ -10,7 +47,7 @@ const FormExperience = () => {
           </div>
           <hr />
         </div>
-        <Form>
+        <Form onSubmit={PostExperience}>
           <div className="row">
             <div className="col-lg-12">
               <Form.Group
@@ -24,6 +61,9 @@ const FormExperience = () => {
                   type="text"
                   placeholder="web developer"
                   className="myfont3"
+                  name="role"
+                  value={inputData.role}
+                  onChange={handleChange}
                 />
               </Form.Group>
             </div>
@@ -40,6 +80,9 @@ const FormExperience = () => {
                     type="text"
                     placeholder="PT Harus bisa"
                     className="myfont3"
+                    name="company_name"
+                    value={inputData.company_name}
+                    onChange={handleChange}
                   />
                 </Form.Group>
               </div>
@@ -55,6 +98,9 @@ const FormExperience = () => {
                     type="text"
                     placeholder="Januari 2018"
                     className="myfont3"
+                    name="join_date"
+                    value={inputData.join_date}
+                    onChange={handleChange}
                   />
                 </Form.Group>
               </div>
@@ -71,13 +117,17 @@ const FormExperience = () => {
                   as="textarea"
                   placeholder="Deskripsikan pekerjaan anda"
                   className="myfont3"
+                  name="description"
+                  value={inputData.description}
+                  onChange={handleChange}
                 />
               </Form.Group>
               <hr />
               <div className="col-lg-12 align-items-center mb-5">
-                <div
+                <button
                   className="btn"
                   id="btn-yellw"
+                  type="submit"
                   style={{
                     width: "680px",
                     marginLeft: "26px",
@@ -86,7 +136,7 @@ const FormExperience = () => {
                   <h6 className="myfont" style={{ marginTop: "8px" }}>
                     Tambah pengalaman kerja
                   </h6>
-                </div>
+                </button>
               </div>
             </div>
           </div>

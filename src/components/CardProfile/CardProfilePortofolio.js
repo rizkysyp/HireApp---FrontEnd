@@ -4,30 +4,16 @@ import axios from "axios";
 import ModalEdit from "../Modal/ModalEdit";
 import Assets from "../../assets/img";
 import "./CardProfile.css";
+import Skill from "../Skill/Skill";
 
 const CardProfilePortofolio = () => {
   const [data, setData] = useState(null);
-  // const user = useSelector((state) => state.user.user);
-  // let users = `${process.env.REACT_APP_URL_ROUTE}/register/detailpekerja/${user.id}`;
-  let users = `${process.env.REACT_APP_URL_ROUTE}/register/detailpekerja/661252ac-314a-4b9d-bf60-ffaf0dd75499`;
+  const id = localStorage.getItem("Id");
+  let users = `${process.env.REACT_APP_URL_ROUTE}/register/detailpekerja/${id}`;
+  // let users = `${process.env.REACT_APP_URL_ROUTE}/register/detailpekerja/661252ac-314a-4b9d-bf60-ffaf0dd75499`;
   useEffect(() => {
     axios
       .get(users)
-      .then((res) => {
-        console.log("get data success");
-        console.log(res.data);
-        res.data && setData(res.data.data);
-      })
-      .catch((err) => {
-        console.log("get data fail");
-        console.log(err);
-      });
-  }, []);
-
-  let user = `${process.env.REACT_APP_URL_ROUTE}/skill`;
-  useEffect(() => {
-    axios
-      .get(user)
       .then((res) => {
         console.log("get data success");
         console.log(res.data);
@@ -92,22 +78,7 @@ const CardProfilePortofolio = () => {
                   Skill
                 </h4>
               </div>
-              {data ? (
-                data.map((item) => (
-                  <div className="col-5 ">
-                    <div className="card-1 mt-3">
-                      <div
-                        className="btn"
-                        style={{ backgroundColor: "#FBB017", color: "white" }}
-                      >
-                        {item.skill_name}
-                      </div>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <h1>...Loading</h1>
-              )}
+              <Skill />
               <h6 className="myfont3 color-font mt-4">
                 {" "}
                 <img src={Assets.mail} alt="" style={{ marginRight: "10px" }} />

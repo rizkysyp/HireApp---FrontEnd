@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function NavbarLandingBeforeLogin() {
   return (
-    <nav className="container-fluid mt-5 d-flex" style={{ marginBottom: "180px" }}>
+    <nav className="container-fluid mt-5" style={{ marginBottom: "180px" }}>
       <div className="container">
         <div className="row align-items-center">
           <div className="col-1">
@@ -16,14 +16,14 @@ function NavbarLandingBeforeLogin() {
               style={{ width: "127px", height: "35px" }}
             />
           </div>
-          <div className="col-sm-2 col-lg-1 offset-lg-9 offset-sm-7 ">
+          <div className="col-1 offset-9">
             <Link to="/loginPekerja">
-            <ButtonMasuk />
+              <ButtonMasuk />
             </Link>
           </div>
-          <div className="col-sm-1  ">
+          <div className="col-1">
             <Link to="/registerPekerja">
-            <ButtonDaftar />
+              <ButtonDaftar />
             </Link>
           </div>
         </div>

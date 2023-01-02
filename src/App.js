@@ -17,6 +17,7 @@ import LoginResetpwDone from "./pages/auth/loginResetpwDone";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import Swal from "sweetalert2";
+import Homev1 from "./pages/Home/homev1";
 
 function App() {
   const PrivateRoute = () => {
@@ -31,6 +32,8 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        {/* <Link to="/profilePekerja">Profile</Link>
+        <Link to="/homev1">Homev1</Link> */}
         <Routes>
           <Route
             path="/"
@@ -49,6 +52,9 @@ function App() {
           </Route>
           <Route path="/profilePekerja" element={<PrivateRoute />}>
             <Route index element={<ProfilePekerja />} />
+          </Route>
+          <Route path="/homev1" element={<PrivateRoute />}>
+            <Route index element={<Homev1 />} />
           </Route>
           <Route
             path="/editProfilePerekrut"

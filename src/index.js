@@ -4,11 +4,12 @@ import "./index.css";
 import App from "./App";
 import "./custom.scss";
 import "bootstrap/dist/css/bootstrap.css";
-import "swiper/css/bundle";
+import { Provider } from "react-redux";
+import store from "./../src/Redux/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>
+  </Provider>
 );
