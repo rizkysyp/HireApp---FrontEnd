@@ -5,7 +5,8 @@ import { Form } from "react-bootstrap";
 import Assets from "../../assets/img";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-const FormExperience = () => {
+import { useParams } from "react-router-dom";
+const EditExperiences = () => {
   const [data, setData] = useState(null);
   const token = localStorage.getItem("Token");
   const [position, setPosition] = useState("");
@@ -13,25 +14,27 @@ const FormExperience = () => {
   const [work_end, setWorkEnd] = useState("");
   const [company_name, setCompanyName] = useState("");
   const [description, setDescription] = useState("");
+
   console.log("ini token", token);
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const user = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
-  let getData = "https://hireapp-be-production-e91c.up.railway.app/experience";
+  let getData = `https://hireapp-be-production-e91c.up.railway.app/experience/detail/${id}`;
   useEffect(() => {
     axios
       .get(getData, user)
       .then((res) => {
-        console.log("Get experiences success");
-        console.log(res.data.data);
-        res.data && setData(res.data.data);
+        console.log("Get detail experience success");
+        console.log(res.data.data[0]);
+        res.data && setData(res.data.data[0]);
       })
       .catch((err) => {
-        console.log("Get experiences fail");
+        console.log("Get detail experience fail");
         console.log(err);
       });
   }, []);
@@ -58,68 +61,39 @@ const FormExperience = () => {
       company_name: company_name,
       description: description,
     };
-    // const formData = new FormData();
-    // formData.append("position", postData.position);
-    // formData.append("work_start", postData.work_start);
-    // formData.append("work_end", postData.work_end);
-    // formData.append("company_name", postData.company_name);
-    // formData.append("description", postData.description);
-    // console.log(formData);
     axios
-      .post(
-        `https://hireapp-be-production-e91c.up.railway.app/experience`,
+      .put(
+        `https://hireapp-be-production-e91c.up.railway.app/experience/${id}`,
         form,
         user
       )
       .then((res) => {
-        console.log("Post experience success");
+        console.log("Put experience success");
         console.log(res);
-        Swal.fire("Success", "Post experience success", "success");
-        window.location.reload(false);
+        Swal.fire("Success", "Put experience success", "success");
+        navigate(`/editProfile`);
       })
       .catch((err) => {
-        console.log("Post experience failed");
+        console.log("Put experience failed");
         console.log(err);
-        Swal.fire("Warning", "Post experience failed", "error");
-      });
-  };
-  const DeleteExperiences = (id) => {
-    axios
-      .delete(
-        `https://hireapp-be-production-e91c.up.railway.app/experience/${id}`,
-        user
-      )
-      .then((res) => {
-        console.log("Delete experience success");
-        console.log(res);
-        Swal.fire("Success", "Delete experience success", "success");
-        window.location.reload(false);
-      })
-      .catch((err) => {
-        console.log("Delete experience failed");
-        console.log(err);
-        Swal.fire("Warning", "Delete experience failed", "error");
+        Swal.fire("Warning", "Put experience failed", "error");
       });
   };
   return (
     <div>
-      <div className="container text-start shadow rounded-2 mt-3">
+      <div className="container text-start shadow rounded-2 mt-5">
         <div className="row">
           <div className="col-lg-12">
             <h3 className="myfont4 mt-4">Pengalaman kerja</h3>
           </div>
           <hr />
         </div>
-        <div className="row mt-4">
+        {/* <div className="row mt-4">
           {data ? (
             data.map((item) => (
               <div>
                 <div className="col-1">
-                  <img
-                    src={Assets.pijar}
-                    alt=""
-                    style={{ height: "98px", width: "90px" }}
-                  />
+                  <img src={Assets.tokped} alt="" />
                 </div>
                 <div
                   key={item.id}
@@ -145,20 +119,6 @@ const FormExperience = () => {
                   >
                     Edit
                   </button>
-                  <button
-                    className="btn"
-                    style={{
-                      width: "90px",
-                      height: "40px",
-                      backgroundColor: "red",
-                      color: "white",
-                      marginLeft: "20px",
-                    }}
-                    key={item.id}
-                    onClick={() => DeleteExperiences(item.id)}
-                  >
-                    Hapus
-                  </button>
                 </div>
                 <hr />
               </div>
@@ -166,7 +126,7 @@ const FormExperience = () => {
           ) : (
             <h1>...Loading</h1>
           )}
-        </div>
+        </div> */}
         <Form>
           <div className="row">
             <div className="col-lg-12">
@@ -179,7 +139,7 @@ const FormExperience = () => {
                 </Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="web developer"
+                  placeholder={data?.position}
                   name="position"
                   onChange={(e) => setPosition(e.target.value)}
                   className="myfont3"
@@ -197,7 +157,7 @@ const FormExperience = () => {
                   </Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Januari 2018"
+                    placeholder={data?.work_start}
                     className="myfont3"
                     name="work_start"
                     onChange={(e) => setWorkStart(e.target.value)}
@@ -214,7 +174,7 @@ const FormExperience = () => {
                   </Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Januari 2018"
+                    placeholder={data?.work_end}
                     className="myfont3"
                     name="work_end"
                     onChange={(e) => setWorkEnd(e.target.value)}
@@ -233,7 +193,7 @@ const FormExperience = () => {
                   </Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="PT Harus bisa"
+                    placeholder={data?.company_name}
                     className="myfont3"
                     name="company_name"
                     onChange={(e) => setCompanyName(e.target.value)}
@@ -251,7 +211,7 @@ const FormExperience = () => {
                 </Form.Label>
                 <Form.Control
                   as="textarea"
-                  placeholder="Deskripsikan pekerjaan anda"
+                  placeholder={data?.description}
                   className="myfont3"
                   name="description"
                   onChange={(e) => setDescription(e.target.value)}
@@ -265,11 +225,11 @@ const FormExperience = () => {
                   type="submit"
                   onClick={(e) => handleData(e)}
                   style={{
-                    width: "680px",
+                    width: "1230px",
                     marginLeft: "26px",
                   }}
                 >
-                  Tambah pengalaman kerja
+                  Update pengalaman kerja
                 </button>
               </div>
             </div>
@@ -279,4 +239,4 @@ const FormExperience = () => {
     </div>
   );
 };
-export default FormExperience;
+export default EditExperiences;

@@ -5,6 +5,7 @@ import EditProfilePekerja from "./pages/EditProfile/editProfilePekerja";
 import EditProfilePerekrut from "./pages/EditProfilePerekrut/EditProfilePerekrut";
 import ProfilePerekrut from "./pages/ProfilePerekrut/ProfilePerekrut";
 import ProfilePekerja from "./pages/ProfilePekerja/ProfilePekerja";
+import ProfileHire from "./pages/ProfileHire";
 
 //easy
 import LoginPekerja from "./pages/auth/pekerja/login";
@@ -18,6 +19,8 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import Swal from "sweetalert2";
 import Homev1 from "./pages/Home/homev1";
+import EditExperiences from "./pages/EditExperiences";
+import EditPortofolio from "./pages/EditPortofolio";
 
 function App() {
   const PrivateRoute = () => {
@@ -60,6 +63,9 @@ function App() {
             path="/editProfilePerekrut"
             element={<EditProfilePerekrut />}
           /> */}
+          <Route path="/edit-experiences/:id" element={<EditExperiences />} />
+          <Route path="/edit-portofolio/:id" element={<EditPortofolio />} />
+          <Route path="/profile-hire/:id" element={<ProfileHire />} />
           <Route path="/loginPekerja" element={<LoginPekerja />} />
           <Route path="/registerPekerja" element={<RegisterPekerja />} />
           <Route path="/registerPerekrut" element={<RegisterPerekrut />} />

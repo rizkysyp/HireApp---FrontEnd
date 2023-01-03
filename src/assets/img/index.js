@@ -25,6 +25,7 @@ import mail2 from "./profile/mail2.png";
 import logo2 from "./landingPage/logo2.png";
 import edit from "./editProfile/edit.png";
 import tokped from "./profilePekerja/tokped.png";
+import pijar from "./editProfile/pijar.png"
 
 const Assets = {
   Bg,
@@ -54,6 +55,7 @@ const Assets = {
   logo2,
   edit,
   tokped,
+  pijar
 };
 
 export default Assets;

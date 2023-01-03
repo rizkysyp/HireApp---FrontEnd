@@ -5,20 +5,20 @@ import NavbarHome from "../../components/NavbarHome/navbarHome";
 import NavTabs from "../../components/NavTabs/NavTabs";
 import axios from "axios";
 import Skill from "../../components/Skill/Skill";
-import ModalPhotoPekerja from "../../components/ModalPhotoPekerja";
+import { useParams } from "react-router-dom";
 
-export default function ProfilePekerja() {
+export default function ProfileHire() {
   const [data, setData] = useState(null);
   const token = localStorage.getItem("Token");
   console.log("ini token", token);
+  const { id } = useParams();
 
   const user = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
-  let getData =
-    "https://hireapp-be-production-e91c.up.railway.app/users/profile";
+  let getData = `https://hireapp-be-production-e91c.up.railway.app/users/employee/${id}`;
   useEffect(() => {
     axios
       .get(getData, user)
@@ -54,7 +54,6 @@ export default function ProfilePekerja() {
                   )}
                 </div>
                 <div className="name">
-                  <ModalPhotoPekerja />
                   <h4 className="myfont4 mt-3 text-start">{data?.name}</h4>
                   <h6 className="myfont3 text-start">{data?.job}</h6>
                   <div className="row">

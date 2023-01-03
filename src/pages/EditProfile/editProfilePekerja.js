@@ -1,9 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import Assets from "../../assets/img";
-// import CardProfile from "../../components/CardProfile/CardProfile";
 import "./editProfilePekerja.module.css";
-// import style from "./editProfilePekerja.module.css";
 import { Form } from "react-bootstrap";
 import Footer from "../../components/Footer/Footer";
 import NavbarHome from "../../components/NavbarHome/navbarHome";

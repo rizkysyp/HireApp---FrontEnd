@@ -1,43 +1,50 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-import { Form } from "react-bootstrap";
 import axios from "axios";
+import { Form } from "react-bootstrap";
+import Assets from "../../assets/img";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import Assets from "../../assets/img";
-const FormPortofolio = () => {
+import { useParams } from "react-router-dom";
+const EditPortofolio = () => {
   const [data, setData] = useState(null);
   const token = localStorage.getItem("Token");
-  const [name, setName] = useState("");
-  const [repo, setRepo] = useState("");
-  const [type, setType] = useState("");
+  const [position, setPosition] = useState("");
+  const [work_start, setWorkStart] = useState("");
+  const [work_end, setWorkEnd] = useState("");
+  const [company_name, setCompanyName] = useState("");
+  const [description, setDescription] = useState("");
   const [photo, setPhoto] = useState("");
+
   console.log("ini token", token);
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const user = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
-  let getData =
-    "https://hireapp-be-production-e91c.up.railway.app/portofolio/get";
+  let getData = `https://hireapp-be-production-e91c.up.railway.app/portofolio/detail/${id}`;
   useEffect(() => {
     axios
       .get(getData, user)
       .then((res) => {
-        console.log("Get portofolio success");
-        console.log(res.data.data);
-        res.data && setData(res.data.data);
+        console.log("Get detail portofolio success");
+        console.log(res.data.data[0]);
+        res.data && setData(res.data.data[0]);
       })
       .catch((err) => {
-        console.log("Get portofolio fail");
+        console.log("Get detail portofolio fail");
         console.log(err);
       });
   }, []);
   const [postData, setPostData] = useState({
-    name: data?.name,
-    repo: data?.repo,
-    type: data?.type,
+    position: data?.position,
+    work_start: data?.work_start,
+    work_end: data?.work_end,
+    company_name: data?.company_name,
+    description: data?.description,
   });
   const handleChange = (e) => {
     setPostData({
@@ -46,16 +53,14 @@ const FormPortofolio = () => {
     });
     console.log(data);
   };
-  const handlePhotoChange = (e) => {
-    setPhoto(e.target.files[0]);
-    console.log(e.target.files[0]);
-  };
   const handleData = async (e) => {
     e.preventDefault();
     // let form = {
-    //   name: name,
-    //   repo: repo,
-    //   type: type,
+    //   position: position,
+    //   work_start: work_start,
+    //   work_end: work_end,
+    //   company_name: company_name,
+    //   description: description,
     // };
     const formData = new FormData();
     formData.append("name", postData.name);
@@ -64,109 +69,35 @@ const FormPortofolio = () => {
     formData.append("photo", photo);
     console.log(formData);
     axios
-      .post(
-        `https://hireapp-be-production-e91c.up.railway.app/portofolio/add`,
+      .put(
+        `https://hireapp-be-production-e91c.up.railway.app/portofolio/edit/${id}`,
         formData,
-        user,
-        {
-          "content-type": "multipart/form-data",
-        }
-      )
-      .then((res) => {
-        console.log("Post portofolio success");
-        console.log(res);
-        Swal.fire("Success", "Post portofolio success", "success");
-        window.location.reload(false);
-      })
-      .catch((err) => {
-        console.log("Post portofolio failed");
-        console.log(err);
-        Swal.fire("Warning", "Post portofolio failed", "error");
-      });
-  };
-  const DeletePortofolio = (id) => {
-    axios
-      .delete(
-        `https://hireapp-be-production-e91c.up.railway.app/portofolio/delete/${id}`,
         user
       )
       .then((res) => {
-        console.log("Delete portofolio success");
+        console.log("Put portofolio success");
         console.log(res);
-        Swal.fire("Success", "Delete portofolio success", "success");
-        window.location.reload(false);
+        Swal.fire("Success", "Put portofolio success", "success");
+        navigate(`/editProfile`);
       })
       .catch((err) => {
-        console.log("Delete portofolio failed");
+        console.log("Put portofolio failed");
         console.log(err);
-        Swal.fire("Warning", "Delete portofolio failed", "error");
+        Swal.fire("Warning", "Put portofolio failed", "error");
       });
+  };
+  const handlePhotoChange = (e) => {
+    setPhoto(e.target.files[0]);
+    console.log(e.target.files[0]);
   };
   return (
     <div>
-      <div
-        className="container text-start shadow rounded-2 mt-1"
-        style={{ marginBottom: "100px" }}
-      >
+      <div className="container text-start shadow rounded-2 mt-5">
         <div className="row">
           <div className="col-lg-12">
             <h3 className="myfont4 mt-4">Portofolio</h3>
           </div>
           <hr />
-        </div>
-        <div className="row mt-4">
-          {data ? (
-            data.map((item) => (
-              <div>
-                <div className="col-1">
-                  <img
-                    src={item?.photo}
-                    alt=""
-                    style={{ height: "98px", width: "90px" }}
-                  />
-                </div>
-                <div
-                  key={item.id}
-                  className="col-9 offset-1"
-                  style={{ marginLeft: "100px", marginTop: "-80px" }}
-                >
-                  <h5 className="myfont">{item?.name}</h5>
-                  <h6 className="myfont3">{item?.repo}</h6>
-                  <h6 className="myfont3 color-font mb-4">{item?.type}</h6>
-                  <button
-                    className="btn"
-                    style={{
-                      width: "90px",
-                      height: "40px",
-                      backgroundColor: "#FBB017",
-                      color: "white",
-                    }}
-                    key={item.id}
-                    onClick={() => navigate(`/edit-portofolio/${item.id}`)}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="btn"
-                    style={{
-                      width: "90px",
-                      height: "40px",
-                      backgroundColor: "red",
-                      color: "white",
-                      marginLeft: "20px",
-                    }}
-                    key={item.id}
-                    onClick={() => DeletePortofolio(item.id)}
-                  >
-                    Hapus
-                  </button>
-                </div>
-                <hr />
-              </div>
-            ))
-          ) : (
-            <h1>...Loading</h1>
-          )}
         </div>
         <Form>
           <div className="row">
@@ -180,7 +111,7 @@ const FormPortofolio = () => {
                 </Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Masukan nama aplikasi"
+                  placeholder={data?.name}
                   className="myfont3"
                   name="name"
                   onChange={(e) => handleChange(e)}
@@ -198,7 +129,7 @@ const FormPortofolio = () => {
                 </Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Masukan link repository"
+                  placeholder={data?.repo}
                   className="myfont3"
                   name="repo"
                   onChange={(e) => handleChange(e)}
@@ -216,7 +147,7 @@ const FormPortofolio = () => {
                 </Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Masukan type aplikasi"
+                  placeholder={data?.type}
                   className="myfont3"
                   name="type"
                   onChange={(e) => handleChange(e)}
@@ -253,7 +184,7 @@ const FormPortofolio = () => {
                 }}
               >
                 <h6 className="myfont" style={{ marginTop: "8px" }}>
-                  Tambah portofolio
+                  Update portofolio
                 </h6>
               </button>
             </div>
@@ -263,4 +194,4 @@ const FormPortofolio = () => {
     </div>
   );
 };
-export default FormPortofolio;
+export default EditPortofolio;
