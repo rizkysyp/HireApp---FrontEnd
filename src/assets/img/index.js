@@ -24,6 +24,7 @@ import phone from "./profile/phone.png";
 import mail2 from "./profile/mail2.png";
 import logo2 from "./landingPage/logo2.png";
 import edit from "./editProfile/edit.png";
+import tokped from "./profilePekerja/tokped.png";
 
 const Assets = {
   Bg,
@@ -52,6 +53,7 @@ const Assets = {
   mail2,
   logo2,
   edit,
+  tokped,
 };
 
 export default Assets;

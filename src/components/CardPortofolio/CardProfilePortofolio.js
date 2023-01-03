@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import axios from "axios";
-import ModalEdit from "../Modal/ModalEdit";
+import ModalPhoto from "../ModalPhotoPerekrut";
 import Assets from "../../assets/img";
 import "./CardProfile.css";
 import Skill from "../Skill/Skill";
@@ -36,7 +37,7 @@ const CardProfilePortofolio = () => {
               <img src={Assets.card3} alt="" />
             </div>
             <div className="name">
-              <ModalEdit />
+              <ModalPhoto />
               <h4 className="myfont4 mt-3">
                 {data ? data[0].name : "data not found"}
               </h4>

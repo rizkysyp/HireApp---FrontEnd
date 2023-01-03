@@ -21,7 +21,7 @@ import Homev1 from "./pages/Home/homev1";
 
 function App() {
   const PrivateRoute = () => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("Token");
     if (token) {
       return <Outlet />;
     } else {
@@ -44,9 +44,9 @@ function App() {
           <Route path="/editProfile" element={<PrivateRoute />}>
             <Route index element={<EditProfilePekerja />} />
           </Route>
-          {/* <Route path="/editProfilePerekrut" element={<PrivateRoute />}>
+          <Route path="/editProfilePerekrut" element={<PrivateRoute />}>
             <Route index element={<EditProfilePerekrut />} />
-          </Route> */}
+          </Route>
           <Route path="/profilePerekrut" element={<PrivateRoute />}>
             <Route index element={<ProfilePerekrut />} />
           </Route>
@@ -56,10 +56,10 @@ function App() {
           <Route path="/homev1" element={<PrivateRoute />}>
             <Route index element={<Homev1 />} />
           </Route>
-          <Route
+          {/* <Route
             path="/editProfilePerekrut"
             element={<EditProfilePerekrut />}
-          />
+          /> */}
           <Route path="/loginPekerja" element={<LoginPekerja />} />
           <Route path="/registerPekerja" element={<RegisterPekerja />} />
           <Route path="/registerPerekrut" element={<RegisterPerekrut />} />

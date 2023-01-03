@@ -1,5 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Assets from "../../assets/img";
@@ -10,39 +10,65 @@ import "./ProfilePerekrut.css";
 
 export default function ProfilePerekrut() {
   const [data, setData] = useState(null);
-  // const user = useSelector((state) => state.user.user);
-  // let users = `${process.env.REACT_APP_URL_ROUTE}/register/detailperekrut/${user.id}`;
-  let users = `${process.env.REACT_APP_URL_ROUTE}/register/detailperekrut/da5ce4f3-d6ce-4266-874d-1bd03a5d8a2e`;
+  const token = localStorage.getItem("Token");
+
+  const user = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
   useEffect(() => {
     axios
-      .get(users)
+      .get(
+        `https://hireapp-be-production-e91c.up.railway.app/users/profile`,
+        user
+      )
       .then((res) => {
-        console.log("get data success");
+        console.log("Get detail user success");
         console.log(res.data);
-        res.data && setData(res.data.data);
+        res.data && setData(res.data.data[0]);
       })
       .catch((err) => {
-        console.log("get data fail");
+        console.log("Get detail user fail");
         console.log(err);
       });
   }, []);
   return (
     <div>
       <NavbarHome />
-      <div className="container-fluid" style={{ backgroundColor: "#f5f5f5" }}>
-        <div className="container">
+      <div className="body py-5">
+        <div
+          className="container bg-white"
+          style={{
+            borderRadius: "10px 10px 10px 10px",
+            marginTop: "20px",
+            marginBottom: "150px",
+          }}
+        >
           <div className="row">
-            <div className="col-12">
-              <img
-                src={Assets.bg}
-                alt=""
-                className="image-bg-2"
-                style={{ borderRadius: "10px 10px 0px 0px" }}
-              />
-            </div>
+            <div
+              className="col-12"
+              style={{
+                backgroundColor: "#5E50A1",
+                height: "190px",
+                borderRadius: "10px 10px 0px 0px",
+              }}
+            ></div>
             <div className="row">
               <div className="col-12">
-                <img src={Assets.card1} alt="" style={{ marginTop: "-60px" }} />
+                {data?.photo ? (
+                  <img
+                    src={data.photo}
+                    alt=""
+                    style={{ marginTop: "-50px", borderRadius: "50px" }}
+                  />
+                ) : (
+                  <img
+                    src={Assets.card1}
+                    alt=""
+                    style={{ marginTop: "-50px", borderRadius: "50px" }}
+                  />
+                )}
               </div>
             </div>
             <div className="col-12 bg">
@@ -50,33 +76,28 @@ export default function ProfilePerekrut() {
             </div>
             <div className="row">
               <div className="col-12 ">
-                <h5 className="myfont4 mt-1">
-                  {data ? data[0].company_name : "data not found"}
-                </h5>
+                <h5 className="myfont4 mt-1">{data?.company_name}</h5>
               </div>
             </div>
             <div className="row">
               <div className="col-12 ">
-                <h5 className="myfont3 mt-3">
-                  {data ? data[0].bidang : "data not found"}
-                </h5>
+                <h5 className="myfont3 mt-3">{data?.position}</h5>
               </div>
             </div>
             <div className="row">
               <div className="col-12">
                 <h5 className="myfont3 mt-3">
-                  <img src={Assets.map} alt="" />{" "}
-                  {data ? data[0].domisili : "data not found"}
+                  <img src={Assets.map} alt="" /> {data?.city},{data?.province}
                 </h5>
               </div>
             </div>
-            <div className="row ">
+            {/* <div className="row ">
               <div className="col-9">
                 <h5 className="myfont3 mt-3 " style={{ marginLeft: "300px" }}>
                   {data ? data[0].deskripsi : "data not found"}
                 </h5>
               </div>
-            </div>
+            </div> */}
             <div className="row mt-3 mb-3">
               <div className="col-12">
                 <Link to="/editProfilePerekrut">
@@ -94,27 +115,27 @@ export default function ProfilePerekrut() {
                 </Link>
               </div>
             </div>
-            <div className="row">
+            {/* <div className="row">
               <div className="col-12">
                 <h5 className="myfont3 mt-3">
                   <img src={Assets.mail2} alt="" className="mx-4" />{" "}
                   {data ? data[0].email_perusahaan : "data not found"}
                 </h5>
               </div>
-            </div>
-            <div className="row">
+            </div> */}
+            {/* <div className="row">
               <div className="col-12">
                 <h5 className="myfont3 mt-3">
                   <img src={Assets.ig} alt="" className="mx-4" />{" "}
                   {data ? data[0].ig : "data not found"}
                 </h5>
               </div>
-            </div>
+            </div> */}
             <div className="row ">
               <div className="col-12">
                 <h5 className="myfont3 mt-3">
                   <img src={Assets.phone} alt="" className="mx-4" />
-                  {data ? data[0].phonenumber : "data not found"}
+                  {data?.companyphone}
                 </h5>
               </div>
             </div>
@@ -122,7 +143,7 @@ export default function ProfilePerekrut() {
               <div className="col-12">
                 <h5 className="myfont3 mt-3">
                   <img src={Assets.linkedin} alt="" className="mx-4" />
-                  {data ? data[0].linkedin : "data not found"}
+                  {data?.linkedin}
                 </h5>
               </div>
             </div>
