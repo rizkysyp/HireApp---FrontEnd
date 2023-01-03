@@ -7,6 +7,11 @@ import Swal from "sweetalert2";
 const FormExperience = () => {
   const [data, setData] = useState(null);
   const token = localStorage.getItem("Token");
+  const [position, setPosition] = useState("");
+  const [work_start, setWorkStart] = useState("");
+  const [work_end, setWorkEnd] = useState("");
+  const [company_name, setCompanyName] = useState("");
+  const [description, setDescription] = useState("");
   console.log("ini token", token);
 
   const user = {
@@ -44,23 +49,31 @@ const FormExperience = () => {
   };
   const handleData = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("position", postData.position);
-    formData.append("work_start", postData.work_start);
-    formData.append("work_end", postData.work_end);
-    formData.append("company_name", postData.company_name);
-    formData.append("description", postData.description);
-    console.log(formData);
+    let form = {
+      position: position,
+      work_start: work_start,
+      work_end: work_end,
+      company_name: company_name,
+      description: description,
+    };
+    // const formData = new FormData();
+    // formData.append("position", postData.position);
+    // formData.append("work_start", postData.work_start);
+    // formData.append("work_end", postData.work_end);
+    // formData.append("company_name", postData.company_name);
+    // formData.append("description", postData.description);
+    // console.log(formData);
     axios
       .post(
         `https://hireapp-be-production-e91c.up.railway.app/experience`,
-        formData,
+        form,
         user
       )
       .then((res) => {
         console.log("Post experience success");
         console.log(res);
         Swal.fire("Success", "Post experience success", "success");
+        window.location.reload(false);
       })
       .catch((err) => {
         console.log("Post experience failed");
@@ -116,7 +129,7 @@ const FormExperience = () => {
                   type="text"
                   placeholder="web developer"
                   name="position"
-                  onChange={(e) => handleChange(e)}
+                  onChange={(e) => setPosition(e.target.value)}
                   className="myfont3"
                 />
               </Form.Group>
@@ -135,7 +148,7 @@ const FormExperience = () => {
                     placeholder="Januari 2018"
                     className="myfont3"
                     name="work_start"
-                    onChange={(e) => handleChange(e)}
+                    onChange={(e) => setWorkStart(e.target.value)}
                   />
                 </Form.Group>
               </div>
@@ -152,7 +165,7 @@ const FormExperience = () => {
                     placeholder="Januari 2018"
                     className="myfont3"
                     name="work_end"
-                    onChange={(e) => handleChange(e)}
+                    onChange={(e) => setWorkEnd(e.target.value)}
                   />
                 </Form.Group>
               </div>
@@ -171,7 +184,7 @@ const FormExperience = () => {
                     placeholder="PT Harus bisa"
                     className="myfont3"
                     name="company_name"
-                    onChange={(e) => handleChange(e)}
+                    onChange={(e) => setCompanyName(e.target.value)}
                   />
                 </Form.Group>
               </div>
@@ -189,7 +202,7 @@ const FormExperience = () => {
                   placeholder="Deskripsikan pekerjaan anda"
                   className="myfont3"
                   name="description"
-                  onChange={(e) => handleChange(e)}
+                  onChange={(e) => setDescription(e.target.value)}
                 />
               </Form.Group>
               <hr />

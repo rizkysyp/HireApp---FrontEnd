@@ -7,6 +7,7 @@ const FormSkill = () => {
   const [data, setData] = useState(null);
   const token = localStorage.getItem("Token");
   console.log("ini token", token);
+  const [skill, setSkill] = useState("");
 
   const user = {
     headers: {
@@ -25,13 +26,13 @@ const FormSkill = () => {
   };
   const handleData = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("skill", postData.skill);
-    console.log(formData);
+    let form = {
+      skill: skill,
+    };
     axios
       .post(
         `https://hireapp-be-production-e91c.up.railway.app/skill/add`,
-        formData,
+        form,
         user
       )
       .then((res) => {
@@ -65,7 +66,7 @@ const FormSkill = () => {
                   type="text"
                   placeholder="Skill"
                   name="skill"
-                  onChange={(e) => handleChange(e)}
+                  onChange={(e) => setSkill(e.target.value)}
                   className="myfont3"
                 />
               </Form.Group>
