@@ -30,7 +30,7 @@ const CardProfile = () => {
     fetchPost();
   }, []);
   return (
-    <div className="container text-start">
+    <div className=" text-start">
       <section className="section">
         <div className="card" style={{ marginLeft: "100px" }}>
           <div className="card-content">

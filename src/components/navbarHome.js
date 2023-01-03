@@ -4,8 +4,8 @@ import Assets from "../assets/img";
 
 export default function navbarHome() {
   return (
-    <div className="container">
-      <nav className="navbar navbar-light bg-light d-flex justify-content-between">
+    <div>
+      <nav className="px-5 mb-5 navbar navbar-light bg-light d-flex justify-content-between">
         <div className="d-flex justify-content-around">
           <Link className="navbar-brand" to="">
             <img

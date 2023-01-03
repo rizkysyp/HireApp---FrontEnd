@@ -16,6 +16,8 @@ import ResetPw2 from "./pages/auth/resetpw2";
 import LoginResetpwDone from "./pages/auth/loginResetpwDone";
 import Homev1 from "./pages/Home/homev1";
 import { BrowserRouter, Route, Routes, Navigate, Link } from "react-router-dom";
+import Hire from "./pages/Hire/hire";
+import Chat from "./pages/Chat/Chat";
 
 function App() {
   return (
@@ -47,6 +49,8 @@ function App() {
           <Route path="/resetPw" element={<ResetPw />} />
           <Route path="/resetPw2" element={<ResetPw2 />} />
           <Route path="/loginResetpwDone" element={<LoginResetpwDone />} />
+          <Route path="/hire" element={<Hire />} />
+          <Route path="/chat" element={<Chat />} />
         </Routes>
       </BrowserRouter>
     </div>
