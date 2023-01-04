@@ -2,7 +2,8 @@ import axios from "axios";
 export const loginPerekrut = (data, navigate) => async (dispact) => {
   try {
     const result = await axios.post(
-      process.env.REACT_APP_URL_ROUTE + `/users/login`,
+      // process.env.REACT_APP_URL_ROUTE +
+      `https://hireapp-be-production-e91c.up.railway.app/users/login`,
       data
     );
     const user = result.data.data;
