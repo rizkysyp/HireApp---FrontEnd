@@ -35,20 +35,6 @@ const FormExperience = () => {
         console.log(err);
       });
   }, []);
-  const [postData, setPostData] = useState({
-    position: data?.position,
-    work_start: data?.work_start,
-    work_end: data?.work_end,
-    company_name: data?.company_name,
-    description: data?.description,
-  });
-  const handleChange = (e) => {
-    setPostData({
-      ...postData,
-      [e.target.name]: e.target.value,
-    });
-    console.log(data);
-  };
   const handleData = async (e) => {
     e.preventDefault();
     let form = {

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import Assets from "../../assets/img";
 import Footer from "../../components/Footer/Footer";
@@ -70,19 +71,22 @@ export default function ProfilePekerja() {
                   <p className="myfont3 color-font text-start">
                     {data?.workplace}
                   </p>
-                  <p className="myfont3 color-font text-start">
+                  <p
+                    className="myfont3 color-font text-start"
+                    style={{ marginBottom: "100px" }}
+                  >
                     {data?.description}
                   </p>
                   <h4 className="myfont2" style={{ marginRight: "190px" }}>
                     Skill
                   </h4>
                   <Skill />
-                  <h6 className="myfont3 color-font mt-4">
+                  <h6 className="myfont3 color-font mt-5">
                     {" "}
                     <img
                       src={Assets.mail}
                       alt=""
-                      style={{ marginRight: "10px" }}
+                      style={{ marginRight: "10px", marginLeft: "-60px" }}
                     />
                     {data ? data?.email : "data not found"}
                   </h6>
@@ -91,7 +95,7 @@ export default function ProfilePekerja() {
                     <img
                       src={Assets.ig}
                       alt=""
-                      style={{ marginRight: "10px" }}
+                      style={{ marginRight: "10px", marginLeft: "-115px" }}
                     />
                     {data ? data?.instagram : "data not found"}
                   </h6>
@@ -100,7 +104,7 @@ export default function ProfilePekerja() {
                     <img
                       src={Assets.github}
                       alt=""
-                      style={{ marginRight: "10px" }}
+                      style={{ marginRight: "10px", marginLeft: "-125px" }}
                     />
                     {data ? data?.github : "data not found"}
                   </h6>

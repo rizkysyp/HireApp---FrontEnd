@@ -39,13 +39,14 @@ export default function EditProfile() {
   }, []);
 
   const [updateData, setUpdateData] = useState({
-    company_name: data?.company_name,
-    position: data?.position,
-    province: data?.province,
+    name: data?.name,
+    job: data?.job,
     city: data?.city,
-    company_email: data?.company_email,
-    companyphone: data?.companyphone,
-    linkedin: data?.linkedin,
+    province: data?.province,
+    workplace: data?.workplace,
+    description: data?.description,
+    instagram: data?.instagram,
+    github: data?.github,
   });
   const handleChange = (e) => {
     setUpdateData({
@@ -63,6 +64,8 @@ export default function EditProfile() {
     formData.append("province", updateData.province);
     formData.append("workplace", updateData.workplace);
     formData.append("description", updateData.description);
+    formData.append("instagram", updateData.instagram);
+    formData.append("github", updateData.github);
     console.log(formData);
     axios
       .put(
@@ -270,6 +273,40 @@ export default function EditProfile() {
                       placeholder="Tuliskan deskripsi singkat"
                       className="myfont3"
                       name="description"
+                      onChange={(e) => handleChange(e)}
+                    />
+                  </Form.Group>
+                </div>
+                <div className="col-lg-12">
+                  <Form.Group
+                    className="mb-3"
+                    controlId="exampleForm.ControlInput1"
+                  >
+                    <Form.Label>
+                      <h6 className="myfont3 color-font">Instagram</h6>
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Masukan username instagram"
+                      className="myfont3"
+                      name="instagram"
+                      onChange={(e) => handleChange(e)}
+                    />
+                  </Form.Group>
+                </div>
+                <div className="col-lg-12">
+                  <Form.Group
+                    className="mb-3"
+                    controlId="exampleForm.ControlInput1"
+                  >
+                    <Form.Label>
+                      <h6 className="myfont3 color-font">Github</h6>
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Masukan akun github"
+                      className="myfont3"
+                      name="github"
                       onChange={(e) => handleChange(e)}
                     />
                   </Form.Group>

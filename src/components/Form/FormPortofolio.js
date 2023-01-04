@@ -1,15 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import Assets from "../../assets/img";
 const FormPortofolio = () => {
   const [data, setData] = useState(null);
   const token = localStorage.getItem("Token");
-  const [name, setName] = useState("");
-  const [repo, setRepo] = useState("");
-  const [type, setType] = useState("");
   const [photo, setPhoto] = useState("");
   console.log("ini token", token);
   const navigate = useNavigate();

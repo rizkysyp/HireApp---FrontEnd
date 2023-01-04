@@ -2,18 +2,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Form } from "react-bootstrap";
-import Assets from "../../assets/img";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 const EditPortofolio = () => {
   const [data, setData] = useState(null);
   const token = localStorage.getItem("Token");
-  const [position, setPosition] = useState("");
-  const [work_start, setWorkStart] = useState("");
-  const [work_end, setWorkEnd] = useState("");
-  const [company_name, setCompanyName] = useState("");
-  const [description, setDescription] = useState("");
   const [photo, setPhoto] = useState("");
 
   console.log("ini token", token);
@@ -179,13 +173,11 @@ const EditPortofolio = () => {
                 type="submit"
                 onClick={(e) => handleData(e)}
                 style={{
-                  width: "680px",
+                  width: "1230px",
                   marginLeft: "26px",
                 }}
               >
-                <h6 className="myfont" style={{ marginTop: "8px" }}>
-                  Update portofolio
-                </h6>
+                Update portofolio
               </button>
             </div>
           </div>

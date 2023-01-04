@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import Assets from "../../assets/img";
 import Tab from "react-bootstrap/Tab";
@@ -83,7 +84,11 @@ function NavTabs() {
                 data.map((item) => (
                   <div>
                     <div className="col-1">
-                      <img src={Assets.tokped} alt="" />
+                      <img
+                        src={Assets.pijar}
+                        alt=""
+                        style={{ height: "98px", width: "90px" }}
+                      />
                     </div>
                     <div
                       className="col-9 offset-1"
