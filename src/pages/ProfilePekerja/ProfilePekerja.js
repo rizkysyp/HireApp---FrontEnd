@@ -7,11 +7,14 @@ import NavTabs from "../../components/NavTabs/NavTabs";
 import axios from "axios";
 import Skill from "../../components/Skill/Skill";
 import ModalPhotoPekerja from "../../components/ModalPhotoPekerja";
+import { useNavigate } from "react-router-dom";
 
 export default function ProfilePekerja() {
   const [data, setData] = useState(null);
   const token = localStorage.getItem("Token");
   console.log("ini token", token);
+
+  const navigate = useNavigate();
 
   const user = {
     headers: {
@@ -73,10 +76,22 @@ export default function ProfilePekerja() {
                   </p>
                   <p
                     className="myfont3 color-font text-start"
-                    style={{ marginBottom: "100px" }}
+                    style={{ marginBottom: "50px" }}
                   >
                     {data?.description}
                   </p>
+                  <button
+                    className="btn"
+                    style={{
+                      backgroundColor: "#5E50A1",
+                      color: "white",
+                      marginBottom: "50px",
+                      width: "220px",
+                    }}
+                    onClick={() => navigate(`/editProfile`)}
+                  >
+                    Edit Profile
+                  </button>
                   <h4 className="myfont2" style={{ marginRight: "190px" }}>
                     Skill
                   </h4>
@@ -86,7 +101,7 @@ export default function ProfilePekerja() {
                     <img
                       src={Assets.mail}
                       alt=""
-                      style={{ marginRight: "10px", marginLeft: "-60px" }}
+                      style={{ marginRight: "10px", marginLeft: "0px" }}
                     />
                     {data ? data?.email : "data not found"}
                   </h6>
@@ -95,7 +110,7 @@ export default function ProfilePekerja() {
                     <img
                       src={Assets.ig}
                       alt=""
-                      style={{ marginRight: "10px", marginLeft: "-115px" }}
+                      style={{ marginRight: "10px", marginLeft: "0px" }}
                     />
                     {data ? data?.instagram : "data not found"}
                   </h6>
@@ -104,7 +119,7 @@ export default function ProfilePekerja() {
                     <img
                       src={Assets.github}
                       alt=""
-                      style={{ marginRight: "10px", marginLeft: "-125px" }}
+                      style={{ marginRight: "10px", marginLeft: "0px" }}
                     />
                     {data ? data?.github : "data not found"}
                   </h6>
