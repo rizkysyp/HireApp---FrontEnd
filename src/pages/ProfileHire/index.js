@@ -119,7 +119,7 @@ export default function ProfileHire() {
                   </p>
                   <p
                     className="myfont3 color-font text-start "
-                    style={{ marginBottom: "100px" }}
+                    style={{ marginBottom: "50px" }}
                   >
                     {data?.description}
                   </p>
@@ -152,7 +152,7 @@ export default function ProfileHire() {
                     <img
                       src={Assets.mail}
                       alt=""
-                      style={{ marginRight: "10px", marginLeft: "-60px" }}
+                      style={{ marginRight: "10px", marginLeft: "0px" }}
                     />
                     {data ? data?.email : "data not found"}
                   </h6>
@@ -161,7 +161,7 @@ export default function ProfileHire() {
                     <img
                       src={Assets.ig}
                       alt=""
-                      style={{ marginRight: "10px", marginLeft: "-115px" }}
+                      style={{ marginRight: "10px", marginLeft: "0px" }}
                     />
                     {data ? data?.instagram : "data not found"}
                   </h6>
@@ -170,7 +170,7 @@ export default function ProfileHire() {
                     <img
                       src={Assets.github}
                       alt=""
-                      style={{ marginRight: "10px", marginLeft: "-125px" }}
+                      style={{ marginRight: "10px", marginLeft: "0px" }}
                     />
                     {data ? data?.github : "data not found"}
                   </h6>
