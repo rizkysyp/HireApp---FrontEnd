@@ -5,6 +5,8 @@ import Footer from "../../components/Footer/Footer";
 import Assets from "../../assets/img";
 import { Card, Pagination } from "@mui/material";
 import Axios from "axios";
+import NavbarLandingAfterLogin from "../../components/NavbarLandingAfter/NavbarLandingAfter";
+import NavbarLandingBeforeLogin from "../../components/NavbarLandingBefore/NavbarLandingBefore";
 
 export default function Homev1() {
   let active = 2;
@@ -66,10 +68,11 @@ export default function Homev1() {
     setPhoto(e.target.files[0]);
     console.log(e.target.files[0]);
   };
+  const token = localStorage.getItem("Token");
   return (
     <div>
       <header>
-        <NavbarHome />
+        {token ? <NavbarLandingAfterLogin /> : <NavbarLandingBeforeLogin />}
         <div className={style.header}>
           <h2 className="container p-2">Top Jobs</h2>
         </div>

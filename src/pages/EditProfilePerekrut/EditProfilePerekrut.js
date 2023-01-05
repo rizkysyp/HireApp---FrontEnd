@@ -8,6 +8,9 @@ import NavbarHome from "../../components/NavbarHome/navbarHome";
 import axios from "axios";
 import Swal from "sweetalert2";
 import ModalPhotoPerekrut from "../../components/ModalPhotoPerekrut";
+import NavbarLandingAfterLogin from "../../components/NavbarLandingAfter/NavbarLandingAfter";
+import NavbarLandingBeforeLogin from "../../components/NavbarLandingBefore/NavbarLandingBefore";
+import { Link } from "react-router-dom";
 
 export default function EditPerekrut() {
   const [data, setData] = useState(null);
@@ -84,7 +87,7 @@ export default function EditPerekrut() {
   };
   return (
     <div>
-      <NavbarHome />
+      {token ? <NavbarLandingAfterLogin /> : <NavbarLandingBeforeLogin />}
       <div className="row bg-light">
         <div className="col-lg-12">
           <img src={Assets.bg} alt="" className="image-bg" />
@@ -138,18 +141,20 @@ export default function EditPerekrut() {
               Simpan
             </button>
           </div>
-          <button
-            className="btn"
-            style={{
-              borderColor: "#5E50A1",
-              color: "#5E50A1",
-              width: "300px",
-              marginLeft: "100px",
-              marginTop: "10px",
-            }}
-          >
-            Batal
-          </button>
+          <Link to="/profilePerekrut">
+            <button
+              className="btn"
+              style={{
+                borderColor: "#5E50A1",
+                color: "#5E50A1",
+                width: "300px",
+                marginLeft: "100px",
+                marginTop: "10px",
+              }}
+            >
+              Batal
+            </button>
+          </Link>
         </div>
         <div className="col-6 offset-1 mt-3" style={{ marginBottom: "400px" }}>
           <div className="container text-start shadow rounded-2 mt-1 bg-white">

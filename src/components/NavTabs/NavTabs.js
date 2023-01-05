@@ -60,7 +60,11 @@ function NavTabs() {
                 dataPortofolio.map((item) => (
                   <div>
                     <div className="col-1">
-                      <img src={item.photo} alt="" />
+                      <img
+                        src={item.photo}
+                        alt=""
+                        style={{ width: "80px", height: "80px" }}
+                      />
                     </div>
                     <div
                       className="col-9 offset-1"

@@ -4,13 +4,15 @@ import Assets from "../../assets/img";
 import "./editProfilePekerja.module.css";
 import { Form } from "react-bootstrap";
 import Footer from "../../components/Footer/Footer";
-import NavbarHome from "../../components/NavbarHome/navbarHome";
+import { Link } from "react-router-dom";
 import FormSkill from "../../components/Form/FormSkill.";
 import FormExperience from "../../components/Form/FormExperience";
 import FormPortofolio from "../../components/Form/FormPortofolio";
 import axios from "axios";
 import Swal from "sweetalert2";
 import ModalPhotoPekerja from "../../components/ModalPhotoPekerja";
+import NavbarLandingAfterLogin from "../../components/NavbarLandingAfter/NavbarLandingAfter";
+import NavbarLandingBeforeLogin from "../../components/NavbarLandingBefore/NavbarLandingBefore";
 
 export default function EditProfile() {
   const [data, setData] = useState(null);
@@ -91,7 +93,7 @@ export default function EditProfile() {
   return (
     <div>
       <header className="container">
-        <NavbarHome />
+        {token ? <NavbarLandingAfterLogin /> : <NavbarLandingBeforeLogin />}
       </header>
       <div className="row">
         <div className="col-lg-12">
@@ -149,19 +151,21 @@ export default function EditProfile() {
               </div>
             </div>
             <div className="col-12 mt-2">
-              <div
-                className="btn"
-                style={{
-                  borderColor: "#5E50A1",
-                  color: "#5E50A1",
-                  width: "300px",
-                  marginLeft: "100px",
-                }}
-              >
-                <h6 className="myfont4" style={{ marginTop: "3px" }}>
-                  Batal
-                </h6>
-              </div>
+              <Link to="/profilePekerja">
+                <div
+                  className="btn"
+                  style={{
+                    borderColor: "#5E50A1",
+                    color: "#5E50A1",
+                    width: "300px",
+                    marginLeft: "100px",
+                  }}
+                >
+                  <h6 className="myfont4" style={{ marginTop: "3px" }}>
+                    Batal
+                  </h6>
+                </div>
+              </Link>
             </div>
           </div>
         </div>
