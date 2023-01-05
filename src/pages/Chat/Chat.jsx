@@ -125,11 +125,11 @@ const Chat = ({ socket }) => {
       })
       .catch((e) => {
         console.log(e);
-        return swal({
-          title: "Hire",
-          text: `${e.response.data.message}`,
-          icon: "error",
-        });
+        // return swal({
+        //   title: "Hire",
+        //   text: `${e.response.data.message}`,
+        //   icon: "error",
+        // });
       });
   }, [friend]);
 
@@ -196,7 +196,7 @@ const Chat = ({ socket }) => {
 
   return (
     <div style={{ backgroundColor: "#E5E5E5" }}>
-      <nav>
+      <nav className="pb-3" style={{ backgroundColor: "white" }}>
         {token ? <NavbarLandingAfterLogin /> : <NavbarLandingBeforeLogin />}
       </nav>
       <main className="d-flex flex-row m-5">
@@ -240,7 +240,6 @@ const Chat = ({ socket }) => {
                           className="d-flex align-items-start"
                         >
                           {item.name}
-                          name
                         </h5>
                         <p className="last-message d-flex align-items-start">
                           {item.position}

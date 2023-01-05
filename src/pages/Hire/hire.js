@@ -41,7 +41,7 @@ const Hire = () => {
     const fetchPekerja = async () => {
       try {
         const res = await axios.get(
-          `https://hireapp-be-production-e91c.up.railway.app/users/profile`,
+          `https://hireapp-be-production-e91c.up.railway.app/users/employee/${idPekerja}`,
           user
         );
         console.log(res.data.data[0]);

@@ -179,7 +179,7 @@ export default function ProfileHire() {
               <button
                 className="btn"
                 key={data?.id}
-                onClick={() => navigate(`/hire/${data?.id}`)}
+                onClick={() => navigate(`/hire/${id}`)}
                 style={{
                   backgroundColor: "#5E50A1",
                   color: "white",
