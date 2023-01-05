@@ -5,8 +5,11 @@ import ButtonProfile from "../Button/ButtonProfile";
 
 function NavbarLandingAfterLogin() {
   return (
-    <nav className="container-fluid mt-5" style={{ marginBottom: "180px" }}>
-      <div className="container">
+    <nav
+      className="p-5 mt-5 pt-3"
+      style={{ marginBottom: "180px", backgroundColor: "white" }}
+    >
+      <div className="">
         <div className="row align-items-center">
           <div className="col-1">
             <img

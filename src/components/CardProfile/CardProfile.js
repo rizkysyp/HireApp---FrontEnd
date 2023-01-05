@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import ModalEdit from "../Modal/ModalEdit";
+// import ModalEdit from "../Modal/ModalEdit";
+import ModalEdit from "../Modal/ModalProfilePerekrut";
 import Assets from "../../assets/img";
-import "./CardProfile.css";
 import { useSelector } from "react-redux";
 import Axios from "axios";
 

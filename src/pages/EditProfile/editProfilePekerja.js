@@ -1,75 +1,93 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import Assets from "../../assets/img";
-import CardProfile from "../../components/CardProfile/CardProfile";
 import "./editProfilePekerja.module.css";
-import style from "./editProfilePekerja.module.css";
 import { Form } from "react-bootstrap";
 import Footer from "../../components/Footer/Footer";
 import NavbarHome from "../../components/NavbarHome/navbarHome";
 import FormSkill from "../../components/Form/FormSkill.";
 import FormExperience from "../../components/Form/FormExperience";
 import FormPortofolio from "../../components/Form/FormPortofolio";
-import Axios from "axios";
-import { useSelector } from "react-redux";
+import axios from "axios";
+import Swal from "sweetalert2";
+import ModalPhotoPekerja from "../../components/ModalPhotoPekerja";
 
 export default function EditProfile() {
-  const [data, setData] = useState("");
-  const token = useSelector((state) => state.data);
-  const [inputData, setInputData] = useState({
-    name: "",
-    jobdesc: "",
-    domisili: "",
-    tempatKerja: "",
-    desc: "",
-  });
-  const postForm = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("name", inputData.name);
-    formData.append("jobdesc", inputData.jobdesc);
-    formData.append("domisili", inputData.domisili);
-    formData.append("tempatKerja", inputData.tempatKerja);
-    formData.append("desc", inputData.desc);
-    console.log("Data: ", formData);
-    Axios.put(
-      `https://rich-gold-gorilla-wear.cyclic.app/register/updateuserspekerja/${token}`,
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    )
+  const [data, setData] = useState(null);
+  const token = localStorage.getItem("Token");
+  console.log("ini token", token);
+
+  const user = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  let getData =
+    "https://hireapp-be-production-e91c.up.railway.app/users/profile";
+  useEffect(() => {
+    axios
+      .get(getData, user)
       .then((res) => {
-        console.log("input data success");
-        console.log(res);
-        getData();
+        console.log("Get detail user success");
+        console.log(res.data.data[0]);
+        res.data && setData(res.data.data[0]);
       })
       .catch((err) => {
-        console.log("input data fail");
+        console.log("Get detail user fail");
         console.log(err);
       });
-  };
-  const getData = () => {
-    Axios.get(
-      `https://rich-gold-gorilla-wear.cyclic.app/register/detailpekerja/${token}`
-    )
-      .then((response) => {
-        console.log(response.data.data);
-        setData(response.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  }, []);
+
+  const [updateData, setUpdateData] = useState({
+    name: data?.name,
+    job: data?.job,
+    city: data?.city,
+    province: data?.province,
+    workplace: data?.workplace,
+    description: data?.description,
+    instagram: data?.instagram,
+    github: data?.github,
+  });
   const handleChange = (e) => {
-    setInputData({
-      ...inputData,
-      [e.target.value]: e.target.value,
+    setUpdateData({
+      ...updateData,
+      [e.target.name]: e.target.value,
     });
     console.log(data);
   };
-
+  const handleData = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("name", updateData.name);
+    formData.append("job", updateData.job);
+    formData.append("city", updateData.city);
+    formData.append("province", updateData.province);
+    formData.append("workplace", updateData.workplace);
+    formData.append("description", updateData.description);
+    formData.append("instagram", updateData.instagram);
+    formData.append("github", updateData.github);
+    console.log(formData);
+    axios
+      .put(
+        `https://hireapp-be-production-e91c.up.railway.app/users/update-employee`,
+        formData,
+        user,
+        {
+          "content-type": "multipart/form-data",
+        }
+      )
+      .then((res) => {
+        console.log("Update profile succes");
+        console.log(res);
+        window.location.reload(false);
+        Swal.fire("Success", "Update profile success", "success");
+      })
+      .catch((err) => {
+        console.log("Update data profile failed");
+        console.log(err);
+        Swal.fire("Warning", "Update profile failed", "error");
+      });
+  };
   return (
     <div>
       <header className="container">
@@ -82,19 +100,48 @@ export default function EditProfile() {
       </div>
       <div className="row bg-light" style={{ marginTop: "-250px" }}>
         <div className="col-3">
-          <CardProfile />
-          <div className="row" onSubmit={postForm}>
+          <section className="section">
+            <div className="card" style={{ marginLeft: "100px" }}>
+              <div className="card-content">
+                <div className="image">
+                  {data?.photo ? (
+                    <img src={data.photo} alt="" />
+                  ) : (
+                    <img src={Assets.bg} alt="" />
+                  )}
+                </div>
+                <div className="name">
+                  <ModalPhotoPekerja />
+                  <h4 className="myfont4 mt-3 text-start">{data?.name}</h4>
+                  <h6 className="myfont3 text-start">{data?.job}</h6>
+                  <div className="row">
+                    <div className="col-lg-1">
+                      <img src={Assets.map} alt="" />
+                    </div>
+                    <div className="col-lg-10">
+                      <p className="myfont3 color-font text-start">
+                        {data?.city}, {data?.province}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="myfont3 color-font text-start">
+                    {data?.workplace}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div className="row">
             <div className="col-12">
               <div
                 className="btn"
+                onClick={(e) => handleData(e)}
                 style={{
                   backgroundColor: "#5E50A1",
                   color: "white",
                   width: "300px",
-                  marginLeft: "110px",
+                  marginLeft: "100px",
                 }}
-                onClick={postForm}
-                type="submit"
               >
                 <h6 className="myfont4" style={{ marginTop: "3px" }}>
                   Simpan
@@ -108,7 +155,7 @@ export default function EditProfile() {
                   borderColor: "#5E50A1",
                   color: "#5E50A1",
                   width: "300px",
-                  marginLeft: "110px",
+                  marginLeft: "100px",
                 }}
               >
                 <h6 className="myfont4" style={{ marginTop: "3px" }}>
@@ -118,7 +165,7 @@ export default function EditProfile() {
             </div>
           </div>
         </div>
-        <div className="col-6 offset-1 mt-3" onSubmit={postForm}>
+        <div className="col-6 offset-1 mt-3">
           <div className="container text-start shadow rounded-2 mt-1 bg-white">
             <div className="row bg-light rounded-3">
               <div className="col-lg-12">
@@ -137,11 +184,11 @@ export default function EditProfile() {
                       <h6 className="myfont3 color-font">Nama lengkap</h6>
                     </Form.Label>
                     <Form.Control
-                      type="text"
+                      type="name"
+                      name="name"
+                      onChange={(e) => handleChange(e)}
                       placeholder="Masukan nama lengkap"
                       className="myfont3"
-                      value={inputData.name}
-                      onChange={handleChange}
                     />
                   </Form.Group>
                 </div>
@@ -157,8 +204,8 @@ export default function EditProfile() {
                       type="text"
                       placeholder="Masukan job desk"
                       className="myfont3"
-                      value={inputData.jobdesc}
-                      onChange={handleChange}
+                      name="job"
+                      onChange={(e) => handleChange(e)}
                     />
                   </Form.Group>
                 </div>
@@ -168,14 +215,31 @@ export default function EditProfile() {
                     controlId="exampleForm.ControlInput1"
                   >
                     <Form.Label>
-                      <h6 className="myfont3 color-font">Domisili</h6>
+                      <h6 className="myfont3 color-font">Kota</h6>
                     </Form.Label>
                     <Form.Control
                       type="text"
                       placeholder="Masukan domisili"
                       className="myfont3"
-                      value={inputData.domisili}
-                      onChange={handleChange}
+                      name="city"
+                      onChange={(e) => handleChange(e)}
+                    />
+                  </Form.Group>
+                </div>
+                <div className="col-lg-12">
+                  <Form.Group
+                    className="mb-3"
+                    controlId="exampleForm.ControlInput1"
+                  >
+                    <Form.Label>
+                      <h6 className="myfont3 color-font">Provinsi</h6>
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Masukan domisili"
+                      className="myfont3"
+                      name="province"
+                      onChange={(e) => handleChange(e)}
                     />
                   </Form.Group>
                 </div>
@@ -191,8 +255,8 @@ export default function EditProfile() {
                       type="text"
                       placeholder="Masukan tempat kerja"
                       className="myfont3"
-                      value={inputData.tempatKerja}
-                      onChange={handleChange}
+                      name="workplace"
+                      onChange={(e) => handleChange(e)}
                     />
                   </Form.Group>
                 </div>
@@ -205,12 +269,45 @@ export default function EditProfile() {
                       <h6 className="myfont3 color-font">Deskripsi singkat</h6>
                     </Form.Label>
                     <Form.Control
-                      type="text"
                       as="textarea"
                       placeholder="Tuliskan deskripsi singkat"
                       className="myfont3"
-                      value={inputData.desc}
-                      onChange={handleChange}
+                      name="description"
+                      onChange={(e) => handleChange(e)}
+                    />
+                  </Form.Group>
+                </div>
+                <div className="col-lg-12">
+                  <Form.Group
+                    className="mb-3"
+                    controlId="exampleForm.ControlInput1"
+                  >
+                    <Form.Label>
+                      <h6 className="myfont3 color-font">Instagram</h6>
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Masukan username instagram"
+                      className="myfont3"
+                      name="instagram"
+                      onChange={(e) => handleChange(e)}
+                    />
+                  </Form.Group>
+                </div>
+                <div className="col-lg-12">
+                  <Form.Group
+                    className="mb-3"
+                    controlId="exampleForm.ControlInput1"
+                  >
+                    <Form.Label>
+                      <h6 className="myfont3 color-font">Github</h6>
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Masukan akun github"
+                      className="myfont3"
+                      name="github"
+                      onChange={(e) => handleChange(e)}
                     />
                   </Form.Group>
                 </div>

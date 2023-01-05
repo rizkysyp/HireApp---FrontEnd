@@ -10,9 +10,10 @@ import NavbarLandingAfterLogin from "../../components/NavbarLandingAfter/NavbarL
 import CardSwiper from "../../components/CardSwiper/CardSwiper";
 
 export default function LandingPage() {
+  const token = localStorage.getItem("Token");
   return (
     <div>
-      <NavbarLandingBeforeLogin />
+      {token ? <NavbarLandingAfterLogin /> : <NavbarLandingBeforeLogin />}
       <div className="container-sm mb-5">
         <div className="row">
           <div className="col-lg-5 col-sm-12 mt-5">

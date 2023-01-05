@@ -3,8 +3,8 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 const Portofolio = () => {
   const [data, setData] = useState(null);
-  const porto = useSelector((state) => state.user.user);
-  let users = `${process.env.REACT_APP_URL_ROUTE}/portofolio/${porto.id}`;
+  const id = localStorage.getItem("Id");
+  let users = `${process.env.REACT_APP_URL_ROUTE}/portofolio/${id}`;
   useEffect(() => {
     axios
       .get(users)

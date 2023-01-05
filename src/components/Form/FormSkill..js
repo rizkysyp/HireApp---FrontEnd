@@ -2,43 +2,49 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { Form } from "react-bootstrap";
-
-const client = axios.create({
-  url: `https://rich-gold-gorilla-wear.cyclic.app/skill/ `,
-});
-
+import Swal from "sweetalert2";
 const FormSkill = () => {
-  const [inputData, setInputData] = useState({
-    skill_name: "",
+  const [data, setData] = useState(null);
+  const token = localStorage.getItem("Token");
+  console.log("ini token", token);
+  const [skill, setSkill] = useState("");
+
+  const user = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const [postData, setPostData] = useState({
+    skill: data?.skill,
   });
   const handleChange = (e) => {
-    setInputData({
-      ...inputData,
+    setPostData({
+      ...postData,
       [e.target.name]: e.target.value,
     });
+    console.log(data);
   };
-
-  const PostSkill = (e) => {
+  const handleData = async (e) => {
     e.preventDefault();
-    const formSkill = new FormData();
-    formSkill.append("skill_name", inputData.skill_name);
-    console.log(formSkill);
-    const skill = useSelector((state) => state.user.user);
-    useEffect(() => {
-      axios
-        .post(
-          `${process.env.REACT_APP_URL_ROUTE}/skill${skill.id_users}`,
-          formSkill
-        )
-        .then((res) => {
-          console.log("Input Data Success");
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log("Input Data Fail");
-          console.log(err);
-        });
-    }, []);
+    let form = {
+      skill: skill,
+    };
+    axios
+      .post(
+        `https://hireapp-be-production-e91c.up.railway.app/skill/add`,
+        form,
+        user
+      )
+      .then((res) => {
+        console.log("Post skill succes");
+        console.log(res);
+        Swal.fire("Success", "Post skill succes", "success");
+      })
+      .catch((err) => {
+        console.log("Post skill failed");
+        console.log(err);
+        Swal.fire("Warning", "Post skill failed", "error");
+      });
   };
   return (
     <div>
@@ -49,7 +55,7 @@ const FormSkill = () => {
           </div>
           <hr />
         </div>
-        <form onSubmit={PostSkill}>
+        <form>
           <div className="row">
             <div className="col-lg-10">
               <Form.Group
@@ -59,9 +65,8 @@ const FormSkill = () => {
                 <Form.Control
                   type="text"
                   placeholder="Skill"
-                  name="skill_name"
-                  value={inputData.skill_name}
-                  onChange={handleChange}
+                  name="skill"
+                  onChange={(e) => setSkill(e.target.value)}
                   className="myfont3"
                 />
               </Form.Group>
@@ -69,6 +74,7 @@ const FormSkill = () => {
             <div className="col-lg-2">
               <button
                 type="submit"
+                onClick={(e) => handleData(e)}
                 className="btn"
                 style={{ backgroundColor: "#FBB017", color: "white" }}
               >

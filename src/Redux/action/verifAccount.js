@@ -1,15 +1,32 @@
 import axios from "axios";
-export const loginPekerja = (data, navigate) => async (dispact) => {
+import swal from "sweetalert";
+
+export const VerifAccount = (data, navigate) => async (dispact) => {
   try {
     const result = await axios.post(
-      " https://rich-gold-gorilla-wear.cyclic.app/users/login",
+      "https://hireapp-be-production-e91c.up.railway.app/users/verification",
       data
     );
     const user = result.data.data;
     console.log(user);
     localStorage.setItem("Token", user.token);
     dispact({ type: "USER_LOGIN_SUCCESS", payload: user });
-    navigate("/landingPage");
+    // navigate("/landingPage");
+
+    swal({
+      title: "Good job!",
+      text: `${result.data.message}`,
+      icon: "success",
+    }).then(() => {
+      if (user.role === "company") {
+        console.log("ini pekerja");
+        navigate("/loginPerekrut");
+      } else {
+        console.log("ini perekrut");
+        navigate("/loginPekerja");
+      }
+    });
+
     console.log("Login success");
   } catch (e) {
     console.log("Login fail");

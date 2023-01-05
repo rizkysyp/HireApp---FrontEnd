@@ -1,20 +1,27 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
 const Skill = () => {
   const [data, setData] = useState(null);
-  const skill = useSelector((state) => state.user.user);
-  let user = `${process.env.REACT_APP_URL_ROUTE}/skill/${skill.id}`;
+  const token = localStorage.getItem("Token");
+  console.log("ini token", token);
+
+  const user = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  let getData = "https://hireapp-be-production-e91c.up.railway.app/skill/get";
   useEffect(() => {
     axios
-      .get(user)
+      .get(getData, user)
       .then((res) => {
-        console.log("get data success");
-        console.log(res.data);
+        console.log("Get skill success");
+        console.log(res.data.data);
         res.data && setData(res.data.data);
       })
       .catch((err) => {
-        console.log("get data fail");
+        console.log("Get skill fail");
         console.log(err);
       });
   }, []);
@@ -29,7 +36,7 @@ const Skill = () => {
                   className="btn"
                   style={{ backgroundColor: "#FBB017", color: "white" }}
                 >
-                  {item.skill_name}
+                  {item.skill}
                 </div>
               </div>
             </div>
