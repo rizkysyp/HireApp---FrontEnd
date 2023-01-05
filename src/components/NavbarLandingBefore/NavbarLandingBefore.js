@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function NavbarLandingBeforeLogin() {
   return (
-    <nav className="p-5 mt-5" style={{ marginBottom: "180px" }}>
+    <nav className="p-5 mt-5">
       <div className="">
         <div className="row align-items-center">
           <div className="col-1">

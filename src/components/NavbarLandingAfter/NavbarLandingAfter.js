@@ -5,10 +5,7 @@ import ButtonProfile from "../Button/ButtonProfile";
 
 function NavbarLandingAfterLogin() {
   return (
-    <nav
-      className="p-5 mt-5 pt-3"
-      style={{ marginBottom: "180px", backgroundColor: "white" }}
-    >
+    <nav className="px-5 mb-3 pt-3" style={{ backgroundColor: "white" }}>
       <div className="">
         <div className="row align-items-center">
           <div className="col-1">

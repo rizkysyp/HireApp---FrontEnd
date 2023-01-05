@@ -24,7 +24,7 @@ const Searchbar = ({ onChange, onClick }) => {
       }}
     >
       <input
-        type="text"
+        type="search"
         className={styles.search}
         placeholder="Search for any skill"
         onChange={onChange}

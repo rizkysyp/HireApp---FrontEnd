@@ -113,13 +113,11 @@ export default function Homev1() {
   };
   return (
     <div>
-      <header>
-        {token ? <NavbarLandingAfterLogin /> : <NavbarLandingBeforeLogin />}
+      {token ? <NavbarLandingAfterLogin /> : <NavbarLandingBeforeLogin />}
 
-        <div className={style.header}>
-          <h2 className="container p-2">Top Jobs</h2>
-        </div>
-      </header>
+      <div className={style.header}>
+        <h2 className="container p-2">Top Jobs</h2>
+      </div>
       <main className={style.bg}>
         <div
           className="container"
