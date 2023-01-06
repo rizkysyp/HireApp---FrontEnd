@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import Assets from "../../assets/img";
 import Footer from "../../components/Footer/Footer";
 import ModalProfilePerekrut from "../../components/Modal/ModalProfilePerekrut";
-import NavbarHome from "../../components/NavbarHome/navbarHome";
 import "./ProfilePerekrut.css";
 import NavbarLandingAfterLogin from "../../components/NavbarLandingAfter/NavbarLandingAfter";
 import NavbarLandingBeforeLogin from "../../components/NavbarLandingBefore/NavbarLandingBefore";
