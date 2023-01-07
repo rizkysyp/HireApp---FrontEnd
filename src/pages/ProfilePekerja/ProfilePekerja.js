@@ -8,6 +8,9 @@ import axios from "axios";
 import Skill from "../../components/Skill/Skill";
 import ModalPhotoPekerja from "../../components/ModalPhotoPekerja";
 import { useNavigate } from "react-router-dom";
+import NavbarLandingAfterLogin from "../../components/NavbarLandingAfter/NavbarLandingAfter";
+import NavbarLandingBeforeLogin from "../../components/NavbarLandingBefore/NavbarLandingBefore";
+import Swal from "sweetalert2";
 
 export default function ProfilePekerja() {
   const [data, setData] = useState(null);
@@ -36,9 +39,14 @@ export default function ProfilePekerja() {
         console.log(err);
       });
   }, []);
+  const handleLogout = async () => {
+    await localStorage.clear();
+    Swal.fire("Logout", "Logout success", "success");
+    navigate("/loginPekerja");
+  };
   return (
     <div>
-      <NavbarHome />
+      {/* {token ? <NavbarLandingAfterLogin /> : <NavbarLandingBeforeLogin />} */}
       <div className="row">
         <div className="col-lg-12">
           <img src={Assets.bg} alt="" className="image-bg" />
@@ -124,6 +132,19 @@ export default function ProfilePekerja() {
                     {data ? data?.github : "data not found"}
                   </h6>
                 </div>
+                <button
+                  className="btn"
+                  style={{
+                    backgroundColor: "red",
+                    color: "white",
+                    marginTop: "30px",
+                    marginBottom: "50px",
+                    width: "220px",
+                  }}
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
               </div>
             </div>
           </section>

@@ -7,6 +7,8 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Tabs, Tab } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import NavbarLandingAfterLogin from "../../components/NavbarLandingAfter/NavbarLandingAfter";
+import NavbarLandingBeforeLogin from "../../components/NavbarLandingBefore/NavbarLandingBefore";
 
 export default function ProfileHire() {
   const [data, setData] = useState(null);
@@ -82,7 +84,7 @@ export default function ProfileHire() {
   const [key, setKey] = useState("portofolio");
   return (
     <div>
-      <NavbarHome />
+      {token ? <NavbarLandingAfterLogin /> : <NavbarLandingBeforeLogin />}
       <div className="row">
         <div className="col-lg-12">
           <img src={Assets.bg} alt="" className="image-bg" />
@@ -209,7 +211,11 @@ export default function ProfileHire() {
                       dataPortofolio.map((item) => (
                         <div>
                           <div className="col-1">
-                            <img src={item.photo} alt="" />
+                            <img
+                              src={item.photo}
+                              alt=""
+                              style={{ width: "80px", height: "80px" }}
+                            />
                           </div>
                           <div
                             className="col-9 offset-1"

@@ -6,6 +6,8 @@ import EditProfilePerekrut from "./pages/EditProfilePerekrut/EditProfilePerekrut
 import ProfilePerekrut from "./pages/ProfilePerekrut/ProfilePerekrut";
 import ProfilePekerja from "./pages/ProfilePekerja/ProfilePekerja";
 import ProfileHire from "./pages/ProfileHire";
+import EditExperiences from "./pages/EditExperiences";
+import EditPortofolio from "./pages/EditPortofolio";
 
 //easy
 import LoginPekerja from "./pages/auth/pekerja/login";
@@ -21,8 +23,6 @@ import Homev1 from "./pages/Home/homev1";
 import { BrowserRouter, Route, Routes, Navigate, Link } from "react-router-dom";
 import Hire from "./pages/Hire/hire";
 import Chat from "./pages/Chat/Chat";
-import EditExperiences from "./pages/EditExperiences";
-import EditPortofolio from "./pages/EditPortofolio";
 import Verif from "./pages/auth/verifAccount";
 
 function App() {
@@ -67,9 +67,15 @@ function App() {
             path="/editProfilePerekrut"
             element={<EditProfilePerekrut />}
           /> */}
-          <Route path="/edit-experiences/:id" element={<EditExperiences />} />
-          <Route path="/edit-portofolio/:id" element={<EditPortofolio />} />
-          <Route path="/profile-hire/:id" element={<ProfileHire />} />
+          <Route path="/edit-experiences/:id" element={<PrivateRoute />}>
+            <Route index element={<EditExperiences />} />
+          </Route>
+          <Route path="/edit-portofolio/:id" element={<PrivateRoute />}>
+            <Route index element={<EditPortofolio />} />
+          </Route>
+          <Route path="/profile-hire/:id" element={<PrivateRoute />}>
+            <Route index element={<ProfileHire />} />
+          </Route>
           <Route path="/loginPekerja" element={<LoginPekerja />} />
           <Route path="/registerPekerja" element={<RegisterPekerja />} />
           <Route path="/registerPerekrut" element={<RegisterPerekrut />} />

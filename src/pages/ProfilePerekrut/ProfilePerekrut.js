@@ -7,10 +7,15 @@ import Footer from "../../components/Footer/Footer";
 import ModalProfilePerekrut from "../../components/Modal/ModalProfilePerekrut";
 import NavbarHome from "../../components/NavbarHome/navbarHome";
 import "./ProfilePerekrut.css";
+import NavbarLandingAfterLogin from "../../components/NavbarLandingAfter/NavbarLandingAfter";
+import NavbarLandingBeforeLogin from "../../components/NavbarLandingBefore/NavbarLandingBefore";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 export default function ProfilePerekrut() {
   const [data, setData] = useState(null);
   const token = localStorage.getItem("Token");
+  const navigate = useNavigate();
 
   const user = {
     headers: {
@@ -33,9 +38,14 @@ export default function ProfilePerekrut() {
         console.log(err);
       });
   }, []);
+  const handleLogout = async () => {
+    await localStorage.clear();
+    Swal.fire("Logout", "Logout success", "success");
+    navigate("/loginPerekrut");
+  };
   return (
     <div>
-      <NavbarHome />
+      {token ? <NavbarLandingAfterLogin /> : <NavbarLandingBeforeLogin />}
       <div className="body py-5">
         <div
           className="container bg-white"
@@ -60,7 +70,12 @@ export default function ProfilePerekrut() {
                   <img
                     src={data.photo}
                     alt=""
-                    style={{ marginTop: "-50px", borderRadius: "50px" }}
+                    style={{
+                      marginTop: "-50px",
+                      borderRadius: "50px",
+                      width: "120px",
+                      height: "120px",
+                    }}
                   />
                 ) : (
                   <img
@@ -145,6 +160,19 @@ export default function ProfilePerekrut() {
                   <img src={Assets.linkedin} alt="" className="mx-4" />
                   {data?.linkedin}
                 </h5>
+                <button
+                  className="btn"
+                  style={{
+                    backgroundColor: "red",
+                    color: "white",
+                    marginTop: "30px",
+                    marginBottom: "50px",
+                    width: "220px",
+                  }}
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
               </div>
             </div>
           </div>

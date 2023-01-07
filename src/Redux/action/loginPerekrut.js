@@ -8,7 +8,7 @@ export const loginPerekrut = (data, navigate) => async (dispact) => {
     const user = result.data.data;
     console.log(user);
     localStorage.setItem("Token", user.token);
-    // localStorage.setItem("Id", user.id);
+    localStorage.setItem("role", user.role);
     dispact({ type: "USER_LOGIN_SUCCESS", payload: user });
     navigate("/landingPage");
     console.log("Login success");

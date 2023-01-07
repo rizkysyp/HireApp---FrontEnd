@@ -1,4 +1,6 @@
 import axios from "axios";
+import swal from "sweetalert";
+
 export const loginPekerja = (data, navigate) => async (dispact) => {
   try {
     const result = await axios.post(
@@ -9,10 +11,15 @@ export const loginPekerja = (data, navigate) => async (dispact) => {
     const user = result.data.data;
     console.log(user);
     localStorage.setItem("Token", user.token);
-    // localStorage.setItem("Id", user.id);
+    localStorage.setItem("role", user.role);
     dispact({ type: "USER_LOGIN_SUCCESS", payload: user });
-    navigate("/landingPage");
     console.log("Login success");
+    swal({
+      title: "Good job!",
+      text: `${result.data.message}`,
+      icon: "success",
+    });
+    navigate("/profilePekerja");
   } catch (e) {
     console.log("Login fail");
     console.log(e);
