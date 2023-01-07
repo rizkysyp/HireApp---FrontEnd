@@ -4,6 +4,7 @@ import ButtonHome from "../Button/ButtonHome";
 import ButtonProfile from "../Button/ButtonProfile";
 
 function NavbarLandingAfterLogin() {
+  const role = localStorage.getItem("role");
   return (
     <nav className="px-5 mb-3 pt-3" style={{ backgroundColor: "white" }}>
       <div className="">
@@ -16,7 +17,11 @@ function NavbarLandingAfterLogin() {
             />
           </div>
           <div className="col-sm-2 col-lg-1 offset-sm-3 offset-lg-1">
-            <ButtonHome />
+            {role === "company" ? (
+              <ButtonHome />
+            ) : (
+              <button className="btn" style={{ visibility: "hidden" }}></button>
+            )}
           </div>
           <div className="col-lg-1 offset-5">
             <img src={Assets.bell} alt="" style={{ marginLeft: "110px" }} />
