@@ -6,6 +6,8 @@ import ButtonProfile from "../Button/ButtonProfile";
 
 function NavbarLandingAfterLogin() {
   const role = localStorage.getItem("role");
+  const id = localStorage.getItem("id");
+  console.log(id);
   return (
     <nav className="px-5 mb-3 pt-3" style={{ backgroundColor: "white" }}>
       <div className="">
@@ -30,7 +32,9 @@ function NavbarLandingAfterLogin() {
             <img src={Assets.bell} alt="" style={{ marginLeft: "110px" }} />
           </div>
           <div className="col-lg-1">
-            <img src={Assets.mail} alt="" style={{ marginLeft: "60px" }} />
+            <Link to={`/chat/${id}`}>
+              <img src={Assets.mail} alt="" style={{ marginLeft: "60px" }} />
+            </Link>
           </div>
           <div className="col-lg-1 col-sm-1">
             <ButtonProfile />
