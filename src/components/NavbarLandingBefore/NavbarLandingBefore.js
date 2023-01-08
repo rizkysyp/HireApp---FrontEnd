@@ -17,7 +17,7 @@ function NavbarLandingBeforeLogin() {
             />
           </div>
           <div className="col-1 offset-9">
-            <Link to="/loginPekerja">
+            <Link to="/loginHireApp">
               <ButtonMasuk />
             </Link>
           </div>
