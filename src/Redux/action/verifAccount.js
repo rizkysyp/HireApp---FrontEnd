@@ -17,16 +17,8 @@ export const VerifAccount = (data, navigate) => async (dispact) => {
       title: "Good job!",
       text: `${result.data.message}`,
       icon: "success",
-    }).then(() => {
-      if (user.role === "company") {
-        console.log("ini pekerja");
-        navigate("/loginPerekrut");
-      } else {
-        console.log("ini perekrut");
-        navigate("/loginPekerja");
-      }
     });
-
+    navigate("/loginHireApp");
     console.log("Login success");
   } catch (e) {
     console.log("Login fail");

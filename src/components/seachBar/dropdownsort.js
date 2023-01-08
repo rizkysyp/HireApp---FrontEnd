@@ -4,7 +4,13 @@ import styles from "./dropdownsort.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
-const DropdownSort = () => {
+const DropdownSort = (
+  sortByName,
+  sortBySkill,
+  sortByLocation,
+  sortByFreelance,
+  sortByFulltime
+) => {
   return (
     <div className={`dropdown ${styles["dropdown-wrapper"]}`}>
       <Link
@@ -23,27 +29,27 @@ const DropdownSort = () => {
         aria-labelledby="dropdownMenuLink"
       >
         <li>
-          <Link to="#" className={styles.options}>
+          <Link to={sortByName} className={styles.options}>
             Sortir berdasarkan nama
           </Link>
         </li>
         <li>
-          <Link to="#" className={styles.options}>
+          <Link to={sortBySkill} className={styles.options}>
             Sortir berdasarkan Skill
           </Link>
         </li>
         <li>
-          <Link to="#" className={styles.options}>
+          <Link to={sortByLocation} className={styles.options}>
             Sortir berdasarkan Lokasi
           </Link>
         </li>
         <li>
-          <Link to="#" className={styles.options}>
+          <Link to={sortByFreelance} className={styles.options}>
             Sortir berdasarkan freelance
           </Link>
         </li>
         <li>
-          <Link to="#" className={styles.options}>
+          <Link to={sortByFulltime} className={styles.options}>
             Sortir berdasarkan fulltime
           </Link>
         </li>

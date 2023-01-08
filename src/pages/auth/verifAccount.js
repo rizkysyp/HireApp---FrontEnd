@@ -26,15 +26,17 @@ export default function VerificationAccount() {
     dispatch(VerifAccount(data, navigate));
   };
   return (
-    <div className="container p-4">
-      <div>
-        <Navbar />
-      </div>
+    <div>
       <div className="row">
         <div className="col-sm-6">
-          <div style={{ backgroundImage: `url(${Assets.Bg})` }}>
+          <div
+            style={{ backgroundImage: `url(${Assets.Bg})`, height: "100vh" }}
+          >
             <div
-              style={{ backgroundImage: `url(${Assets.cover})` }}
+              style={{
+                backgroundImage: `url(${Assets.cover})`,
+                height: "100vh",
+              }}
               className="col p-4 "
             >
               <img
@@ -49,7 +51,7 @@ export default function VerificationAccount() {
             </div>
           </div>
         </div>
-        <div className="col-sm-6" id={style.row2}>
+        <div className="col-sm-6 p-5" id={style.row2}>
           <h1>Halo, Pewpeople</h1>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
@@ -70,7 +72,7 @@ export default function VerificationAccount() {
                 />
               </div>
               <div className="form-group mt-2">
-                <label>Kata Sandi</label>
+                <label>Otp</label>
                 <input
                   type="number"
                   className="form-control"

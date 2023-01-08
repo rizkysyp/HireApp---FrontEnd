@@ -4,6 +4,7 @@ import style from "./pekerja.module.css";
 import { Route, Link, Routes, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { register } from "./../../../Redux/action/registerPekerja";
+import { Button } from "react-bootstrap";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -36,12 +37,17 @@ export default function Register() {
     dispatch(register(data, navigate));
   };
   return (
-    <div className="container p-4">
+    <div>
       <div className="row">
         <div className="col-sm-6">
-          <div style={{ backgroundImage: `url(${Assets.Bg})` }}>
+          <div
+            style={{ backgroundImage: `url(${Assets.Bg})`, height: "100vh" }}
+          >
             <div
-              style={{ backgroundImage: `url(${Assets.cover})` }}
+              style={{
+                backgroundImage: `url(${Assets.cover})`,
+                height: "100vh",
+              }}
               className="col p-4 "
             >
               <img
@@ -56,7 +62,28 @@ export default function Register() {
             </div>
           </div>
         </div>
-        <div className="col-sm-6" id={style.row2}>
+        <div className="col-sm-6 p-5" id={style.row2}>
+          <div className="d-flex justify-content-center container mt-4">
+            <Button
+              href="/registerPekerja"
+              className="btn-primary btn-block btn-lg"
+              style={{
+                marginRight: "10px",
+                borderRadius: "13px",
+                height: "40px",
+              }}
+            >
+              Pekerja
+            </Button>
+            <Button
+              href="/registerPerekrut"
+              variant="outline-primary"
+              className="btn btn-Light btn-block btn-lg "
+              style={{ borderRadius: "13px", width: "8rem", height: "40px" }}
+            >
+              Perekrut
+            </Button>
+          </div>
           <h1>Halo, Pewpeople</h1>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
@@ -128,7 +155,7 @@ export default function Register() {
           <div className="container mt-5 d-flex justify-content-center">
             <p className="card-text">
               Anda sudah punya akun?
-              <Link to="/registerCust" id={style.regis}>
+              <Link to="/loginHireApp" id={style.regis}>
                 Masuk disini
               </Link>
               <Routes>

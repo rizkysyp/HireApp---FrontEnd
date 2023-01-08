@@ -1,7 +1,7 @@
 import axios from "axios";
 import swal from "sweetalert";
 
-export const loginPekerja = (data, navigate) => async (dispact) => {
+export const login = (data, navigate) => async (dispact) => {
   try {
     const result = await axios.post(
       `https://hireapp-be-production-e91c.up.railway.app/users/login`,
@@ -18,8 +18,15 @@ export const loginPekerja = (data, navigate) => async (dispact) => {
       title: "Good job!",
       text: `${result.data.message}`,
       icon: "success",
+    }).then(() => {
+      if (user.role === "employee") {
+        console.log("user employee (pekerja)");
+        navigate("/landingPage");
+      } else {
+        console.log("user company (perekrut)");
+        navigate("/landingPage");
+      }
     });
-    navigate("/profilePekerja");
   } catch (e) {
     console.log("Login fail");
     console.log(e);

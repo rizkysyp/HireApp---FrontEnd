@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Assets from "../../assets/img";
 import ButtonHome from "../Button/ButtonHome";
 import ButtonProfile from "../Button/ButtonProfile";
@@ -10,11 +11,13 @@ function NavbarLandingAfterLogin() {
       <div className="">
         <div className="row align-items-center">
           <div className="col-1">
-            <img
-              src={Assets.logo}
-              alt=""
-              style={{ width: "127px", height: "35px" }}
-            />
+            <Link to="/landingPage">
+              <img
+                src={Assets.logo}
+                alt=""
+                style={{ width: "127px", height: "35px" }}
+              />
+            </Link>
           </div>
           <div className="col-sm-2 col-lg-1 offset-sm-3 offset-lg-1">
             {role === "company" ? (

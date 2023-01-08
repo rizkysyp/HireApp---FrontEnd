@@ -42,11 +42,11 @@ export default function ProfilePekerja() {
   const handleLogout = async () => {
     await localStorage.clear();
     Swal.fire("Logout", "Logout success", "success");
-    navigate("/loginPekerja");
+    navigate("/loginHireApp");
   };
   return (
     <div>
-      {/* {token ? <NavbarLandingAfterLogin /> : <NavbarLandingBeforeLogin />} */}
+      {token ? <NavbarLandingAfterLogin /> : <NavbarLandingBeforeLogin />}
       <div className="row">
         <div className="col-lg-12">
           <img src={Assets.bg} alt="" className="image-bg" />

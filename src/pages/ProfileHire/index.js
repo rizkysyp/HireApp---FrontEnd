@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import Assets from "../../assets/img";
 import Footer from "../../components/Footer/Footer";
-import NavbarHome from "../../components/NavbarHome/navbarHome";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Tabs, Tab } from "react-bootstrap";

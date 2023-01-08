@@ -3,10 +3,9 @@ import NavbarHome from "../../components/navbarHome";
 import style from "./home.module.css";
 import Footer from "../../components/Footer/Footer";
 import Assets from "../../assets/img";
-import { Card, Pagination } from "@mui/material";
 import Axios from "axios";
 import swal from "sweetalert";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import NavbarLandingAfterLogin from "../../components/NavbarLandingAfter/NavbarLandingAfter";
 import NavbarLandingBeforeLogin from "../../components/NavbarLandingBefore/NavbarLandingBefore";
 import Searchbar from "../../components/seachBar/searchbar";
@@ -14,25 +13,16 @@ import axios from "axios";
 
 export default function Homev1() {
   const token = localStorage.getItem("Token");
-  let active = 2;
-  let items = [];
-  for (let num = 1; num <= 5; num++) {
-    items.push(
-      <Pagination.Item key={num} active={num === active}>
-        {num}
-      </Pagination.Item>
-    );
-  }
 
   //get data
-  const [data, setData] = useState("");
-  const [sortBy, setSortBy] = useState("name");
-  const [sort, setSort] = useState("asc");
+  const [data, setData] = useState([]);
+  const [sortBy, setSortBy] = useState(" ");
   const { id: idPekerja } = useParams();
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [limit] = useState(8);
-  const [skillPekerja, setSkillPekerja] = useState("");
+
+  const [setSkillPekerja] = useState("");
 
   const user = {
     headers: {
@@ -48,17 +38,16 @@ export default function Homev1() {
       })
       .catch((error) => {
         swal({
-          title: "Oops!",
+          title: "Ups. Kamu perlu melakukan Login!",
           text: `${error.response.data.message}`,
-          icon: "error",
+          icon: "warning",
+          confirmButtonColor: "#3085d6",
+          confirmButtonText: '<a href="/loginPerekrut">Silahkan Login</a>',
         });
         console.log(error);
       });
   };
-  useEffect(() => {
-    console.log("checked", sortBy);
-    getAllData();
-  }, [sortBy, sort, search]);
+
   useEffect(() => {
     getAllData();
   }, []);
@@ -88,7 +77,6 @@ export default function Homev1() {
   };
 
   //pagination search sort
-
   let url = `https://hireapp-be-production-e91c.up.railway.app/users/employee/all`;
   useEffect(() => {
     if (limit !== "8") {
@@ -104,6 +92,19 @@ export default function Homev1() {
     }
     getAllData(url);
   }, [search, limit, page]);
+
+  // useEffect(() => {
+  //   const sortArray = (type) => {
+  //     const types = {
+  //       name: "name",
+  //     };
+  //     const sortProperty = types[type];
+  //     const sorted = [...data].sort( (a, b) => b[sortProperty] - a[sortProperty]);
+  //     setData(sorted);
+  //   };
+  //   sortArray(sortBy);
+  // }, [sortBy]);
+
   const nextPage = () => {
     setPage(page + 1);
   };
@@ -123,35 +124,9 @@ export default function Homev1() {
           className="container"
           style={{ backgroundColor: "white", borderRadius: "10px" }}
         >
-          {/* <form className="search row d-flex justify-content-between p-2">
-            <input
-              autoComplete="off"
-              type="text"
-              id={style.search}
-              className="form-control col"
-              placeholder="Search for any skill"
-              value={inputData.search}
-              name="search"
-              onChange={handleChange}
-            ></input>
-            <div className="dropdown col-2" id={style.border}>
-              Kategory
-            </div>
-            <button
-              className="col-2"
-              type="submit"
-              style={{
-                backgroundColor: "#5e50a1",
-                borderColor: "#5e50a1",
-                color: "white",
-                borderRadius: "5px",
-              }}
-            >
-              Search
-            </button>
-          </form> */}
           <Searchbar
-            id="search"
+            value={data.name}
+            onChangeSortBy={(e) => setSortBy(e.target.value)}
             onChange={(e) => setSearch(e.target.value.toLowerCase())}
           />
         </div>
@@ -160,39 +135,41 @@ export default function Homev1() {
           style={{ backgroundColor: "white", borderRadius: "10px" }}
         >
           {data
-            ? data.map((data) => {
-                return (
-                  <div
-                    key={data.id}
-                    className=" row p-2 d-flex justify-content-between"
-                  >
-                    <div className="col-2 d-flex align-items-center d-flex justify-content-center">
-                      <img
-                        type="file"
-                        style={{
-                          backgroundColor: "gainsboro",
-                          borderRadius: "100%",
-                          width: "100px",
-                          height: "100px",
-                        }}
-                        src={data.photo}
-                        alt=""
-                      />
-                    </div>
-                    <div className="col-7" id={style.infoDiri}>
-                      <h2>{data.name}</h2>
-                      <p style={{ color: "grey" }}>{data.job}</p>
-                      <div className="d-flex justify-content-start  ">
+            ? data
+                .sort((a, b) => (a.item < b.item ? 1 : -1))
+                .map((data) => {
+                  return (
+                    <div
+                      key={data.id}
+                      className=" row p-2 d-flex justify-content-between"
+                    >
+                      <div className="col-2 d-flex align-items-center d-flex justify-content-center">
                         <img
-                          src={Assets.mappin}
+                          type="file"
+                          style={{
+                            backgroundColor: "gainsboro",
+                            borderRadius: "100%",
+                            width: "100px",
+                            height: "100px",
+                          }}
+                          src={data.photo}
                           alt=""
-                          className={style.mappin}
                         />
-                        <p style={{ color: "grey" }}>
-                          {data.city},{data.province}
-                        </p>
                       </div>
-                      {/* <div className="row mt-2">
+                      <div className="col-7" id={style.infoDiri}>
+                        <h2>{data.name}</h2>
+                        <p style={{ color: "grey" }}>{data.job}</p>
+                        <div className="d-flex justify-content-start  ">
+                          <img
+                            src={Assets.mappin}
+                            alt=""
+                            className={style.mappin}
+                          />
+                          <p style={{ color: "grey" }}>
+                            {data.city},{data.province}
+                          </p>
+                        </div>
+                        {/* <div className="row mt-2">
                         {skillPekerja ? (
                           skillPekerja.map((item) => (
                             <div className="col-5 ">
@@ -213,24 +190,24 @@ export default function Homev1() {
                           <h6>...Loading</h6>
                         )}
                       </div> */}
+                      </div>
+                      <div className="col-3 d-flex align-items-center   justify-content-center">
+                        <button
+                          style={{
+                            backgroundColor: "#5e50a1",
+                            borderColor: "#5e50a1",
+                            color: "white",
+                            borderRadius: "5px",
+                          }}
+                          onClick={() => handleClick(data.id)}
+                        >
+                          Lihat Profile
+                        </button>
+                      </div>
+                      <hr className="mt-4" />
                     </div>
-                    <div className="col-3 d-flex align-items-center   justify-content-center">
-                      <button
-                        style={{
-                          backgroundColor: "#5e50a1",
-                          borderColor: "#5e50a1",
-                          color: "white",
-                          borderRadius: "5px",
-                        }}
-                        onClick={() => handleClick(data.id)}
-                      >
-                        Lihat Profile
-                      </button>
-                    </div>
-                    <hr className="mt-4" />
-                  </div>
-                );
-              })
+                  );
+                })
             : "data not yet"}
         </div>
         <div
@@ -268,7 +245,7 @@ export default function Homev1() {
                     fontWeight: 600,
                   }}
                 >
-                  {`(${data?.length} data)`}
+                  {`${data?.length} data`}
                   {/* {index + 1} */}
                 </button>
                 <div>

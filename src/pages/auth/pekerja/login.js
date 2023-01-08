@@ -6,7 +6,7 @@ import ResetPw from "./../../auth/resetpw";
 import RegisterPekerja from "./register";
 import Navbar from "./../../../components/navbarHome";
 import { Route, Link, Routes, useNavigate } from "react-router-dom";
-import { loginPekerja } from "../../../Redux/action/loginPekerja";
+import { login } from "../../../Redux/action/login";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -23,18 +23,20 @@ export default function Login() {
       email,
       password,
     };
-    dispatch(loginPekerja(data, navigate));
+    dispatch(login(data, navigate));
   };
   return (
-    <div className="container p-4">
-      <div>
-        <Navbar />
-      </div>
+    <div>
       <div className="row">
         <div className="col-sm-6">
-          <div style={{ backgroundImage: `url(${Assets.Bg})` }}>
+          <div
+            style={{ backgroundImage: `url(${Assets.Bg})`, height: "100vh" }}
+          >
             <div
-              style={{ backgroundImage: `url(${Assets.cover})` }}
+              style={{
+                backgroundImage: `url(${Assets.cover})`,
+                height: "100vh",
+              }}
               className="col p-4 "
             >
               <img
@@ -49,7 +51,7 @@ export default function Login() {
             </div>
           </div>
         </div>
-        <div className="col-sm-6" id={style.row2}>
+        <div className="col-sm-6 p-5" id={style.row2}>
           <h1>Halo, Pewpeople</h1>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod

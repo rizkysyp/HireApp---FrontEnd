@@ -40,7 +40,7 @@ export default function ProfilePerekrut() {
   const handleLogout = async () => {
     await localStorage.clear();
     Swal.fire("Logout", "Logout success", "success");
-    navigate("/loginPerekrut");
+    navigate("/loginHireApp");
   };
   return (
     <div>
