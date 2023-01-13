@@ -77,11 +77,11 @@ npm install
 
 | Register Pekerja Page                                                                                                    | Register Perekrut Page                                                                                                            |
 | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| ![Register](https://github.com/rizkysyp/HireApp---FrontEnd/blob/master/ss/RegisterPekerja.PNG "Register Pekerja Page") | ![Register Perekrut](https://github.com/rizkysyp/HireApp---FrontEnd/blob/master/ss/RegisterPerekrut.PNGG "Register Perekrut Page") |
+| ![Register](https://github.com/rizkysyp/HireApp---FrontEnd/blob/master/ss/RegisterPekerja.PNG "Register Pekerja Page") | ![Register Perekrut](https://github.com/rizkysyp/HireApp---FrontEnd/blob/master/ss/RegisterPerekrut.PNG "Register Perekrut Page") |
 
 | Verification Page                                                                                              | Login Page                                                                                                         |
 | ------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| ![Verification](https://github.com/rizkysyp/HireApp---FrontEnd/blob/main/ss/Verif.PNG "Verification Page") | ![Login](https://github.com/rizkysyp/HireApp---FrontEnd/blob/master/ss/Login.PNG " Login Page") |
+| ![Verification](https://github.com/rizkysyp/HireApp---FrontEnd/blob/master/ss/Verif.PNG "Verification Page") | ![Login](https://github.com/rizkysyp/HireApp---FrontEnd/blob/master/ss/Login.PNG " Login Page") |
 
 
 ## Related Project
