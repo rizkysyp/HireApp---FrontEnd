@@ -93,7 +93,7 @@ npm install
 
 | Hire Page | Chat Page |
 | ------------- | ------------- |
-| ![hire](/ss/hire.png?raw=true " ") | ![chat](/ss/chat.png?raw=true " ") |
+| ![hire](/ss/hire1.png?raw=true " ") | ![chat](/ss/chat.png?raw=true " ") |
 
 | Edit Profile Perekrut | Edit Profile Pekerja |
 | ------------- | ------------- |
