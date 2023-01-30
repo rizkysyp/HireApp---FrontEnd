@@ -83,6 +83,21 @@ npm install
 | ------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | ![Verification](https://github.com/rizkysyp/HireApp---FrontEnd/blob/master/ss/Verif.PNG "Verification Page") | ![Login](https://github.com/rizkysyp/HireApp---FrontEnd/blob/master/ss/Login.PNG " Login Page") |
 
+| Landing Page | Home Page |
+| ------------- | ------------- |
+| ![seller](/ss/landing.png?raw=true " ") | ![home](/ss/Home.png?raw=true " ") |
+
+| Profile Pekerja | Profile Perekrut |
+| ------------- | ------------- |
+| ![profilepekerja](/ss/profilepekerja.png?raw=true " ") | ![profileperekrut](/ss/profileperekrut.png?raw=true " ") |
+
+| Hire Page | Chat Page |
+| ------------- | ------------- |
+| ![hire](/ss/hire.png?raw=true " ") | ![chat](/ss/chat.png?raw=true " ") |
+
+| Edit Profile Perekrut | Edit Profile Pekerja |
+| ------------- | ------------- |
+| ![edit1](/ss/editprofileperekrut.png?raw=true " ") | ![edit2](/ss/editprofilepekerja.png?raw=true " ") |
 
 ## Related Project
 
